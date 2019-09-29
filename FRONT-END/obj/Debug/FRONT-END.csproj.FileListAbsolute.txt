@@ -1,0 +1,10 @@
+C:\Users\Arn\Documents\KTU 4 kursas\7kojos\FRONT-END\bin\Debug\FRONT-END.exe.config
+C:\Users\Arn\Documents\KTU 4 kursas\7kojos\FRONT-END\bin\Debug\FRONT-END.exe
+C:\Users\Arn\Documents\KTU 4 kursas\7kojos\FRONT-END\bin\Debug\FRONT-END.pdb
+C:\Users\Arn\Documents\KTU 4 kursas\7kojos\FRONT-END\obj\Debug\FRONT_END.Properties.Resources.resources
+C:\Users\Arn\Documents\KTU 4 kursas\7kojos\FRONT-END\obj\Debug\FRONT-END.csproj.GenerateResource.cache
+C:\Users\Arn\Documents\KTU 4 kursas\7kojos\FRONT-END\obj\Debug\FRONT-END.csproj.CoreCompileInputs.cache
+C:\Users\Arn\Documents\KTU 4 kursas\7kojos\FRONT-END\obj\Debug\FRONT-END.exe
+C:\Users\Arn\Documents\KTU 4 kursas\7kojos\FRONT-END\obj\Debug\FRONT-END.pdb
+C:\Users\Arn\Documents\KTU 4 kursas\7kojos\FRONT-END\obj\Debug\FRONT_END.Form1.resources
+C:\Users\Arn\Documents\KTU 4 kursas\7kojos\FRONT-END\obj\Debug\FRONT-END.csprojAssemblyReference.cache

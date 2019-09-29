@@ -10,4 +10,5 @@ namespace _7kojos.Models
         public int id { get; set; }
         public string name { get; set; }
     }
+
 }
