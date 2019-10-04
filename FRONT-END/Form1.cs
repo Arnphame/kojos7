@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.SignalR.Client;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -18,44 +19,75 @@ namespace FRONT_END
     public partial class Form1 : Form
     {
         private static readonly HttpClient client = new HttpClient();
+        HubConnection connection;
+
+        delegate void SetTextCallback(string text, Label textBox);
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        async void ConnectToSignalR(string name)
         {
-            label1.Text = "Waiting for players to join";
+            connection = new HubConnectionBuilder()
+                .WithUrl("http://localhost:52179/api/signalr")
+                .Build();
 
+            await connection.StartAsync();
+
+            await connection.InvokeAsync("RegisterClient", name);
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, System.EventArgs e)
         {
-            System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
-            System.Drawing.Graphics x;
-            x = this.CreateGraphics();
-            x.FillRectangle(myBrush, new Rectangle(0, 0, 150, 200));
-            x.Dispose();
-            myBrush.Dispose();
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:52179/Api/Game/joinGame");
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "POST";
+            newGameButton.Enabled = false;
+            joinGameButton.Enabled = false;
+            loginButton.Enabled = true;
+        }
 
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+        /*System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
+        System.Drawing.Graphics x;
+        x = this.CreateGraphics();
+        x.FillRectangle(myBrush, new Rectangle(0, 0, 150, 200));
+        x.Dispose();
+        myBrush.Dispose();*/
+
+        private async void newGameButton_Click(object sender, EventArgs e)
+        {
+            newGameButton.Enabled = false;
+            joinGameButton.Enabled = false;
+            loginButton.Enabled = true;
+
+            await connection.InvokeAsync("CreateGame");
+
+            connection.On<string>("ReceiveGameId", (gameId) =>
             {
-                string json = "{\"name\":\"" + textBox1.Text +"\"}";
+                // Do something. "Waiting for opponent to join" ?
+            });
+        }
 
-                streamWriter.Write(json);
-            }
+        private async void joinGameButton_Click(object sender, EventArgs e)
+        {
+            newGameButton.Enabled = false;
+            joinGameButton.Enabled = false;
+            loginButton.Enabled = true;
 
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            await connection.InvokeAsync("JoinGame", gameIdTextbox.Text);
+
+            connection.On<bool>("ReceiveJoinSuccess", (success) =>
             {
-                var result = streamReader.ReadToEnd();
-                label1.Text = result;
-            }
+                // Do something. Open game window ?
+            });
+        }
 
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            ConnectToSignalR(nameTextBox.Text);
 
+            newGameButton.Enabled = true;
+            joinGameButton.Enabled = true;
+            loginButton.Enabled = false;
         }
     }
 }

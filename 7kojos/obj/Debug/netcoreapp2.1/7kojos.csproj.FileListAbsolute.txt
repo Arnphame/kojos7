@@ -11,3 +11,17 @@ C:\Users\Arn\Documents\KTU 4 kursas\7kojos\7kojos\obj\Debug\netcoreapp2.1\7kojos
 C:\Users\Arn\Documents\KTU 4 kursas\7kojos\7kojos\obj\Debug\netcoreapp2.1\7kojos.RazorTargetAssemblyInfo.cache
 C:\Users\Arn\Documents\KTU 4 kursas\7kojos\7kojos\obj\Debug\netcoreapp2.1\7kojos.dll
 C:\Users\Arn\Documents\KTU 4 kursas\7kojos\7kojos\obj\Debug\netcoreapp2.1\7kojos.pdb
+C:\Users\Dovydas\Desktop\kojos7\7kojos\bin\Debug\netcoreapp2.1\7kojos.deps.json
+C:\Users\Dovydas\Desktop\kojos7\7kojos\bin\Debug\netcoreapp2.1\7kojos.runtimeconfig.json
+C:\Users\Dovydas\Desktop\kojos7\7kojos\bin\Debug\netcoreapp2.1\7kojos.runtimeconfig.dev.json
+C:\Users\Dovydas\Desktop\kojos7\7kojos\bin\Debug\netcoreapp2.1\7kojos.dll
+C:\Users\Dovydas\Desktop\kojos7\7kojos\bin\Debug\netcoreapp2.1\7kojos.pdb
+C:\Users\Dovydas\Desktop\kojos7\7kojos\obj\Debug\netcoreapp2.1\7kojos.csprojAssemblyReference.cache
+C:\Users\Dovydas\Desktop\kojos7\7kojos\obj\Debug\netcoreapp2.1\7kojos.csproj.CoreCompileInputs.cache
+C:\Users\Dovydas\Desktop\kojos7\7kojos\obj\Debug\netcoreapp2.1\7kojos.RazorAssemblyInfo.cache
+C:\Users\Dovydas\Desktop\kojos7\7kojos\obj\Debug\netcoreapp2.1\7kojos.RazorAssemblyInfo.cs
+C:\Users\Dovydas\Desktop\kojos7\7kojos\obj\Debug\netcoreapp2.1\7kojos.AssemblyInfoInputs.cache
+C:\Users\Dovydas\Desktop\kojos7\7kojos\obj\Debug\netcoreapp2.1\7kojos.AssemblyInfo.cs
+C:\Users\Dovydas\Desktop\kojos7\7kojos\obj\Debug\netcoreapp2.1\7kojos.RazorTargetAssemblyInfo.cache
+C:\Users\Dovydas\Desktop\kojos7\7kojos\obj\Debug\netcoreapp2.1\7kojos.dll
+C:\Users\Dovydas\Desktop\kojos7\7kojos\obj\Debug\netcoreapp2.1\7kojos.pdb

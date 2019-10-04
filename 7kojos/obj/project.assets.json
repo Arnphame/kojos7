@@ -411,7 +411,7 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.Policy.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Connections.Abstractions/2.1.1": {
+      "Microsoft.AspNetCore.Connections.Abstractions/2.1.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "2.1.1",
@@ -666,13 +666,13 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http.Connections/1.0.1": {
+      "Microsoft.AspNetCore.Http.Connections/1.0.4": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Authorization.Policy": "2.1.1",
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.1.1",
           "Microsoft.AspNetCore.Http": "2.1.1",
-          "Microsoft.AspNetCore.Http.Connections.Common": "1.0.1",
+          "Microsoft.AspNetCore.Http.Connections.Common": "1.0.4",
           "Microsoft.AspNetCore.Routing": "2.1.1",
           "Microsoft.AspNetCore.WebSockets": "2.1.1",
           "Newtonsoft.Json": "11.0.2"
@@ -684,10 +684,10 @@
           "lib/netcoreapp2.1/Microsoft.AspNetCore.Http.Connections.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http.Connections.Common/1.0.1": {
+      "Microsoft.AspNetCore.Http.Connections.Common/1.0.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Connections.Abstractions": "2.1.1",
+          "Microsoft.AspNetCore.Connections.Abstractions": "2.1.2",
           "Newtonsoft.Json": "11.0.2",
           "System.Buffers": "4.5.0"
         },
@@ -1381,11 +1381,11 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Session.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR/1.0.1": {
+      "Microsoft.AspNetCore.SignalR/1.0.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Http.Connections": "1.0.1",
-          "Microsoft.AspNetCore.SignalR.Core": "1.0.1"
+          "Microsoft.AspNetCore.Http.Connections": "1.0.4",
+          "Microsoft.AspNetCore.SignalR.Core": "1.0.4"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.dll": {}
@@ -1394,10 +1394,10 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Common/1.0.1": {
+      "Microsoft.AspNetCore.SignalR.Common/1.0.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Connections.Abstractions": "2.1.1",
+          "Microsoft.AspNetCore.Connections.Abstractions": "2.1.2",
           "Microsoft.Extensions.Options": "2.1.1",
           "Newtonsoft.Json": "11.0.2",
           "System.Buffers": "4.5.0"
@@ -1409,12 +1409,12 @@
           "lib/netcoreapp2.1/Microsoft.AspNetCore.SignalR.Common.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Core/1.0.1": {
+      "Microsoft.AspNetCore.SignalR.Core/1.0.4": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Authorization": "2.1.1",
-          "Microsoft.AspNetCore.SignalR.Common": "1.0.1",
-          "Microsoft.AspNetCore.SignalR.Protocols.Json": "1.0.1",
+          "Microsoft.AspNetCore.SignalR.Common": "1.0.4",
+          "Microsoft.AspNetCore.SignalR.Protocols.Json": "1.0.4",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.1",
           "Microsoft.Extensions.Logging.Abstractions": "2.1.1",
           "System.Reflection.Emit": "4.3.0",
@@ -1427,10 +1427,10 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Core.dll": {}
         }
       },
-      "Microsoft.AspNetCore.SignalR.Protocols.Json/1.0.1": {
+      "Microsoft.AspNetCore.SignalR.Protocols.Json/1.0.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.SignalR.Common": "1.0.1",
+          "Microsoft.AspNetCore.SignalR.Common": "1.0.4",
           "Newtonsoft.Json": "11.0.2"
         },
         "compile": {
@@ -4971,16 +4971,16 @@
         "microsoft.aspnetcore.authorization.policy.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Connections.Abstractions/2.1.1": {
-      "sha512": "cYrlbfJI6NelDmZXmn3z9Gtu7F7l7sk7eq2EExYuD76l5QnGuFr9fC+UUM62sJbeWkiX3+AaKKsjXdDBfgKDRQ==",
+    "Microsoft.AspNetCore.Connections.Abstractions/2.1.2": {
+      "sha512": "+LpinMPlSK6X3xu/CsN9z7uw811/FNQ4ZgwOGIVAOCOQ+83EaxkwsnfB1HrH6sWLe3jAAncoIjeNz/LQxSFzqA==",
       "type": "package",
-      "path": "microsoft.aspnetcore.connections.abstractions/2.1.1",
+      "path": "microsoft.aspnetcore.connections.abstractions/2.1.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Connections.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Connections.Abstractions.xml",
-        "microsoft.aspnetcore.connections.abstractions.2.1.1.nupkg.sha512",
+        "microsoft.aspnetcore.connections.abstractions.2.1.2.nupkg.sha512",
         "microsoft.aspnetcore.connections.abstractions.nuspec"
       ]
     },
@@ -5207,10 +5207,10 @@
         "microsoft.aspnetcore.http.abstractions.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Http.Connections/1.0.1": {
-      "sha512": "dofm8DnT+LWhFV6mMUpeD1SNjbAfUQeicP2ILCM3LuIYaZ9dpmHcutefM4K+GDTlPgQa4xs4gcTxPk8wqHE3zA==",
+    "Microsoft.AspNetCore.Http.Connections/1.0.4": {
+      "sha512": "PCheQjOXi2pmGRmrixfIlYQuEwl4y/jVIk6MpgOdgEWyHL3nlPTjQpyOuIKYuE56xg2LDNYuNIKgHTCTvy4ZWA==",
       "type": "package",
-      "path": "microsoft.aspnetcore.http.connections/1.0.1",
+      "path": "microsoft.aspnetcore.http.connections/1.0.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5218,20 +5218,20 @@
         "lib/netcoreapp2.1/Microsoft.AspNetCore.Http.Connections.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.xml",
-        "microsoft.aspnetcore.http.connections.1.0.1.nupkg.sha512",
+        "microsoft.aspnetcore.http.connections.1.0.4.nupkg.sha512",
         "microsoft.aspnetcore.http.connections.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Http.Connections.Common/1.0.1": {
-      "sha512": "klvQz/ZCeY5b8OdfOHDbNQEWhcKiKu9nBkDjDcBIn5Qval2eEwMpIwZrzLEfNe1m2GeOfOLPJYyXEbDDyhbnyA==",
+    "Microsoft.AspNetCore.Http.Connections.Common/1.0.4": {
+      "sha512": "vllvIeTpVzCDs5kPEdICbvcmxLmRAlJUxG6bG55tf29Wfp/ehHQza5P14S1hFl4Ff7kuxJw5VoqSUHD0gaJMKg==",
       "type": "package",
-      "path": "microsoft.aspnetcore.http.connections.common/1.0.1",
+      "path": "microsoft.aspnetcore.http.connections.common/1.0.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.Common.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.Common.xml",
-        "microsoft.aspnetcore.http.connections.common.1.0.1.nupkg.sha512",
+        "microsoft.aspnetcore.http.connections.common.1.0.4.nupkg.sha512",
         "microsoft.aspnetcore.http.connections.common.nuspec"
       ]
     },
@@ -5877,23 +5877,23 @@
         "microsoft.aspnetcore.session.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.SignalR/1.0.1": {
-      "sha512": "77o2NL9b6NOKOB7hXIY0Ywio1KOb3dmjAyWdDh291Dfr5IXtCpXRnFGl4yrApfTvkFEcaeZ+D+i70tJfeF3onA==",
+    "Microsoft.AspNetCore.SignalR/1.0.4": {
+      "sha512": "eluSYbLdU7Tb0MmKOJqyFWRVjO23STLv93NGfKkpgVsF5veX+IwTk8A9V6CHGBY2bYEJ9Cld3YAKh/i9txzz+Q==",
       "type": "package",
-      "path": "microsoft.aspnetcore.signalr/1.0.1",
+      "path": "microsoft.aspnetcore.signalr/1.0.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.xml",
-        "microsoft.aspnetcore.signalr.1.0.1.nupkg.sha512",
+        "microsoft.aspnetcore.signalr.1.0.4.nupkg.sha512",
         "microsoft.aspnetcore.signalr.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.SignalR.Common/1.0.1": {
-      "sha512": "AlSfju3hS694KgyrX0bPe9A3/Rr97OOIKm1osEO7H9JCVslNRMQUbJ0YlrZxZ8ZbPggwxq+1YNpqSBl3K1FWvA==",
+    "Microsoft.AspNetCore.SignalR.Common/1.0.4": {
+      "sha512": "6ZcC3+S3gNn24WcOzd+n2CreYXEsmRqdHylC3qw/ApwBSysWBkWohz4OYvuPsJNyMRKyw0XaAdrTj5aqBo7Zqw==",
       "type": "package",
-      "path": "microsoft.aspnetcore.signalr.common/1.0.1",
+      "path": "microsoft.aspnetcore.signalr.common/1.0.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5901,33 +5901,33 @@
         "lib/netcoreapp2.1/Microsoft.AspNetCore.SignalR.Common.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Common.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Common.xml",
-        "microsoft.aspnetcore.signalr.common.1.0.1.nupkg.sha512",
+        "microsoft.aspnetcore.signalr.common.1.0.4.nupkg.sha512",
         "microsoft.aspnetcore.signalr.common.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.SignalR.Core/1.0.1": {
-      "sha512": "xf2mbnVyCRAKzcokJeHBjHf8ofzaOjwSiTsEvokSY7px9eYwiSkfXNvnMHSxLBGMyrnUHTwEQBt01QhsuIDHFg==",
+    "Microsoft.AspNetCore.SignalR.Core/1.0.4": {
+      "sha512": "cOW+gyYIe8fU9gbDo+FK9pqiSb6AbXjvkzsTvQivGqpdbX8vrwVgEpPdcn6rzNrvD9cJQUHRxGhhpyJq2CJ8JA==",
       "type": "package",
-      "path": "microsoft.aspnetcore.signalr.core/1.0.1",
+      "path": "microsoft.aspnetcore.signalr.core/1.0.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Core.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Core.xml",
-        "microsoft.aspnetcore.signalr.core.1.0.1.nupkg.sha512",
+        "microsoft.aspnetcore.signalr.core.1.0.4.nupkg.sha512",
         "microsoft.aspnetcore.signalr.core.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.SignalR.Protocols.Json/1.0.1": {
-      "sha512": "KFthkIAdDJnctIWRKEV5dWSrIc4viqULehmgl9l1aWqc1ZDlRJbxED9MSnDwyEnQDp6s9YDszbqAkvd3n87DLA==",
+    "Microsoft.AspNetCore.SignalR.Protocols.Json/1.0.4": {
+      "sha512": "DvursqtEJZhnOUYk8efNjudSs6oQJdHYWQOtZbaQB8CdJBvcMaf4+mZ5q9y+2nIGLCxMZ5id+yV9eRaVzAFdDA==",
       "type": "package",
-      "path": "microsoft.aspnetcore.signalr.protocols.json/1.0.1",
+      "path": "microsoft.aspnetcore.signalr.protocols.json/1.0.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Protocols.Json.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Protocols.Json.xml",
-        "microsoft.aspnetcore.signalr.protocols.json.1.0.1.nupkg.sha512",
+        "microsoft.aspnetcore.signalr.protocols.json.1.0.4.nupkg.sha512",
         "microsoft.aspnetcore.signalr.protocols.json.nuspec"
       ]
     },
@@ -12815,29 +12815,30 @@
       "ImageProcessor.Web >= 4.10.0.100",
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
+      "Microsoft.AspNetCore.SignalR >= 1.0.4",
       "Microsoft.Azure.Amqp >= 2.4.3",
       "Microsoft.NETCore.App >= 2.1.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.9"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Arn\\.nuget\\packages\\": {},
+    "C:\\Users\\Dovydas\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Arn\\Documents\\KTU 4 kursas\\7kojos\\7kojos\\7kojos.csproj",
+      "projectUniqueName": "C:\\Users\\Dovydas\\Desktop\\kojos7\\7kojos\\7kojos.csproj",
       "projectName": "7kojos",
-      "projectPath": "C:\\Users\\Arn\\Documents\\KTU 4 kursas\\7kojos\\7kojos\\7kojos.csproj",
-      "packagesPath": "C:\\Users\\Arn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Arn\\Documents\\KTU 4 kursas\\7kojos\\7kojos\\obj\\",
+      "projectPath": "C:\\Users\\Dovydas\\Desktop\\kojos7\\7kojos\\7kojos.csproj",
+      "packagesPath": "C:\\Users\\Dovydas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Dovydas\\Desktop\\kojos7\\7kojos\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Arn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Dovydas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12876,11 +12877,16 @@
             "target": "Package",
             "version": "[2.1.2, )"
           },
+          "Microsoft.AspNetCore.SignalR": {
+            "target": "Package",
+            "version": "[1.0.4, )"
+          },
           "Microsoft.Azure.Amqp": {
             "target": "Package",
             "version": "[2.4.3, )"
           },
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true

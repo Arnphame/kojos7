@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using _7kojos.Context;
+using _7kojos.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +29,20 @@ namespace _7kojos
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<DatabaseContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:database"]));
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigins",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:52179")
+                        .AllowCredentials()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                    });
+            });
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,7 +53,14 @@ namespace _7kojos
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("AllowOrigins");
+
             app.UseMvc();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<GameHub>("/api/signalr");
+            });
         }
     }
 }
