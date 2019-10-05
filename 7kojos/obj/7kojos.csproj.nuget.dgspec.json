@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Arn\\Documents\\KTU 4 kursas\\7kojos\\7kojos\\7kojos.csproj": {}
+    "C:\\Users\\Arn\\Documents\\KTU 4 kursas\\kojos7\\7kojos\\7kojos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Arn\\Documents\\KTU 4 kursas\\7kojos\\7kojos\\7kojos.csproj": {
+    "C:\\Users\\Arn\\Documents\\KTU 4 kursas\\kojos7\\7kojos\\7kojos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Arn\\Documents\\KTU 4 kursas\\7kojos\\7kojos\\7kojos.csproj",
+        "projectUniqueName": "C:\\Users\\Arn\\Documents\\KTU 4 kursas\\kojos7\\7kojos\\7kojos.csproj",
         "projectName": "7kojos",
-        "projectPath": "C:\\Users\\Arn\\Documents\\KTU 4 kursas\\7kojos\\7kojos\\7kojos.csproj",
+        "projectPath": "C:\\Users\\Arn\\Documents\\KTU 4 kursas\\kojos7\\7kojos\\7kojos.csproj",
         "packagesPath": "C:\\Users\\Arn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Arn\\Documents\\KTU 4 kursas\\7kojos\\7kojos\\obj\\",
+        "outputPath": "C:\\Users\\Arn\\Documents\\KTU 4 kursas\\kojos7\\7kojos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -55,6 +55,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.1.2, )"
+            },
+            "Microsoft.AspNetCore.SignalR": {
+              "target": "Package",
+              "version": "[1.0.4, )"
             },
             "Microsoft.Azure.Amqp": {
               "target": "Package",

@@ -21,7 +21,23 @@ namespace FRONT_END
         private static readonly HttpClient client = new HttpClient();
         HubConnection connection;
 
-        delegate void SetTextCallback(string text, Label textBox);
+        delegate void SetTextCallback(Label label, string text);
+
+        private void SetText(Label label, string text)
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
+            if (label.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetText);
+                this.Invoke(d, new object[] { label, text });
+            }
+            else
+            {
+                label.Text = text;
+            }
+        }
 
         public Form1()
         {
@@ -33,6 +49,16 @@ namespace FRONT_END
             connection = new HubConnectionBuilder()
                 .WithUrl("http://localhost:52179/api/signalr")
                 .Build();
+
+            connection.On<string>("ReceiveGameId", (gameId) =>
+            {
+                SetText(resultLabel, gameId);
+            });
+
+            connection.On<bool>("ReceiveJoinSuccess", (success) =>
+            {
+                SetText(resultLabel, success.ToString());
+            });
 
             await connection.StartAsync();
 
@@ -61,10 +87,7 @@ namespace FRONT_END
 
             await connection.InvokeAsync("CreateGame");
 
-            connection.On<string>("ReceiveGameId", (gameId) =>
-            {
-                // Do something. "Waiting for opponent to join" ?
-            });
+            
         }
 
         private async void joinGameButton_Click(object sender, EventArgs e)
@@ -75,10 +98,7 @@ namespace FRONT_END
 
             await connection.InvokeAsync("JoinGame", gameIdTextbox.Text);
 
-            connection.On<bool>("ReceiveJoinSuccess", (success) =>
-            {
-                // Do something. Open game window ?
-            });
+            
         }
 
         private void loginButton_Click(object sender, EventArgs e)

@@ -12822,23 +12822,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Dovydas\\.nuget\\packages\\": {},
+    "C:\\Users\\Arn\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dovydas\\Desktop\\kojos7\\7kojos\\7kojos.csproj",
+      "projectUniqueName": "C:\\Users\\Arn\\Documents\\KTU 4 kursas\\kojos7\\7kojos\\7kojos.csproj",
       "projectName": "7kojos",
-      "projectPath": "C:\\Users\\Dovydas\\Desktop\\kojos7\\7kojos\\7kojos.csproj",
-      "packagesPath": "C:\\Users\\Dovydas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dovydas\\Desktop\\kojos7\\7kojos\\obj\\",
+      "projectPath": "C:\\Users\\Arn\\Documents\\KTU 4 kursas\\kojos7\\7kojos\\7kojos.csproj",
+      "packagesPath": "C:\\Users\\Arn\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Arn\\Documents\\KTU 4 kursas\\kojos7\\7kojos\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Dovydas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Arn\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12886,7 +12886,6 @@
             "version": "[2.4.3, )"
           },
           "Microsoft.NETCore.App": {
-            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
