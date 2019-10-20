@@ -27,7 +27,8 @@ namespace _7kojos.Hubs
 
         public override Task OnDisconnectedAsync(Exception exception)
         {
-            string userId = _connections.FindKey(Context.ConnectionId);
+            LeaveGame();
+            string userId = _connections.GetUserId(Context.ConnectionId);
             _connections.Remove(userId, Context.ConnectionId);
             return base.OnDisconnectedAsync(exception);
         }
@@ -76,11 +77,16 @@ namespace _7kojos.Hubs
             Player player = dbContext.Players.FirstOrDefault(p => p.id.ToString() == GetUserId());
             if (player == null) throw new Exception("null player");
 
+            player.x = 100;
+            player.y = 350;
+
+            dbContext.SaveChanges();
+
             Game game = Program.CreateGame();
 
-            JoinGame(game.GameId);
+            Program.JoinGame(game.GameId, player);
 
-            Clients.Client(Context.ConnectionId).SendAsync("ReceiveGameId", game.GameId);
+            Clients.Client(Context.ConnectionId).SendAsync("ReceiveGameId", game.GameId, player.x, player.y);
 
             return game.GameId;
         }
@@ -89,10 +95,47 @@ namespace _7kojos.Hubs
         {
             Player player = dbContext.Players.FirstOrDefault(p => p.id.ToString() == GetUserId());
 
-            bool success = Program.JoinGame(gameId, player);
-            Clients.Client(Context.ConnectionId).SendAsync("ReceiveJoinSuccess", success);
+            player.x = 500;
+            player.y = 350;
 
+            dbContext.SaveChanges();
+
+            bool success = Program.JoinGame(gameId, player);
+
+            Game game = new Game(-1);
+
+            if (success)
+            {
+                game = Program.FindGame(player);
+
+                Player opponent = game.Players.FirstOrDefault(p => p.id != player.id);
+
+                if (opponent != null)
+                    Clients.Clients(GetConnectionId(opponent.id.ToString())).SendAsync("PlayerJoined", player.x, player.y);
+            }
+
+            Clients.Client(Context.ConnectionId).SendAsync("ReceiveJoinSuccess", success, game.Players[0].x, game.Players[0].y, player.x, player.y);
+            
             return success;
+        }
+
+        public void LeaveGame()
+        {
+            Player player = dbContext.Players.FirstOrDefault(p => p.id.ToString() == GetUserId());
+
+            Program.LeaveGame(player);
+        }
+
+        public void Shoot(float xDim, float yDim)
+        {
+            Player player = dbContext.Players.FirstOrDefault(p => p.id.ToString() == GetUserId());
+
+            Game game = Program.FindGame(player);
+
+            Player opponent = game.Players.FirstOrDefault(p => p.id != player.id);
+
+            if(opponent != null)
+                Clients.Clients(GetConnectionId(opponent.id.ToString())).SendAsync("Shoot", xDim, yDim);
         }
     }
 }

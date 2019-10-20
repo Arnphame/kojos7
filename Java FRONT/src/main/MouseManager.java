@@ -7,12 +7,12 @@ import java.awt.event.MouseMotionListener;
 public class MouseManager implements MouseListener, MouseMotionListener {
 	
 	public int x,y;
-	public boolean clicking;
+	public boolean isClicked;
 	
 	public MouseManager() {
 		this.x=0;
 		this.y=0;
-		this.clicking = false;
+		this.isClicked = false;
 	}
 	
 	@Override
@@ -35,13 +35,13 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-			clicking = true;
+		isClicked = true;
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		if(clicking)
-			clicking = false;
+		if(isClicked)
+			isClicked = false;
 	}
 
 	@Override

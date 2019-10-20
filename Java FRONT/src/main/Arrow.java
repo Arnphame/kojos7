@@ -13,13 +13,13 @@ public class Arrow {
 	
 	public boolean outside = false,stopped = false;
 	
-	public Arrow(Vector pos, Vector vel, Vector acc, Color color,boolean stopped){
+	public Arrow(Vector pos, Vector vel, Vector acc, Color color){
 		this.pos = pos;
 		this.vel = vel;
 		this.dir = new Vector(vel);
 		this.acc = acc;
 		this.color = color;
-		this.stopped=stopped;
+		this.stopped=true;
 	}
 	
 	public void applyAcc(Vector acc){
@@ -96,6 +96,10 @@ public class Arrow {
 		int x2 = (int)pos.x + (int)((dir.x/dir.getMag())*length*0.5f);		
 		int y2 = (int)pos.y + (int)((dir.y/dir.getMag())*length*0.5f);
 		return new Vector(x2-pos.x,y2-pos.y);
+	}
+
+	public void launch(){
+		stopped = false;
 	}
 	
 }

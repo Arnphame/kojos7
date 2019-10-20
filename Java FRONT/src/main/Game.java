@@ -1,5 +1,7 @@
 package main;
 
+import com.microsoft.signalr.HubConnection;
+
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferStrategy;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -28,17 +31,22 @@ public class Game implements Runnable{
 	
 	public Assets assets;
 	public Sounds sounds;
+
+	HubConnection connection;
 	
 	//
-	
+	private ArrayList<Player> players;
 	private Player player;
+	private Player opponent;
 	
 	public static Vector gravity = new Vector(0,0.14f);
 	
-	public Game(String title, int width,int height){
+	public Game(String title, int width, int height, HubConnection connection){
 		this.width = width;
 		this.height = height;
 		this.title = title;
+		this.connection = connection;
+		players = new ArrayList<>();
 		initDisplay();
 	}
 	
@@ -78,11 +86,14 @@ public class Game implements Runnable{
 		sounds = new Sounds();
 		sounds.init();
 		
-		player = new Player(100, 350, Color.white);
+		/*player = new Player(100, 350, Color.white, sounds, connection, false);
+		opponent = new Player(200, 350, Color.white, sounds, connection, true);*/
 	}
 	
 	public void tick(){
-		player.tick(this);
+		for (Player player : players) {
+			player.tick(this);
+		}
 	}
 	
 	public void render(){
@@ -100,8 +111,13 @@ public class Game implements Runnable{
 
 		g.setColor(Color.DARK_GRAY);
 		g.fillRect(0, 0, width, height);
-		
-		player.render(g,assets);
+
+		for (Player player : players) {
+			player.render(g,assets);
+		}
+
+		/*player.render(g,assets);
+		opponent.render(g,assets);*/
 		
 		//
 		bs.show();
@@ -149,6 +165,10 @@ public class Game implements Runnable{
 				System.err.println("Error while terminating the thread!");
 			}
 		}
+	}
+
+	public void addPlayer(Player player){
+		players.add(player);
 	}
 	
 }

@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+import com.microsoft.signalr.HubConnection;
+import com.microsoft.signalr.HubConnectionState;
 import main.Body.Limb;
 
 public class Player {
@@ -15,19 +17,38 @@ public class Player {
 	
 	public float lastThrowVel = 0;
 	
-	private int tx1,tx2,ty1,ty2;
-	
-	public Player(int x,int y, Color color){
-		
+	private int startX,endX,startY,endY;
+
+	public Sounds sounds;
+
+	Boolean arrowIsReady = false;		//Shows if there is new arrow ready to be released on screen
+	Boolean isOpponent;
+	HubConnection connection;
+
+	public Player(int x, int y, Color color, HubConnection hubConnection, Boolean isOpponent){		//For players controlled via signalR
+
 		this.body = new Body(x, y, color);
 		this.body.leftH.rot = (float)(Math.PI/3 + Math.PI);
 		this.body.rightH.rot = -(float)Math.PI/3;
 		this.arrows = new ArrayList<Arrow>();
-		
+		this.connection = hubConnection;
+		this.isOpponent = isOpponent;
+		this.sounds = new Sounds();
+		this.sounds.init();
+
+		if(isOpponent) {
+			this.connection.on("Shoot", (xDim, yDim) -> {
+				arrows.add(new Arrow(new Vector(body.head.x, body.head.y - body.head.r), new Vector(xDim, yDim), new Vector(), Color.LIGHT_GRAY));
+				arrows.get(arrows.size() - 1).launch();
+				this.sounds.play(this.sounds.arrow);
+			}, Float.class, Float.class);
+		}
 	}
 	
 	public void tick(Game game){
-		getInput(game.mouseManager,game.sounds);
+		if(!isOpponent)								//Get input only if player is controlled locally
+			getInput(game.mouseManager);
+
 		for(int i=arrows.size()-1;i>=0;i--){
 			arrows.get(i).tick(game);
 			if(arrows.get(i).outside)
@@ -43,10 +64,10 @@ public class Player {
 		body.render(g);
 		
 		g.setColor(Color.white);
-		if(tx1 != 0 && ty1 != 0){
-			g.drawLine(tx1, ty1, tx2, ty2);
-			g.fillOval(tx1-2, ty1-2, 4, 4);
-			g.fillOval(tx2-2, ty2-2, 4, 4);
+		if(arrowIsReady){
+			g.drawLine(startX, startY, endX, endY);
+			g.fillOval(startX-2, startY-2, 4, 4);
+			g.fillOval(endX-2, endY-2, 4, 4);
 			
 		}
 		
@@ -66,76 +87,37 @@ public class Player {
 		g.drawRect(5, 5, 80, 15);
 		
 	}
-
-	public float calculateXOff(Vector vel){
-		float xOff = (vel.getMag()/(maxThrowVel*maxThrowLength)) * Arrow.length;
-		if(xOff >= Arrow.length)
-			xOff = Arrow.length;
-		vel.mul((1f/(float)maxThrowLength));
-		if(vel.getMag()> maxThrowVel){
-			vel.setMag(maxThrowVel);
-		}
-		lastThrowVel = vel.getMag();
-		xOff -= Arrow.length/2;
-		if(tx1< tx2)
-			xOff *= -1;
-		return 0;
-	}
 	
-	public void getInput(MouseManager mouse,Sounds sounds){
-		if(mouse.clicking){
-			if (tx1 == 0 || ty1 == 0){
-				tx1 = mouse.x;
-				ty1 = mouse.y;
-				Vector vel = new Vector(tx1-tx2 , ty1-ty2);
-				float xOff = calculateXOff(vel);
-				arrows.add(new Arrow(new Vector(body.head.x-xOff,body.head.y -
-						body.head.r-10), vel, new Vector(), Color.LIGHT_GRAY,true));
-//				adjustLimb(body.leftH,arrows.get(arrows.size()-1));
-//				adjustLimb(body.rightH, arrows.get(arrows.size()-1));
+	public void getInput(MouseManager mouse){
+		Vector vel = new Vector();
+		if(mouse.isClicked){
+			if (!arrowIsReady){
+				startX = mouse.x;
+				startY = mouse.y;
 
+				arrows.add(new Arrow(new Vector(body.head.x,body.head.y - body.head.r), vel, new Vector(), Color.LIGHT_GRAY));
+				arrowIsReady = true;
 			}
 			
-			Vector vel = new Vector(tx1-tx2 , ty1-ty2);
-			float xOff = calculateXOff(vel);
+			vel = new Vector(startX-endX , startY-endY);
+			vel.mul((float) 0.1);
+			if(vel.getMag()> maxThrowVel){
+				vel.setMag(maxThrowVel);
+			}
+			lastThrowVel = vel.getMag();
+
 			arrows.get(arrows.size()-1).vel = vel;
-			arrows.get(arrows.size()-1).pos.x = body.head.x-xOff;
-			
-//			adjustLimb(body.leftH,arrows.get(arrows.size()-1));
-//			adjustLimb(body.rightH, arrows.get(arrows.size()-1));
 
-			
-			tx2 = mouse.x;
-			ty2 = mouse.y;
+			endX = mouse.x;
+			endY = mouse.y;
 		}
-		if(!mouse.clicking){
-			if(tx1 !=0 && tx2 != 0)
-				launchArrow(sounds);
-			tx1 = 0;
-			ty1 = 0;
+		if(!mouse.isClicked){
+			if(arrowIsReady){
+				connection.send("Shoot", arrows.get(arrows.size()-1).vel.x, arrows.get(arrows.size()-1).vel.y);
+				arrows.get(arrows.size()-1).launch();
+				this.sounds.play(this.sounds.arrow);
+			}
+			arrowIsReady = false;
 		}
 	}
-	
-	public void launchArrow(Sounds sounds){
-		Vector vel = new Vector(tx1-tx2 , ty1-ty2);
-		vel.mul((1f/(float)maxThrowLength));
-		if(vel.getMag()> maxThrowVel){
-			vel.setMag(maxThrowVel);
-		}
-		arrows.get(arrows.size()-1).stopped = false;
-		sounds.play(sounds.arrow);
-	}
-	
-	public void adjustLimb(Limb limb,Arrow arrow){
-		Vector target = arrow.getMidPoint();
-		Vector intialPoint = new Vector(limb.x + limb.jointX , limb.y + limb.jointY);
-		
-		Vector v1 = Vector.sub(target, intialPoint);
-		Vector v2 = new Vector((float)Math.cos(limb.rot),(float)Math.sin(limb.rot));
-
-		float dRot = (float)Math.acos(Math.abs(Vector.dot(v1, v2)/v1.getMag()));
-		limb.rot += dRot;
-		
-	}
-	
 }

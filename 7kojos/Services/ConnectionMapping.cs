@@ -71,10 +71,5 @@ namespace _7kojos.Services
                 }
             }
         }
-
-        public T FindKey(string connectionId)
-        {
-            return _connections.First(conn => conn.Value.Contains(connectionId)).Key;
-        }
     }
 }

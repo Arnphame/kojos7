@@ -55,5 +55,26 @@ namespace _7kojos
 
             return false;
         }
+
+        public static Game FindGame(Player player)
+        {
+            foreach (Game game in Games)
+            {
+                int index = game.Players.FindIndex(p => p.id == player.id);
+                if (index >= 0)
+                    return game;
+            }
+            return null;
+        }
+
+        public static void LeaveGame(Player player)
+        {
+            foreach (Game game in Games)
+            {
+                int index = game.Players.FindIndex(p => p.id == player.id);
+                if (index >= 0)
+                    game.Players.RemoveAt(index);
+            }
+        }
     }
 }
