@@ -49,30 +49,4 @@ public class Vector {
 		x*=mag;
 		y*=mag;
 	}
-	
-	//static methods
-	public static Vector add(Vector v1, Vector v2){
-		Vector v = new Vector();
-		v.x = v1.x + v2.x;
-		v.y = v1.y + v2.y;
-		return v;
-	}
-	
-	public static Vector sub(Vector v1, Vector v2){
-		Vector v = new Vector();
-		v.x = v1.x - v2.x;
-		v.y = v1.y - v2.y;
-		return v;
-	}
-	
-	public static Vector mul(Vector v1,float scale){
-		Vector v = new Vector(v1);
-		v.mul(scale);
-		return v;
-	}
-	
-	public static float dot(Vector v1, Vector v2){
-		return v1.x*v2.x + v1.y*v2.y;
-	}
-	
 }

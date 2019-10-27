@@ -28,8 +28,7 @@ public class Game implements Runnable{
 	public Sounds sounds;
 
 	HubConnection connection;
-	
-	//
+
 	private ArrayList<Player> players;
 	private ArrayList<Arrow> arrows;
 	
@@ -125,7 +124,6 @@ public class Game implements Runnable{
 			arrow.render(g,assets);
 		}
 
-		//
 		bs.show();
 		g.dispose();
 	}

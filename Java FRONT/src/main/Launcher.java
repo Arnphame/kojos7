@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class Launcher {
 
@@ -114,9 +113,4 @@ public class Launcher {
             }
         });
     }
-    /*public static void main(String[] args) {
-        game = new Game("TEST", 720,420, null);
-        game.addPlayer(new Player(300, 200, Color.white, true));
-        game.start();
-    }*/
 }

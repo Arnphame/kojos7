@@ -28,22 +28,13 @@ public class Body {
 		
 	}
 	
-	public void tick(){
-
-	}
-	
 	public void render(Graphics g){
-		
 		head.render(g, color);
 		body.render(g, color);
 		leftH.render(g, color);
 		rightH.render(g, color);
 		leftL.render(g, color);
 		rightL.render(g, color);
-		
-//		g.setColor(Color.red);
-//		g.drawOval(leftH.x + leftH.jointX -1, leftH.y + leftH.jointY-1 , 2, 2);
-
 	}		
 	
 	
@@ -111,9 +102,7 @@ public class Body {
 		
 		public void render(Graphics g1,Color color){
 			Graphics2D g = (Graphics2D)g1;
-			
 			g.setColor(color);
-			
 
 			g.translate(x, y);
 			g.rotate(-rot);
@@ -122,7 +111,6 @@ public class Body {
 			
 			g.rotate(rot);
 			g.translate(-x,-y);
-			
 		}		
 	}
 	

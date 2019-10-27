@@ -2,18 +2,14 @@ package main;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.ArrayList;
 
 import com.microsoft.signalr.HubConnection;
-import com.microsoft.signalr.HubConnectionState;
-import main.Body.Limb;
 
 public class Player {
 	
 	private Body body;
 	public Arrow arrow;
 	public static final float maxThrowVel = 10f;//at 50 pixels length
-	public static final int maxThrowLength = 30; // per unit
 	
 	public float lastThrowVel = 0;
 	
@@ -21,22 +17,12 @@ public class Player {
 
 	Boolean arrowIsReady = false;		//Shows if there is new arrow ready to be released on screen
 	Boolean isLocalPlayer;
-	HubConnection connection;
 
 	public Player(int x, int y, Color color, Boolean isLocalPlayer){		//For players controlled via signalR
-
 		this.body = new Body(x, y, color);
 		this.body.leftH.rot = (float)(Math.PI/3 + Math.PI);
 		this.body.rightH.rot = -(float)Math.PI/3;
 		this.isLocalPlayer = isLocalPlayer;
-
-		/*if(isLocalPlayer) {
-			this.connection.on("Shoot", (xDim, yDim) -> {
-				arrows.add(new Arrow(new Vector(body.head.x, body.head.y - body.head.r), new Vector(xDim, yDim), new Vector(), Color.LIGHT_GRAY));
-				arrows.get(arrows.size() - 1).launch();
-				this.sounds.play(this.sounds.arrow);
-			}, Float.class, Float.class);
-		}*/
 	}
 	
 	public void tick(Game game){
@@ -91,7 +77,6 @@ public class Player {
 		if(!game.mouseManager.isClicked){
 			if(arrowIsReady){
 				game.launchArrow(arrow, true);
-				//game.sounds.play(game.sounds.arrow);
 			}
 			arrowIsReady = false;
 		}

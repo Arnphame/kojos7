@@ -3,9 +3,6 @@ package main;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
 
 public class Arrow {
 
@@ -14,7 +11,7 @@ public class Arrow {
 	public static int length = 50;
 	public Color color;
 	
-	public boolean outside, stopped = false;
+	public boolean stopped = false;
 	
 	public Arrow(Vector position, Vector velocity, Color color, Vector gravity){
 		this.position = position;
