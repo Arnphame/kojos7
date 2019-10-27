@@ -2,12 +2,7 @@ package main;
 
 import com.microsoft.signalr.HubConnection;
 
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
@@ -36,8 +31,7 @@ public class Game implements Runnable{
 	
 	//
 	private ArrayList<Player> players;
-	private Player player;
-	private Player opponent;
+	private ArrayList<Arrow> arrows;
 	
 	public static Vector gravity = new Vector(0,0.14f);
 	
@@ -47,6 +41,7 @@ public class Game implements Runnable{
 		this.title = title;
 		this.connection = connection;
 		players = new ArrayList<>();
+		arrows = new ArrayList<>();
 		initDisplay();
 	}
 	
@@ -85,14 +80,23 @@ public class Game implements Runnable{
 		
 		sounds = new Sounds();
 		sounds.init();
-		
-		/*player = new Player(100, 350, Color.white, sounds, connection, false);
-		opponent = new Player(200, 350, Color.white, sounds, connection, true);*/
 	}
 	
 	public void tick(){
 		for (Player player : players) {
 			player.tick(this);
+		}
+		ArrayList<Arrow> arrowsToRemove = new ArrayList<>();
+		for (Arrow arrow : arrows) {
+			arrow.tick();
+
+			Rectangle rect = new Rectangle(0, -height, width, height*2);
+			if(!rect.contains(arrow.position.x, arrow.position.y)){
+				arrowsToRemove.add(arrow);
+			}
+		}
+		for (Arrow arrow : arrowsToRemove) {
+			arrows.remove(arrow);
 		}
 	}
 	
@@ -102,13 +106,14 @@ public class Game implements Runnable{
 			canvas.createBufferStrategy(3);
 			return;
 		}
+
 		g = bs.getDrawGraphics();
-		
 		Graphics2D g2 = (Graphics2D)g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		g.clearRect(0, 0, width, height);
-		//
 
+
+		// Setting-up background
+		g.clearRect(0, 0, width, height);
 		g.setColor(Color.DARK_GRAY);
 		g.fillRect(0, 0, width, height);
 
@@ -116,12 +121,29 @@ public class Game implements Runnable{
 			player.render(g,assets);
 		}
 
-		/*player.render(g,assets);
-		opponent.render(g,assets);*/
-		
+		for (Arrow arrow : arrows) {
+			arrow.render(g,assets);
+		}
+
 		//
 		bs.show();
 		g.dispose();
+	}
+
+	public void addPlayer(Player player){
+		players.add(player);
+	}
+
+	public void addArrow(Arrow arrow){
+		arrows.add(arrow);
+		arrow.gravity = gravity;
+	}
+
+	public void launchArrow(Arrow arrow, boolean toServer){
+		arrow.launch();
+		sounds.play(sounds.arrow);
+		if(toServer)
+			connection.send("Shoot", arrow.position.x, arrow.position.y, arrow.velocity.x, arrow.velocity.y);
 	}
 	
 	public void run(){
@@ -166,9 +188,4 @@ public class Game implements Runnable{
 			}
 		}
 	}
-
-	public void addPlayer(Player player){
-		players.add(player);
-	}
-	
 }

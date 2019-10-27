@@ -126,7 +126,7 @@ namespace _7kojos.Hubs
             Program.LeaveGame(player);
         }
 
-        public void Shoot(float xDim, float yDim)
+        public void Shoot(float xPos, float yPos, float xVel, float yVel)
         {
             Player player = dbContext.Players.FirstOrDefault(p => p.id.ToString() == GetUserId());
 
@@ -135,7 +135,7 @@ namespace _7kojos.Hubs
             Player opponent = game.Players.FirstOrDefault(p => p.id != player.id);
 
             if(opponent != null)
-                Clients.Clients(GetConnectionId(opponent.id.ToString())).SendAsync("Shoot", xDim, yDim);
+                Clients.Clients(GetConnectionId(opponent.id.ToString())).SendAsync("Shoot", xPos, yPos, xVel, yVel);
         }
     }
 }

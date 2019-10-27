@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Launcher {
 
@@ -45,7 +46,7 @@ public class Launcher {
             launcher.joinGameButton.setEnabled(false);
             launcher.createGameButton.setEnabled(false);
             game = new Game(gameId, 720,420, launcher.connection);
-            game.addPlayer(new Player(meX, meY, Color.white, game.connection, false));
+            game.addPlayer(new Player(meX, meY, Color.white, true));
 
             game.start();
         }, String.class, Integer.class, Integer.class);
@@ -58,8 +59,8 @@ public class Launcher {
                 launcher.createGameButton.setEnabled(false);
                 game = new Game("Archery", 720,420, launcher.connection);
                 game.start();
-                game.addPlayer(new Player(opponentX, opponentY, Color.white, game.connection, true));
-                game.addPlayer(new Player(meX, meY, Color.white, game.connection, false));
+                game.addPlayer(new Player(opponentX, opponentY, Color.white, false));
+                game.addPlayer(new Player(meX, meY, Color.white, true));
             }
             else{
                 launcher.createdGameID.setText("Game is full !");
@@ -67,8 +68,14 @@ public class Launcher {
         }, Boolean.class, Integer.class, Integer.class, Integer.class, Integer.class);
 
         launcher.connection.on("PlayerJoined", (opponentX, opponentY) ->{
-            game.addPlayer(new Player(opponentX, opponentY, Color.white, game.connection, true));
+            game.addPlayer(new Player(opponentX, opponentY, Color.white, false));
         }, Integer.class, Integer.class);
+
+        launcher.connection.on("Shoot", (xPos, yPos, xVel, yVel) -> {
+            Arrow arrow = new Arrow(new Vector(xPos, yPos), new Vector(xVel, yVel), Color.LIGHT_GRAY, new Vector());
+            game.addArrow(arrow);
+            game.launchArrow(arrow, false);
+        }, Float.class, Float.class, Float.class, Float.class);
 
         launcher.connection.start();
 
@@ -107,4 +114,9 @@ public class Launcher {
             }
         });
     }
+    /*public static void main(String[] args) {
+        game = new Game("TEST", 720,420, null);
+        game.addPlayer(new Player(300, 200, Color.white, true));
+        game.start();
+    }*/
 }

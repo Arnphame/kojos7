@@ -4,102 +4,63 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 
 public class Arrow {
-	
-	public Vector pos,vel,acc,dir;
+
+	public Vector gravity;
+	public Vector position,velocity;
 	public static int length = 50;
 	public Color color;
 	
-	public boolean outside = false,stopped = false;
+	public boolean outside, stopped = false;
 	
-	public Arrow(Vector pos, Vector vel, Vector acc, Color color){
-		this.pos = pos;
-		this.vel = vel;
-		this.dir = new Vector(vel);
-		this.acc = acc;
+	public Arrow(Vector position, Vector velocity, Color color, Vector gravity){
+		this.position = position;
+		this.velocity = velocity;
 		this.color = color;
+		this.gravity = gravity;
 		this.stopped=true;
 	}
 	
-	public void applyAcc(Vector acc){
-		this.acc.add(acc);
-	}
-	
-	public void tick(Game game){
-		applyAcc(Game.gravity);
+	public void tick(){
 		if(!stopped){
-			vel.add(acc);
-			pos.add(vel);
-		}
-		acc.mul(0);
-		
-		dir.x = vel.x;
-		dir.y = vel.y;
-		
-		int x2 = (int)pos.x + (int)((dir.x/dir.getMag())*length);		
-		int y2 = (int)pos.y + (int)((dir.y/dir.getMag())*length)+100;		
-		int x  = (int)pos.x;
-		int y  = (int)pos.y+100;
-		
-		Rectangle rect = new Rectangle(0,0,game.width,game.height+100);
-		if(!rect.contains(x,y) && ! rect.contains(x2,y2)){
-			outside = true;
+			velocity.add(gravity);
+			position.add(velocity);
 		}
 	}
 	
 	
 	public void render(Graphics g,Assets assets){
-		int x2 = (int)pos.x + (int)((dir.x/dir.getMag())*length);		
-		int y2 = (int)pos.y + (int)((dir.y/dir.getMag())*length);
-		
-//		g.setColor(color);
-//		g.drawLine((int)pos.x	, (int)pos.y	,x2		, y2);
-//		g.drawLine((int)pos.x+1	, (int)pos.y	,1 + x2	, y2);
-//		g.drawLine((int)pos.x	, (int)pos.y+1	,+ x2	, y2+1);
-//		
-//		g.fillOval(x2-2, y2-2, 6, 6);
-		float dy = y2-pos.y;
-		float dx = x2-pos.x;
+		int x2 = (int)position.x + (int)((velocity.x/velocity.getMag())*length);
+		int y2 = (int)position.y + (int)((velocity.y/velocity.getMag())*length);
+
+		float dy = y2-position.y;
+		float dx = x2-position.x;
 		float slope=0;
 		
-		float rot ;
-		
 		if(dx != 0)	
-			slope =  ((y2-pos.y)/(x2-pos.x));
-		else{
-			if(dy>=0)
-				rot = (float)Math.PI/2;
-			else
-				rot = -(float)Math.PI/2;
-		}
+			slope =  dy/dx;
 		
-		rot = (float)Math.atan(slope);
+		float rotation = (float)Math.atan(slope);
 		
 		if(dy<0 && dx <0)
-			rot += (float)Math.PI;
+			rotation += (float)Math.PI;
 		if(dy>0 && dx <0)
-			rot += (float)Math.PI;
+			rotation += (float)Math.PI;
 			
 		Graphics2D g2 = (Graphics2D) g;
-		g2.translate(pos.x, pos.y);
-		g2.rotate(rot);
+		g2.translate(position.x, position.y);
+		g2.rotate(rotation);
 		
-		g2.drawImage(assets.arrow, 0,0,length,10,null);
+		g2.drawImage(assets.arrow, 0,0, length,10,null);
 		
-		g2.rotate(-rot);
-		g2.translate(-pos.x, -pos.y);
-		
-	}
-	
-	public Vector getMidPoint(){
-		int x2 = (int)pos.x + (int)((dir.x/dir.getMag())*length*0.5f);		
-		int y2 = (int)pos.y + (int)((dir.y/dir.getMag())*length*0.5f);
-		return new Vector(x2-pos.x,y2-pos.y);
+		g2.rotate(-rotation);
+		g2.translate(-position.x, -position.y);
 	}
 
 	public void launch(){
 		stopped = false;
 	}
-	
 }
