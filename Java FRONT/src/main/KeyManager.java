@@ -27,7 +27,7 @@ public class KeyManager implements KeyListener{
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		keys[e.getKeyCode()] = true;		
+		keys[e.getKeyCode()] = true;
 	}
 
 	@Override

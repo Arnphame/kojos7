@@ -117,7 +117,7 @@ public class Game implements Runnable{
 		g.fillRect(0, 0, width, height);
 
 		for (Player player : players) {
-			player.render(g,assets);
+			player.render(g);
 		}
 
 		for (Arrow arrow : arrows) {

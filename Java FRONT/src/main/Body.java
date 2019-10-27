@@ -27,6 +27,15 @@ public class Body {
 		this.color = color;
 		
 	}
+
+	public void move(int speed){
+		head.x += speed;
+		leftH.x += speed;
+		rightH.x += speed;
+		leftL.x += speed;
+		rightL.x += speed;
+		body.x += speed;
+	}
 	
 	public void render(Graphics g){
 		head.render(g, color);
