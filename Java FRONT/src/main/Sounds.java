@@ -6,6 +6,8 @@ import java.applet.AudioClip;
 public class Sounds {
 	
 	public AudioClip arrow;
+	public AudioClip shot;
+	public AudioClip pop;
 	
 	public AudioClip loadSound(String file){
 		return Applet.newAudioClip(Sounds.class.getResource(file));
@@ -13,6 +15,8 @@ public class Sounds {
 	
 	public void init(){
 		arrow = loadSound("/arrow2.wav");
+		shot = loadSound("/shot.wav");
+		pop = loadSound("/pop.wav");
 	}
 	
 	

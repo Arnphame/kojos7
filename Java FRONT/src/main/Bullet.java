@@ -1,14 +1,14 @@
 package main;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 public class Bullet extends Ammo {
     public Vector gravity;
     public Vector position,velocity;
     public static int length = 50;
     public int damage;
+    private float rotation;
 
     public int getDamage() {
         return damage;
@@ -56,7 +56,7 @@ public class Bullet extends Ammo {
         if(dx != 0)
             slope =  dy/dx;
 
-        float rotation = (float)Math.atan(slope);
+        rotation = (float)Math.atan(slope);
 
         if(dy<0 && dx <0)
             rotation += (float)Math.PI;
@@ -67,10 +67,21 @@ public class Bullet extends Ammo {
         g2.translate(position.x, position.y);
         g2.rotate(rotation);
 
-        g2.drawImage(assets.bullet, 0,0, length,10,null);
+        g2.drawImage(assets.bullet, 0, 0, null);
 
         g2.rotate(-rotation);
         g2.translate(-position.x, -position.y);
+    }
+
+    public Rectangle getBounds(){
+        AffineTransform tx = new AffineTransform();
+        tx.translate(position.x, position.y);
+        tx.rotate(rotation);
+        Assets assets = new Assets();
+        assets.init();
+        Rectangle shape = new Rectangle(0, 0, assets.bullet.getWidth(), assets.bullet.getHeight());
+        Shape newShape = tx.createTransformedShape(shape);
+        return newShape.getBounds();
     }
 
     public void launch(){

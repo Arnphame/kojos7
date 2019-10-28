@@ -19,7 +19,7 @@ public class Map {
     private int width;
     private int height;
     private int type;
-    private ArrayList<Obstacle> obstacles;
+    public ArrayList<Obstacle> obstacles;
 
     public void render(Graphics g) {
         if (type == 0) {

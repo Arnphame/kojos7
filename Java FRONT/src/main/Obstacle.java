@@ -34,4 +34,8 @@ public class Obstacle {
         this.x = (int)newPos.x;
         this.y = (int)newPos.y;
     }
+
+    public Rectangle getBounds(){
+        return new Rectangle(x, y, width, height);
+    }
 }

@@ -30,7 +30,7 @@ public class Launcher {
         g.addPlayer(new Player(300,200,Color.magenta, true));
 
         g.start();
-    /*    Launcher launcher = new Launcher();
+        /*Launcher launcher = new Launcher();
 
         JFrame frame = new JFrame("Start Screen");
         frame.setContentPane(launcher.panel);
@@ -49,7 +49,7 @@ public class Launcher {
             launcher.createdGameID.setText("Your Game ID: " + gameId);
             launcher.joinGameButton.setEnabled(false);
             launcher.createGameButton.setEnabled(false);
-            game = new Game(gameId, 720,420, launcher.connection);
+            game = new Game(gameId, 720,420, launcher.connection, 0);
             game.addPlayer(new Player(meX, meY, Color.white, true));
 
             game.start();
@@ -61,7 +61,7 @@ public class Launcher {
                 launcher.createdGameID.setText("Game joined");
                 launcher.joinGameButton.setEnabled(false);
                 launcher.createGameButton.setEnabled(false);
-                game = new Game("Archery", 720,420, launcher.connection);
+                game = new Game("Archery", 720,420, launcher.connection, 0);
                 game.start();
                 game.addPlayer(new Player(opponentX, opponentY, Color.white, false));
                 game.addPlayer(new Player(meX, meY, Color.white, true));
@@ -76,9 +76,9 @@ public class Launcher {
         }, Integer.class, Integer.class);
 
         launcher.connection.on("Shoot", (xPos, yPos, xVel, yVel) -> {
-            Arrow arrow = new Arrow(new Vector(xPos, yPos), new Vector(xVel, yVel), Color.LIGHT_GRAY, new Vector());
-            game.addArrow(arrow);
-            game.launchArrow(arrow, false);
+            Ammo ammo = Factory.getAmmo("arrow", new Vector(xPos,yPos), new Vector(xVel, yVel), 50);
+            game.addAmmo(ammo);
+            game.launchAmmo(ammo, false);
         }, Float.class, Float.class, Float.class, Float.class);
 
         launcher.connection.start();
@@ -116,7 +116,6 @@ public class Launcher {
                     launcher.createdGameID.setText("You must register first !");
                 }
             }
-        });
-    }*/
+        });*/
     }
 }
