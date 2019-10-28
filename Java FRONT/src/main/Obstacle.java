@@ -8,14 +8,16 @@ public class Obstacle {
     private int width;
     private int height;
     private Color color;
+    private Movement movement;
     private int dir = 1;
 
-    public Obstacle(int x, int y,int width, int height, Color color) {
+    public Obstacle(int x, int y,int width, int height, Color color, Movement movementStrategy) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.color = color;
+        this.movement = movementStrategy;
     }
 
     public void render(Graphics g)
@@ -28,10 +30,8 @@ public class Obstacle {
     }
 
     void move(){
-        x+= dir;
-
-        if(x == 500 || x == 50){
-            dir*=-1;
-        }
+        Vector newPos = movement.move(new Vector(this.x, this.y));
+        this.x = (int)newPos.x;
+        this.y = (int)newPos.y;
     }
 }

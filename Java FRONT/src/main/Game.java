@@ -42,12 +42,14 @@ public class Game implements Runnable{
 		this.connection = connection;
 		//ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 		//obstacles.add();
-		Obstacle obstacle = new Obstacle(100,100,50,50, Color.cyan);
+		Obstacle obstacle = new Obstacle(100,100,50,50, Color.cyan, new VerticalMovement(50,200));
+		Obstacle obstacle2 = new Obstacle(100,100,50,50, Color.cyan, new HorizontalMovement(50,200));
 		m = new Map.Builder(0)
 				.addTitle(":)")
 				.setWidth(720)
 				.setHeight(420)
 				.addObstacles(obstacle)
+				.addObstacles(obstacle2)
 				.build();
 		//m = new Map("x", 720, 420, mapType).addObstacle(new Obstacle(100,100,50,50, Color.cyan));
 		players = new ArrayList<>();
