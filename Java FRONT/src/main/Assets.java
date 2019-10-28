@@ -20,9 +20,11 @@ public class Assets {
 //	}
 	
 	public BufferedImage arrow;
+	public BufferedImage bullet;
 	
 	public void init(){
 		arrow = loadImage("/arrow.png");
+		bullet = loadImage("/bullet.png");
 	}
 	
 	

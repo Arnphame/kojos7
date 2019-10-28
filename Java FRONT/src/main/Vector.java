@@ -29,9 +29,10 @@ public class Vector {
 		this.y-=v.y;
 	}
 	
-	public void mul(float  scale){
+	public Vector mul(float  scale){
 		this.x*=scale;
 		this.y*=scale;
+		return this;
 	}
 	
 	public float getMag(){
@@ -48,5 +49,9 @@ public class Vector {
 		normalize();
 		x*=mag;
 		y*=mag;
+	}
+	public void setXMag(float mag){
+		normalize();
+		x*=mag;
 	}
 }

@@ -4,23 +4,40 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-public class Arrow {
+public class Arrow extends Ammo {
 
 	public Vector gravity;
 	public Vector position,velocity;
 	public static int length = 50;
-	public Color color;
-	
+	public int damage;
+
+	public int getDamage() {
+		return damage;
+	}
+
+	public Vector getPosition() {
+		return position;
+	}
+
+	public Vector getVelocity() {
+		return velocity;
+	}
+
+
 	public boolean stopped = false;
 	
-	public Arrow(Vector position, Vector velocity, Color color, Vector gravity){
+	public Arrow(Vector position, Vector velocity, int damage, Vector gravity){
 		this.position = position;
 		this.velocity = velocity;
-		this.color = color;
+		this.damage = damage;
 		this.gravity = gravity;
-		this.stopped=true;
+		this.stopped = true;
 	}
-	
+
+	public void setVelocity(Vector velocity) {
+		this.velocity = velocity;
+	}
+
 	public void tick(){
 		if(!stopped){
 			velocity.add(gravity);

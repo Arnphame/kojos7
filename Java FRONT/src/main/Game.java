@@ -13,6 +13,7 @@ public class Game implements Runnable{
 	private JFrame frame;
 	private Canvas canvas;
 	private Thread thread;
+	private Map m;
 	
 	public int width,height;
 	public String title;
@@ -30,17 +31,28 @@ public class Game implements Runnable{
 	HubConnection connection;
 
 	private ArrayList<Player> players;
-	private ArrayList<Arrow> arrows;
+	private ArrayList<Ammo> ammos;
 	
 	public static Vector gravity = new Vector(0,0.14f);
 	
-	public Game(String title, int width, int height, HubConnection connection){
+	public Game(String title, int width, int height, HubConnection connection, int mapType){
 		this.width = width;
 		this.height = height;
 		this.title = title;
 		this.connection = connection;
+		//ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
+		//obstacles.add();
+		Obstacle obstacle = new Obstacle(100,100,50,50, Color.cyan);
+		m = new Map.Builder(0)
+				.addTitle(":)")
+				.setWidth(720)
+				.setHeight(420)
+				.addObstacles(obstacle)
+				.build();
+		//m = new Map("x", 720, 420, mapType).addObstacle(new Obstacle(100,100,50,50, Color.cyan));
 		players = new ArrayList<>();
-		arrows = new ArrayList<>();
+		ammos = new ArrayList<>();
+
 		initDisplay();
 	}
 	
@@ -85,17 +97,17 @@ public class Game implements Runnable{
 		for (Player player : players) {
 			player.tick(this);
 		}
-		ArrayList<Arrow> arrowsToRemove = new ArrayList<>();
-		for (Arrow arrow : arrows) {
-			arrow.tick();
+		ArrayList<Ammo> ammosToRemove = new ArrayList<>();
+		for (Ammo ammo : ammos) {
+			ammo.tick();
 
 			Rectangle rect = new Rectangle(0, -height, width, height*2);
-			if(!rect.contains(arrow.position.x, arrow.position.y)){
-				arrowsToRemove.add(arrow);
+			if(!rect.contains(ammo.getPosition().x, ammo.getPosition().y)){
+				ammosToRemove.add(ammo);
 			}
 		}
-		for (Arrow arrow : arrowsToRemove) {
-			arrows.remove(arrow);
+		for (Ammo ammo : ammosToRemove) {
+			ammos.remove(ammo);
 		}
 	}
 	
@@ -112,16 +124,14 @@ public class Game implements Runnable{
 
 
 		// Setting-up background
-		g.clearRect(0, 0, width, height);
-		g.setColor(Color.DARK_GRAY);
-		g.fillRect(0, 0, width, height);
+		m.render(g);
 
 		for (Player player : players) {
 			player.render(g);
 		}
 
-		for (Arrow arrow : arrows) {
-			arrow.render(g,assets);
+		for (Ammo ammo : ammos) {
+			ammo.render(g,assets);
 		}
 
 		bs.show();
@@ -132,16 +142,15 @@ public class Game implements Runnable{
 		players.add(player);
 	}
 
-	public void addArrow(Arrow arrow){
-		arrows.add(arrow);
-		arrow.gravity = gravity;
+	public void addAmmo(Ammo ammo){
+		ammos.add(ammo);
 	}
 
-	public void launchArrow(Arrow arrow, boolean toServer){
-		arrow.launch();
+	public void launchAmmo(Ammo ammo, boolean toServer){
+		ammo.launch();
 		sounds.play(sounds.arrow);
-		if(toServer)
-			connection.send("Shoot", arrow.position.x, arrow.position.y, arrow.velocity.x, arrow.velocity.y);
+		/*if(toServer)
+			connection.send("Shoot", arrow.position.x, arrow.position.y, arrow.velocity.x, arrow.velocity.y);*/
 	}
 	
 	public void run(){

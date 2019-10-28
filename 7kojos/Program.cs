@@ -34,7 +34,7 @@ namespace _7kojos
             int id = 0;
             while (Games.Exists(game => game.GameId == id))
             {
-                id = Random.Next();
+                id = Random.Next(0,10);
             }
 
             Game createdGame = new Game(id);

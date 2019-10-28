@@ -6,14 +6,14 @@ import java.awt.Graphics;
 public class Player {
 	
 	private Body body;
-	public Arrow arrow;
+	public Ammo ammo;
 	public static final float maxThrowVel = 10f;//at 50 pixels length
 	
 	public float lastThrowVel = 0;
 	
 	private int startX,endX,startY,endY;
 
-	Boolean arrowIsReady = false;		//Shows if there is new arrow ready to be released on screen
+	Boolean ammoIsReady = false;		//Shows if there is new ammo ready to be released on screen
 	Boolean isLocalPlayer;
 	int health = 100;
 
@@ -33,7 +33,7 @@ public class Player {
 		body.render(g);
 		
 		g.setColor(Color.white);
-		if(arrowIsReady){
+		if(ammoIsReady){
 			g.drawLine(startX, startY, endX, endY);
 			g.fillOval(startX-2, startY-2, 4, 4);
 			g.fillOval(endX-2, endY-2, 4, 4);
@@ -62,36 +62,39 @@ public class Player {
 	
 	public void getInput(Game game){
 		if(game.mouseManager.isClicked){
-			if (!arrowIsReady){
+			if (!ammoIsReady){
 				startX = game.mouseManager.x;
 				startY = game.mouseManager.y;
 
-				arrow = prepareArrow();
-				game.addArrow(arrow);
-				arrowIsReady = true;
+				ammo = prepareAmmo();
+				game.addAmmo(ammo);
+				ammoIsReady = true;
 			}
 			
 			Vector vel = new Vector(startX-endX , startY-endY);
+			if(vel.x == 0)
+				vel.x = 1;
 			vel.mul((float) 0.1);
 			if(vel.getMag()> maxThrowVel){
 				vel.setMag(maxThrowVel);
 			}
 			lastThrowVel = vel.getMag();
 
-			arrow.velocity = vel;
+			ammo.setVelocity(vel);
 
 			endX = game.mouseManager.x;
 			endY = game.mouseManager.y;
 		}
 		if(!game.mouseManager.isClicked){
-			if(arrowIsReady){
-				game.launchArrow(arrow, true);
+			if(ammoIsReady){
+				game.launchAmmo(ammo, true);
 			}
-			arrowIsReady = false;
+			ammoIsReady = false;
 		}
 	}
 
-	public Arrow prepareArrow(){
-		return new Arrow(new Vector(body.head.x,body.head.y - body.head.r), new Vector(), Color.LIGHT_GRAY, new Vector());
+	public Ammo prepareAmmo(){
+		return Factory.getAmmo("bullet", new Vector(body.head.x,body.head.y - body.head.r), new Vector(), 50);
+//		return new Ammo(new Vector(body.head.x,body.head.y - body.head.r), new Vector(), Color.LIGHT_GRAY, new Vector());
 	}
 }

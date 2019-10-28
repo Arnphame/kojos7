@@ -25,7 +25,12 @@ public class Launcher {
     static Game game;
 
     public static void main(String[] args) {
-        Launcher launcher = new Launcher();
+
+        Game g = new Game("betkas",720, 420, null, 0);
+        g.addPlayer(new Player(300,200,Color.magenta, true));
+
+        g.start();
+    /*    Launcher launcher = new Launcher();
 
         JFrame frame = new JFrame("Start Screen");
         frame.setContentPane(launcher.panel);
@@ -112,5 +117,6 @@ public class Launcher {
                 }
             }
         });
+    }*/
     }
 }
