@@ -13,7 +13,7 @@ public class Game implements Runnable{
 	private JFrame frame;
 	private Canvas canvas;
 	private Thread thread;
-	private Map map;
+	private IMap map;
 	
 	public int width,height;
 	public String title;
@@ -44,13 +44,13 @@ public class Game implements Runnable{
 		//obstacles.add();
 		Obstacle obstacle = new Obstacle(100,100,50,50, Color.cyan, new VerticalMovement(50,200));
 		Obstacle obstacle2 = new Obstacle(100,100,50,50, Color.cyan, new HorizontalMovement(50,200));
-		this.map = new Map.Builder(0)
+		this.map = new CloudDecorator(new Map.Builder(0)
 				.addTitle(":)")
 				.setWidth(720)
 				.setHeight(420)
 				.addObstacles(obstacle)
 				.addObstacles(obstacle2)
-				.build();
+				.build());
 		//m = new Map("x", 720, 420, mapType).addObstacle(new Obstacle(100,100,50,50, Color.cyan));
 		players = new ArrayList<>();
 		ammos = new ArrayList<>();
@@ -96,20 +96,24 @@ public class Game implements Runnable{
 	}
 	
 	public void tick(){
+		Graphics2D g2 = (Graphics2D)g;
 		for (Player player : players) {
 			player.tick(this);
 		}
 		ArrayList<Ammo> ammosToRemove = new ArrayList<>();
 		for (Ammo ammo : ammos) {
 			ammo.tick();
+			g2.setColor(Color.orange);
+			g2.drawRect((int)ammo.getBounds().x, (int)ammo.getBounds().y, 1,1);
+
 
 			for (Player player : players) {
-				if(player.id != ammo.shooterId && player.intersects(ammo.getBounds()))
+				if(player.id != ammo.getShooterId() && player.intersects(ammo.getBounds()))
 					System.out.println("Enemy shot");
 			}
 
-			for (Obstacle obstacle : map.obstacles){
-				if(ammo.getBounds().intersects(obstacle.getBounds())){
+			for (Obstacle obstacle : map.getObstacles()){
+				if(ammo.getBounds().intersects(obstacle.bounds)){
 					sounds.play(sounds.pop);
 					ammosToRemove.add(ammo);
 				}
@@ -162,16 +166,19 @@ public class Game implements Runnable{
 
 	public void launchAmmo(Ammo ammo, boolean toServer){
 		ammo.launch();
-		String c = ammo.getClass().getSimpleName();
+		String c = ammo.getClass().getSimpleName().toLowerCase();
 		switch (c){
-			case "Arrow":
+			case "arrow":
 				sounds.play(sounds.arrow);
-			case "Bullet":
+				break;
+			case "bullet":
 				sounds.play(sounds.shot);
+				break;
 			default:
+				System.out.println(":)");
 		}
-		/*if(toServer)
-			connection.send("Shoot", ammo.getPosition().x, ammo.getPosition().y, ammo.getVelocity().x, ammo.getVelocity().y);*/
+		if(toServer)
+			connection.send("Shoot", ammo.getPosition().x, ammo.getPosition().y, ammo.getVelocity().x, ammo.getVelocity().y, c);
 	}
 	
 	public void run(){

@@ -10,11 +10,13 @@ namespace _7kojos.Services
     {
         public int GameId;
         public List<Player> Players;
+        public List<Obstacle> Obstacles;
 
         public Game(int id)
         {
             GameId = id;
             Players = new List<Player>();
+            Obstacles = new List<Obstacle>();
         }
     }
 }

@@ -3,25 +3,32 @@ package main;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 
-public class Bullet extends Ammo {
+public class Bullet implements Ammo {
+    public int shooterId;
     public Vector gravity;
     public Vector position,velocity;
     public static int length = 50;
     public int damage;
     private float rotation;
+    public Rectangle bounds;
 
+
+    @Override
     public int getDamage() {
         return damage;
     }
 
+    @Override
     public void setVelocity(Vector velocity) {
         this.velocity = velocity;
     }
 
+    @Override
     public Vector getPosition() {
         return position;
     }
 
+    @Override
     public Vector getVelocity() {
         return velocity;
     }
@@ -34,17 +41,21 @@ public class Bullet extends Ammo {
         this.damage = damage;
         this.gravity = gravity;
         this.stopped=true;
+        this.bounds = new Rectangle((int)position.x,(int)position.y,3,3);
     }
 
+    @Override
     public void tick(){
         if(!stopped){
             velocity.add(gravity);
             velocity.setMag(Config.maxVelocity);
             position.add(velocity);
+
         }
+        updateBound();
     }
 
-
+    @Override
     public void render(Graphics g,Assets assets){
         int x2 = (int)position.x + (int)((velocity.x/velocity.getMag())*length);
         int y2 = (int)position.y + (int)((velocity.y/velocity.getMag())*length);
@@ -74,17 +85,28 @@ public class Bullet extends Ammo {
     }
 
     public Rectangle getBounds(){
-        AffineTransform tx = new AffineTransform();
-        tx.translate(position.x, position.y);
-        tx.rotate(rotation);
-        Assets assets = new Assets();
-        assets.init();
-        Rectangle shape = new Rectangle(0, 0, assets.bullet.getWidth(), assets.bullet.getHeight());
-        Shape newShape = tx.createTransformedShape(shape);
-        return newShape.getBounds();
+
+        return bounds;
+    }
+    public void updateBound() {
+        int x2 = (int) position.x + (int) ((velocity.x / velocity.getMag()) * length);
+        int y2 = (int) position.y + (int) ((velocity.y / velocity.getMag()) * length);
+        bounds.x = x2;
+        bounds.y = y2;
     }
 
+    @Override
     public void launch(){
         stopped = false;
+    }
+
+    @Override
+    public void setShooterId(int shooterId) {
+        this.shooterId = shooterId;
+    }
+
+    @Override
+    public int getShooterId(){
+        return shooterId;
     }
 }

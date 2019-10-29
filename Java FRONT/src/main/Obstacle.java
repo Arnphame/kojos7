@@ -10,6 +10,7 @@ public class Obstacle {
     private Color color;
     private Movement movement;
     private int dir = 1;
+    public Rectangle bounds;
 
     public Obstacle(int x, int y,int width, int height, Color color, Movement movementStrategy) {
         this.x = x;
@@ -18,6 +19,7 @@ public class Obstacle {
         this.height = height;
         this.color = color;
         this.movement = movementStrategy;
+        this.bounds = new Rectangle(x,y,width,height);
     }
 
     public void render(Graphics g)
@@ -27,6 +29,7 @@ public class Obstacle {
     }
     public void tick(){
         move();
+        getBounds();
     }
 
     void move(){
@@ -35,7 +38,8 @@ public class Obstacle {
         this.y = (int)newPos.y;
     }
 
-    public Rectangle getBounds(){
-        return new Rectangle(x, y, width, height);
+    public void getBounds(){
+        bounds.x = x;
+        bounds.y = y;
     }
 }

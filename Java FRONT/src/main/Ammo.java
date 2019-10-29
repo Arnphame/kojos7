@@ -2,23 +2,23 @@ package main;
 
 import java.awt.*;
 
-public abstract class Ammo {
-    public int shooterId;
-    public abstract Vector getPosition();
+public interface Ammo {
 
-    public abstract Vector getVelocity();
+    Vector getPosition();
 
-    public abstract int getDamage();
+    Vector getVelocity();
 
-    public abstract void setVelocity(Vector v);
+    int getDamage();
 
-    public void setShooterId(int shooterId) {
-        this.shooterId = shooterId;
-    }
+    void setVelocity(Vector v);
 
-    public abstract Rectangle getBounds();
+    void setShooterId(int shooterId);
 
-    public abstract void tick();
-    public abstract void render(Graphics g, Assets assets);
-    public abstract void launch();
+    int getShooterId();
+
+    Rectangle getBounds();
+
+    void tick();
+    void render(Graphics g, Assets assets);
+    void launch();
 }

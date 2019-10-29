@@ -3,7 +3,7 @@ package main;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Map {
+public class Map implements IMap{
     private static Map instance = null;
     private Map() {
         System.out.println("Singleton initialized");
@@ -21,6 +21,7 @@ public class Map {
     private int type;
     public ArrayList<Obstacle> obstacles;
 
+    @Override
     public void render(Graphics g) {
         if (type == 0) {
             g.clearRect(0, 0, width, height);
@@ -36,6 +37,11 @@ public class Map {
             o.tick();
             o.render(g);
         }
+    }
+
+    @Override
+    public ArrayList<Obstacle> getObstacles() {
+        return obstacles;
     }
 
     public static class Builder {

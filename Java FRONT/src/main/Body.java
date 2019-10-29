@@ -54,8 +54,7 @@ public class Body {
 				|| rightL.getBounds().intersects(rect)
 				|| torso.getBounds().intersects(rect);
 	}
-	
-	
+
 	class Head{
 		int x,y,r;
 		

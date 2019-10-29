@@ -26,11 +26,11 @@ public class Launcher {
 
     public static void main(String[] args) {
 
-        Game g = new Game("betkas",720, 420, null, 0);
-        g.addPlayer(new Player(300,200,Color.magenta, true));
+        //Game g = new Game("betkas",720, 420, null, 0);
+        //g.addPlayer(new Player(300,200,Color.magenta, true));
 
-        g.start();
-        /*Launcher launcher = new Launcher();
+        //g.start();
+        Launcher launcher = new Launcher();
 
         JFrame frame = new JFrame("Start Screen");
         frame.setContentPane(launcher.panel);
@@ -75,11 +75,11 @@ public class Launcher {
             game.addPlayer(new Player(opponentX, opponentY, Color.white, false));
         }, Integer.class, Integer.class);
 
-        launcher.connection.on("Shoot", (xPos, yPos, xVel, yVel) -> {
-            Ammo ammo = Factory.getAmmo("arrow", new Vector(xPos,yPos), new Vector(xVel, yVel), 50);
+        launcher.connection.on("Shoot", (xPos, yPos, xVel, yVel, type) -> {
+            Ammo ammo = Factory.getAmmo(type, new Vector(xPos,yPos), new Vector(xVel, yVel), 50);
             game.addAmmo(ammo);
             game.launchAmmo(ammo, false);
-        }, Float.class, Float.class, Float.class, Float.class);
+        }, Float.class, Float.class, Float.class, Float.class, String.class);
 
         launcher.connection.start();
 
@@ -116,6 +116,6 @@ public class Launcher {
                     launcher.createdGameID.setText("You must register first !");
                 }
             }
-        });*/
+        });
     }
 }

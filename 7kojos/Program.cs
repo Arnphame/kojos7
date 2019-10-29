@@ -38,6 +38,12 @@ namespace _7kojos
             }
 
             Game createdGame = new Game(id);
+            Obstacle cube = ObstacleFactory.getPrototype("Cube");
+            cube.setPosition(Random.Next(0, 600), Random.Next(200, 300));
+            Obstacle circle = ObstacleFactory.getPrototype("Circle");
+            cube.setPosition(Random.Next(0, 600), Random.Next(0, 300));
+            createdGame.Obstacles.Add(cube);
+            createdGame.Obstacles.Add(circle);
             Games.Add(createdGame);
 
             return createdGame;
@@ -69,11 +75,13 @@ namespace _7kojos
 
         public static void LeaveGame(Player player)
         {
-            foreach (Game game in Games)
+            for(int i = 0; i < Games.Count(); i++)
             {
-                int index = game.Players.FindIndex(p => p.id == player.id);
+                int index = Games[i].Players.FindIndex(p => p.id == player.id);
                 if (index >= 0)
-                    game.Players.RemoveAt(index);
+                    Games[i].Players.RemoveAt(index);
+                if (Games[i].Players.Count() == 0)
+                    Games.Remove(Games[i]);
             }
         }
     }

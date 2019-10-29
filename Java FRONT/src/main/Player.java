@@ -100,7 +100,7 @@ public class Player {
 	}
 
 	public Ammo prepareAmmo(){
-		Ammo ammo = Factory.getAmmo("arrow", new Vector(body.head.x+20,body.head.y - body.head.r-20), new Vector(), 50);
+		Ammo ammo = Factory.getAmmo("bullet", new Vector(body.head.x+20,body.head.y - body.head.r-20), new Vector(), 50);
 		ammo.setShooterId(this.id);
 		return ammo;
 	}
