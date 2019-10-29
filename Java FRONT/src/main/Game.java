@@ -13,7 +13,7 @@ public class Game implements Runnable{
 	private JFrame frame;
 	private Canvas canvas;
 	private Thread thread;
-	private Map m;
+	private Map map;
 	
 	public int width,height;
 	public String title;
@@ -44,7 +44,7 @@ public class Game implements Runnable{
 		//obstacles.add();
 		Obstacle obstacle = new Obstacle(100,100,50,50, Color.cyan, new VerticalMovement(50,200));
 		Obstacle obstacle2 = new Obstacle(100,100,50,50, Color.cyan, new HorizontalMovement(50,200));
-		m = new Map.Builder(0)
+		this.map = new Map.Builder(0)
 				.addTitle(":)")
 				.setWidth(720)
 				.setHeight(420)
@@ -103,6 +103,18 @@ public class Game implements Runnable{
 		for (Ammo ammo : ammos) {
 			ammo.tick();
 
+			for (Player player : players) {
+				if(player.id != ammo.shooterId && player.intersects(ammo.getBounds()))
+					System.out.println("Enemy shot");
+			}
+
+			for (Obstacle obstacle : map.obstacles){
+				if(ammo.getBounds().intersects(obstacle.getBounds())){
+					sounds.play(sounds.pop);
+					ammosToRemove.add(ammo);
+				}
+			}
+
 			Rectangle rect = new Rectangle(0, -height, width, height*2);
 			if(!rect.contains(ammo.getPosition().x, ammo.getPosition().y)){
 				ammosToRemove.add(ammo);
@@ -126,7 +138,7 @@ public class Game implements Runnable{
 
 
 		// Setting-up background
-		m.render(g);
+		map.render(g);
 
 		for (Player player : players) {
 			player.render(g);
@@ -150,9 +162,16 @@ public class Game implements Runnable{
 
 	public void launchAmmo(Ammo ammo, boolean toServer){
 		ammo.launch();
-		sounds.play(sounds.arrow);
+		String c = ammo.getClass().getSimpleName();
+		switch (c){
+			case "Arrow":
+				sounds.play(sounds.arrow);
+			case "Bullet":
+				sounds.play(sounds.shot);
+			default:
+		}
 		/*if(toServer)
-			connection.send("Shoot", arrow.position.x, arrow.position.y, arrow.velocity.x, arrow.velocity.y);*/
+			connection.send("Shoot", ammo.getPosition().x, ammo.getPosition().y, ammo.getVelocity().x, ammo.getVelocity().y);*/
 	}
 	
 	public void run(){

@@ -1,8 +1,7 @@
 package main;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 public class Arrow extends Ammo {
 
@@ -10,6 +9,7 @@ public class Arrow extends Ammo {
 	public Vector position,velocity;
 	public static int length = 50;
 	public int damage;
+	private float rotation;
 
 	public int getDamage() {
 		return damage;
@@ -57,7 +57,7 @@ public class Arrow extends Ammo {
 		if(dx != 0)	
 			slope =  dy/dx;
 		
-		float rotation = (float)Math.atan(slope);
+		rotation = (float)Math.atan(slope);
 		
 		if(dy<0 && dx <0)
 			rotation += (float)Math.PI;
@@ -74,6 +74,16 @@ public class Arrow extends Ammo {
 		g2.translate(-position.x, -position.y);
 	}
 
+	public Rectangle getBounds(){
+		AffineTransform tx = new AffineTransform();
+		tx.translate(position.x, position.y);
+		tx.rotate(rotation);
+		Assets assets = new Assets();
+		assets.init();
+		Rectangle shape = new Rectangle(0, 0, length, 10);
+		Shape newShape = tx.createTransformedShape(shape);
+		return newShape.getBounds();
+	}
 	public void launch(){
 		stopped = false;
 	}

@@ -1,7 +1,7 @@
 package main;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
+import java.util.Random;
 
 public class Player {
 	
@@ -16,12 +16,14 @@ public class Player {
 	Boolean ammoIsReady = false;		//Shows if there is new ammo ready to be released on screen
 	Boolean isLocalPlayer;
 	int health = 100;
+	public int id;
 
 	public Player(int x, int y, Color color, Boolean isLocalPlayer){		//For players controlled via signalR
 		this.body = new Body(x, y, color);
 		this.body.leftH.rot = (float)(Math.PI/3 + Math.PI);
 		this.body.rightH.rot = -(float)Math.PI/3;
 		this.isLocalPlayer = isLocalPlayer;
+		this.id = new Random().nextInt();
 	}
 	
 	public void tick(Game game){
@@ -38,7 +40,7 @@ public class Player {
 			g.fillOval(startX-2, startY-2, 4, 4);
 			g.fillOval(endX-2, endY-2, 4, 4);
 		}
-		
+
 		renderPower(g);
 		renderHealth(g);
 		lastThrowVel = 0;
@@ -93,8 +95,13 @@ public class Player {
 		}
 	}
 
+	public boolean intersects(Rectangle rect){
+		return body.intersects(rect);
+	}
+
 	public Ammo prepareAmmo(){
-		return Factory.getAmmo("bullet", new Vector(body.head.x,body.head.y - body.head.r), new Vector(), 50);
-//		return new Ammo(new Vector(body.head.x,body.head.y - body.head.r), new Vector(), Color.LIGHT_GRAY, new Vector());
+		Ammo ammo = Factory.getAmmo("arrow", new Vector(body.head.x+20,body.head.y - body.head.r-20), new Vector(), 50);
+		ammo.setShooterId(this.id);
+		return ammo;
 	}
 }
