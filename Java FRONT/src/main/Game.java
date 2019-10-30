@@ -28,18 +28,18 @@ public class Game implements Runnable{
 	public Assets assets;
 	public Sounds sounds;
 
-	HubConnection connection;
+	Subject gameSubject;
 
 	private ArrayList<Player> players;
 	private ArrayList<Ammo> ammos;
 	
 	public static Vector gravity = new Vector(0,0.14f);
 	
-	public Game(String title, int width, int height, HubConnection connection, int mapType){
+	public Game(String title, int width, int height, Subject gameSubject, int mapType){
 		this.width = width;
 		this.height = height;
 		this.title = title;
-		this.connection = connection;
+		this.gameSubject = gameSubject;
 		//ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 		//obstacles.add();
 		Obstacle obstacle = new Obstacle(100,100,50,50, Color.cyan, new VerticalMovement(50,200));
@@ -178,7 +178,7 @@ public class Game implements Runnable{
 				System.out.println(":)");
 		}
 		if(toServer)
-			connection.send("Shoot", ammo.getPosition().x, ammo.getPosition().y, ammo.getVelocity().x, ammo.getVelocity().y, c);
+            gameSubject.send("Shoot", ammo.getPosition().x, ammo.getPosition().y, ammo.getVelocity().x, ammo.getVelocity().y, c);
 	}
 	
 	public void run(){

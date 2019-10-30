@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Launcher {
+public class Launcher implements GameObserver{
 
     private JLabel nameLabel;
     private JTextField nameTextField;
@@ -20,102 +20,95 @@ public class Launcher {
     private JLabel createdGameID;
     private JPanel panel;
 
-    private HubConnection connection;
+    private Subject gameSubject;
+    private Game game;
 
-    static Game game;
-
-    public static void main(String[] args) {
-
-        //Game g = new Game("betkas",720, 420, null, 0);
-        //g.addPlayer(new Player(300,200,Color.magenta, true));
-
-        //g.start();
-        Launcher launcher = new Launcher();
-
+    public Launcher(){
         JFrame frame = new JFrame("Start Screen");
-        frame.setContentPane(launcher.panel);
+        frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
 
+        initButtonHandlers();
+    }
 
+    public void initButtonHandlers(){
+        registerButton.addActionListener(e -> {
+            if(gameSubject.isAlive()){
+                gameSubject.send("RegisterClient", nameTextField.getText());
+                registerButton.setEnabled(false);
+                createdGameID.setText("Successfully registered :)");
+            }else{
+                registerButton.doClick();
+            }
+        });
 
-        launcher.connection = HubConnectionBuilder
-                .create("http://localhost:52179/api/signalr")
-                .build();
+        joinGameButton.addActionListener(e -> {
+            if(gameSubject.isAlive()){
+                gameSubject.send("JoinGame", gameIdTextField.getText());
+            }else{
+                createdGameID.setText("You must register first !");
+            }
+        });
 
-        launcher.connection.on("ReceiveGameId", (gameId, meX, meY) ->
-        {
-            launcher.createdGameID.setText("Your Game ID: " + gameId);
-            launcher.joinGameButton.setEnabled(false);
-            launcher.createGameButton.setEnabled(false);
-            game = new Game(gameId, 720,420, launcher.connection, 0);
-            game.addPlayer(new Player(meX, meY, Color.white, true));
+        createGameButton.addActionListener(e -> {
+            if(gameSubject.isAlive()){
+                gameSubject.send("CreateGame");
+            }else{
+                createdGameID.setText("You must register first !");
+            }
+        });
+    }
 
+    @Override
+    public void createGame(String title, int playerX, int playerY) {
+        createdGameID.setText(title);
+        joinGameButton.setEnabled(false);
+        createGameButton.setEnabled(false);
+        game = new Game(title, Config.gameWidth, Config.gameHeight, gameSubject, 0);
+        addPlayer(playerX, playerY, true);
+
+        game.start();
+    }
+
+    @Override
+    public void joinGame(boolean success, int opponentX, int opponentY, int meX, int meY) {
+        if(success){
+            createdGameID.setText("Game joined");
+            joinGameButton.setEnabled(false);
+            createGameButton.setEnabled(false);
+            game = new Game("Archery", Config.gameWidth,Config.gameHeight, gameSubject, 0);
             game.start();
-        }, String.class, Integer.class, Integer.class);
+            addPlayer(opponentX, opponentY, false);
+            addPlayer(meX, meY, true);
+        }
+        else{
+            createdGameID.setText("Game is full !");
+        }
+    }
 
-        launcher.connection.on("ReceiveJoinSuccess", (success, opponentX, opponentY, meX, meY) ->
-        {
-            if(success){
-                launcher.createdGameID.setText("Game joined");
-                launcher.joinGameButton.setEnabled(false);
-                launcher.createGameButton.setEnabled(false);
-                game = new Game("Archery", 720,420, launcher.connection, 0);
-                game.start();
-                game.addPlayer(new Player(opponentX, opponentY, Color.white, false));
-                game.addPlayer(new Player(meX, meY, Color.white, true));
-            }
-            else{
-                launcher.createdGameID.setText("Game is full !");
-            }
-        }, Boolean.class, Integer.class, Integer.class, Integer.class, Integer.class);
+    @Override
+    public void addPlayer(int x, int y, boolean isLocal) {
+        game.addPlayer(new Player(x, y, Config.playerColor, isLocal));
+    }
 
-        launcher.connection.on("PlayerJoined", (opponentX, opponentY) ->{
-            game.addPlayer(new Player(opponentX, opponentY, Color.white, false));
-        }, Integer.class, Integer.class);
+    @Override
+    public void addAmmo(float xPos, float yPos, float xVel, float yVel, String type) {
+        Ammo ammo = Factory.getAmmo(type, new Vector(xPos,yPos), new Vector(xVel, yVel), 50);
+        game.addAmmo(ammo);
+        game.launchAmmo(ammo, false);
+    }
 
-        launcher.connection.on("Shoot", (xPos, yPos, xVel, yVel, type) -> {
-            Ammo ammo = Factory.getAmmo(type, new Vector(xPos,yPos), new Vector(xVel, yVel), 50);
-            game.addAmmo(ammo);
-            game.launchAmmo(ammo, false);
-        }, Float.class, Float.class, Float.class, Float.class, String.class);
+    @Override
+    public void subscribe(Subject subject) {
+        subject.addObserver(this);
+        this.gameSubject = subject;
+    }
 
-        launcher.connection.start();
-
-        launcher.registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(launcher.connection.getConnectionState().compareTo(HubConnectionState.CONNECTED) == 0){
-                    launcher.connection.send("RegisterClient", launcher.nameTextField.getText());
-                    launcher.registerButton.setEnabled(false);
-                    launcher.createdGameID.setText("Successfully registered :)");
-                }else{
-                    launcher.registerButton.doClick();
-                }
-            }
-        });
-
-        launcher.joinGameButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(launcher.connection.getConnectionState().compareTo(HubConnectionState.CONNECTED) == 0){
-                    launcher.connection.send("JoinGame", launcher.gameIdTextField.getText());
-                }else{
-                    launcher.createdGameID.setText("You must register first !");
-                }
-            }
-        });
-
-        launcher.createGameButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(launcher.connection.getConnectionState().compareTo(HubConnectionState.CONNECTED) == 0){
-                    launcher.connection.send("CreateGame");
-                }else{
-                    launcher.createdGameID.setText("You must register first !");
-                }
-            }
-        });
+    public static void main(String[] args) {
+        Subject gameSubject = new GameSubject(Config.signalR_URL);
+        Launcher launcher = new Launcher();
+        launcher.subscribe(gameSubject);
     }
 }
