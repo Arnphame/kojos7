@@ -38,7 +38,7 @@ public class Launcher implements GameObserver{
             if(gameSubject.isAlive()){
                 gameSubject.send("RegisterClient", nameTextField.getText());
                 registerButton.setEnabled(false);
-                createdGameID.setText("Successfully registered :)");
+                createdGameID.setText("Successfully registered.");
             }else{
                 //registerButton.doClick();
                 createdGameID.setText("Server not alive");
@@ -49,7 +49,7 @@ public class Launcher implements GameObserver{
             if(gameSubject.isAlive()){
                 gameSubject.send("JoinGame", gameIdTextField.getText());
             }else{
-                createdGameID.setText("You must register first !");
+                createdGameID.setText("You must register first!");
             }
         });
 
@@ -96,7 +96,7 @@ public class Launcher implements GameObserver{
 
     @Override
     public void addAmmo(float xPos, float yPos, float xVel, float yVel, String type) {
-        Ammo ammo = Factory.getAmmo(type, new Vector(xPos,yPos), new Vector(xVel, yVel), 50);
+        Ammo ammo = Factory.getAmmo(type, new Vector(xPos,yPos), new Vector(xVel, yVel));
         game.addAmmo(ammo);
         game.launchAmmo(ammo, false);
     }

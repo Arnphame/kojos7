@@ -4,9 +4,12 @@ import java.awt.*;
 import java.util.Random;
 
 public class Player {
+
+	public ModifyAmmo modifyAmmo = new ModifyAmmo();
 	
 	private Body body;
 	public Ammo ammo;
+	public Gun gun;
 	public static final float maxThrowVel = 10f;//at 50 pixels length
 	
 	public float lastThrowVel = 0;
@@ -24,6 +27,7 @@ public class Player {
 		this.body.rightH.rot = -(float)Math.PI/3;
 		this.isLocalPlayer = isLocalPlayer;
 		this.id = new Random().nextInt();
+		gun = new Gun(3, "arrow");
 	}
 	
 	public void tick(Game game){
@@ -33,7 +37,6 @@ public class Player {
 	
 	public void render(Graphics g){
 		body.render(g);
-		
 		g.setColor(Color.white);
 		if(ammoIsReady){
 			g.drawLine(startX, startY, endX, endY);
@@ -99,10 +102,20 @@ public class Player {
 		return body.intersects(rect);
 	}
 
+
+
+
+
 	public Ammo prepareAmmo(){
-		Ammo ammo = Factory.getAmmo("bullet", new Vector(body.head.x+20,body.head.y - body.head.r-20), new Vector(), 20);
-		ammo.setShooterId(this.id);
-		return ammo;
+
+		if(gun.ammoCount == 0) {
+			gun.switchType();
+		}
+			Ammo ammo = Factory.getAmmo(gun.gunType, new Vector(body.head.x + 20, body.head.y - body.head.r - 20), new Vector());
+			ammo.setShooterId(this.id);
+			modifyAmmo.addCommand(new GunCommand(gun, GunAction.decrease, 1));
+			//modifyAmmo.undo();
+			return ammo;
 	}
 
 	public void applyDamage(int amount){

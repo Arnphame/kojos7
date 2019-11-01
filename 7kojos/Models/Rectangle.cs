@@ -12,10 +12,10 @@ namespace _7kojos.Models
         public Point Position { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
-        public string Color { get; set; }
+        public Color Color { get; set; }
         Movement MovementStrategy;
 
-        public Rectangle(Point position, int width, int height, string color, Movement movement)
+        public Rectangle(Point position, int width, int height, Color color, Movement movement)
         {
             Position = position;
             Width = width;
@@ -26,6 +26,7 @@ namespace _7kojos.Models
 
         public Obstacle Clone()
         {
+            //return this;
             return new Rectangle(Position, Width, Height, Color, MovementStrategy);
         }
 
@@ -59,19 +60,17 @@ namespace _7kojos.Models
             Id = id;
         }
 
-        public string GetColor()
+        public Color GetColor()
         {
             return Color;
         }
 
-        public int GetWidth()
-        {
-            return Width;
-        }
 
-        public int GetHeight()
+
+        public void GetSize(out int width, out int height)
         {
-            return Height;
+            width = Width;
+            height = Height;
         }
     }
 }

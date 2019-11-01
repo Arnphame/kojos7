@@ -41,12 +41,20 @@ namespace _7kojos
             }
 
             Game createdGame = new Game(id);
-            Obstacle cube = ObstacleFactory.getPrototype("Cube");
+            Obstacle cube = ObstacleFactory.getPrototype("Cube").Clone();
             cube.SetPosition(new Point(Random.Next(0, 600), Random.Next(200, 300)));
-            Obstacle circle = ObstacleFactory.getPrototype("Circle");
+            Obstacle circle = ObstacleFactory.getPrototype("Circle").Clone();
             circle.SetPosition(new Point(Random.Next(0, 600), Random.Next(200, 300)));
+
+
+            Obstacle cube2 = ObstacleFactory.getPrototype("Cube").Clone();
+            cube2.SetPosition(new Point(Random.Next(99, 100), Random.Next(10, 30)));
+
             createdGame.Obstacles.Add(cube);
             cube.SetId(createdGame.Obstacles.Count);
+            createdGame.Obstacles.Add(cube2);
+            cube2.SetId(createdGame.Obstacles.Count);
+            
             createdGame.Obstacles.Add(circle);
             circle.SetId(createdGame.Obstacles.Count);
             Games.Add(createdGame);

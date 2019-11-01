@@ -29,6 +29,8 @@ namespace sfd_ant_ratu_api.Services
                 foreach (Obstacle obstacle in game.Obstacles)
                 {
                     obstacle.Move();
+                    int width, height;
+                    obstacle.GetSize(out width, out height);
                     foreach (Player player in game.Players)
                     {
                         hubContext.Clients.Clients(GameHub.GetConnectionId(player.id.ToString())).SendAsync("Obstacle",
@@ -36,8 +38,8 @@ namespace sfd_ant_ratu_api.Services
                             obstacle.GetId(),
                             obstacle.GetX(),
                             obstacle.GetY(),
-                            obstacle.GetWidth(),
-                            obstacle.GetHeight(),
+                            width,
+                            height,
                             obstacle.GetColor());
                     }
                 }

@@ -11,10 +11,10 @@ namespace _7kojos.Models
         public int Id { get; set; }
         public Point Position { get; set; }
         public int Radius { get; set; }
-        public string Color { get; set; }
+        public Color Color { get; set; }
         Movement MovementStrategy;
 
-        public Circle(Point position, int radius, string color, Movement movement)
+        public Circle(Point position, int radius, Color color, Movement movement)
         {
             Position = position;
             Radius = radius;
@@ -57,19 +57,16 @@ namespace _7kojos.Models
             Id = id;
         }
 
-        public string GetColor()
+        public Color GetColor()
         {
             return Color;
         }
 
-        public int GetWidth()
-        {
-            return Radius;
-        }
 
-        public int GetHeight()
+        public void GetSize(out int width, out int height)
         {
-            return Radius;
+            width = Radius * 2;
+            height = Radius * 2;
         }
     }
 }
