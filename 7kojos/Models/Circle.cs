@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,28 +8,68 @@ namespace _7kojos.Models
 {
     public class Circle : Obstacle
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        public int Id { get; set; }
+        public Point Position { get; set; }
         public int Radius { get; set; }
         public string Color { get; set; }
+        Movement MovementStrategy;
 
-        public Circle(int x, int y, int radius, string color)
+        public Circle(Point position, int radius, string color, Movement movement)
         {
-            X = x;
-            Y = y;
+            Position = position;
             Radius = radius;
             Color = color;
+            MovementStrategy = movement;
         }
 
         public Obstacle Clone()
         {
-            return new Circle(X, Y, Radius, Color);
+            return new Circle(new Point(Position.X, Position.Y), Radius, Color, MovementStrategy);
         }
 
-        public void setPosition(int x, int y)
+        public void SetPosition(Point position)
         {
-            X = x;
-            Y = y;
+            Position = position;
+        }
+
+        public int GetX()
+        {
+            return Position.X;
+        }
+
+        public int GetY()
+        {
+            return Position.Y;
+        }
+
+        public void Move()
+        {
+            SetPosition(MovementStrategy.Move(Position));
+        }
+
+        public int GetId()
+        {
+            return Id;
+        }
+
+        public void SetId(int id)
+        {
+            Id = id;
+        }
+
+        public string GetColor()
+        {
+            return Color;
+        }
+
+        public int GetWidth()
+        {
+            return Radius;
+        }
+
+        public int GetHeight()
+        {
+            return Radius;
         }
     }
 }

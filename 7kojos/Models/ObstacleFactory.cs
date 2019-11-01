@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,9 +10,9 @@ namespace _7kojos.Models
     {
         private static Dictionary<string, Obstacle> prototypes = new Dictionary<string, Obstacle>
         {
-            { "Cube", new Rectangle(0,0,50,50, "White") },
-            { "Rectangle", new Rectangle(0,0,100,50, "White") },
-            { "Circle", new Circle(0,0,10, "White") }
+            { "Cube", new Rectangle(new Point(0,0) ,50,50, "White", new VerticalMovement(0,400)) },
+            { "Rectangle", new Rectangle(new Point(0,0),100,50, "White", new HorizontalMovement(0,700)) },
+            { "Circle", new Circle(new Point(0,0),10, "White", new VerticalMovement(150,300)) }
         };
 
 

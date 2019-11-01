@@ -40,7 +40,8 @@ public class Launcher implements GameObserver{
                 registerButton.setEnabled(false);
                 createdGameID.setText("Successfully registered :)");
             }else{
-                registerButton.doClick();
+                //registerButton.doClick();
+                createdGameID.setText("Server not alive");
             }
         });
 
@@ -104,6 +105,11 @@ public class Launcher implements GameObserver{
     public void subscribe(Subject subject) {
         subject.addObserver(this);
         this.gameSubject = subject;
+    }
+
+    @Override
+    public void updateObstacle(String type, int id, int x, int y, int width, int height, String color) {
+        game.updateObstacle(type, id, x, y, width, height, color);
     }
 
     public static void main(String[] args) {

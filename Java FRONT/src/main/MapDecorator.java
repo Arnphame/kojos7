@@ -19,4 +19,9 @@ public abstract class MapDecorator implements IMap {
     public ArrayList<Obstacle> getObstacles() {
         return map.getObstacles();
     }
+
+    @Override
+    public void updateObstacles(String type, int id, int x, int y, int width, int height, String color){
+        map.updateObstacles(type, id, x, y, width, height, color);
+    }
 }

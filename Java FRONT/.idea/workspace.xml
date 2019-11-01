@@ -2,14 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07ce6bff-add5-46f6-9ab9-b65da786876e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/GameObserver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/GameSubject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Subject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/CircleObstacle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/RectangleObstacle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Hubs/GameHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Hubs/GameHub.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/Circle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/Circle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/Obstacle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/Obstacle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/ObstacleFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/ObstacleFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/Rectangle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/Rectangle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Services/Game.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Startup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Bullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GameObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GameSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/HorizontalMovement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/IMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/IMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/LogIn.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/MapDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MapDecorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Movement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Obstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Obstacle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/VerticalMovement.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +97,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

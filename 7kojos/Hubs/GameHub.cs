@@ -1,11 +1,13 @@
 ﻿using _7kojos.Context;
 using _7kojos.Models;
+using _7kojos.ServiceInterfaces;
 using _7kojos.Services;
 using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace _7kojos.Hubs
 {
@@ -14,10 +16,12 @@ namespace _7kojos.Hubs
         private readonly static ConnectionMapping<string> _connections = new ConnectionMapping<string>();
 
         public DatabaseContext dbContext;
+        public IGamesService gamesService;
 
-        public GameHub(DatabaseContext context)
+        public GameHub(DatabaseContext context, IGamesService gamesService)
         {
-            dbContext = context;
+            this.dbContext = context;
+            this.gamesService = gamesService;
         }
 
         public override Task OnConnectedAsync()
@@ -137,5 +141,21 @@ namespace _7kojos.Hubs
             if(opponent != null)
                 Clients.Clients(GetConnectionId(opponent.id.ToString())).SendAsync("Shoot", xPos, yPos, xVel, yVel, type);
         }
+
+        /*public void updateObstacles()
+        {
+            Player player = dbContext.Players.FirstOrDefault(p => p.id.ToString() == GetUserId());
+            Game game = Program.FindGame(player);
+
+            foreach (Obstacle obstacle in game.Obstacles)
+            {
+                obstacle.Move();
+
+                foreach (Player p in game.Players)
+                {
+                    Clients.Clients(GetConnectionId(p.id.ToString())).SendAsync("Obstacle", obstacle.GetType().Name.ToString(), obstacle.GetX(), obstacle.GetY());
+                }
+            }
+        }*/
     }
 }

@@ -7,7 +7,7 @@ public class Bullet implements Ammo {
     public int shooterId;
     public Vector gravity;
     public Vector position,velocity;
-    public static int length = 50;
+    public static int length = 30;
     public int damage;
     private float rotation;
     public Rectangle bounds;
@@ -41,7 +41,7 @@ public class Bullet implements Ammo {
         this.damage = damage;
         this.gravity = gravity;
         this.stopped=true;
-        this.bounds = new Rectangle((int)position.x,(int)position.y,3,3);
+        this.bounds = new Rectangle((int)position.x,(int)position.y,3,10);
     }
 
     @Override
@@ -82,6 +82,9 @@ public class Bullet implements Ammo {
 
         g2.rotate(-rotation);
         g2.translate(-position.x, -position.y);
+
+        g2.setColor(Color.white);
+        g2.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
     }
 
     public Rectangle getBounds(){

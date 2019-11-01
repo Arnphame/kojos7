@@ -34,7 +34,6 @@ public class Map implements IMap{
             g.fillRect(0, 0, width, height);
         }
         for(Obstacle o: obstacles) {
-            o.tick();
             o.render(g);
         }
     }
@@ -42,6 +41,32 @@ public class Map implements IMap{
     @Override
     public ArrayList<Obstacle> getObstacles() {
         return obstacles;
+    }
+
+    @Override
+    public void updateObstacles(String type, int id, int x, int y, int width, int height, String color) {
+        int index = findObstacle(id);
+        if(index >= 0){
+            obstacles.get(index).setPosition(x,y);
+        }
+        else{
+            switch (type.toLowerCase()){
+                case "rectangle":
+                    obstacles.add(new RectangleObstacle(id,new Point(x,y),width,height, Color.orange));
+                    break;
+                case "circle":
+                    obstacles.add(new CircleObstacle(id,new Point(x,y),width, Color.orange));
+                    break;
+            }
+        }
+    }
+
+    int findObstacle(int id){
+        for (int i = 0; i < obstacles.size(); i++) {
+            if(obstacles.get(i).getId() == id)
+                return i;
+        }
+        return -1;
     }
 
     public static class Builder {

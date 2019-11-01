@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using _7kojos.Context;
 using _7kojos.Hubs;
+using _7kojos.ServiceInterfaces;
+using _7kojos.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +14,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using sfd_ant_ratu_api.Services;
 
 namespace _7kojos
 {
     public class Startup
     {
+        //public static IConnectionManager ConnectionManager;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,6 +34,10 @@ namespace _7kojos
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<DatabaseContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:database"]));
+
+            services.AddScoped<IGamesService, GamesService>();
+
+            services.AddHostedService<GamesUpdatingService>();
 
             services.AddCors(options =>
             {

@@ -15,7 +15,7 @@ public class Player {
 
 	Boolean ammoIsReady = false;		//Shows if there is new ammo ready to be released on screen
 	Boolean isLocalPlayer;
-	int health = 100;
+	float health = 100;
 	public int id;
 
 	public Player(int x, int y, Color color, Boolean isLocalPlayer){		//For players controlled via signalR
@@ -56,8 +56,8 @@ public class Player {
 	public void renderHealth(Graphics g){
 		int width = 35;
 		int height = 7;
-		g.setColor(new Color(255-(int)(health/100*255),(int)((health/100)*255),0));
-		g.fillRect(body.head.x - width/2, body.head.y - body.head.r - height*2, width, height);
+		g.setColor(new Color(255-(int)((health/100)*255),(int)((health/100)*255),0));
+		g.fillRect(body.head.x - width/2, body.head.y - body.head.r - height*2, (int)((health/100)*width), height);
 		g.setColor(Color.ORANGE);
 		g.drawRect(body.head.x - width/2, body.head.y - body.head.r- height*2, width, height);
 	}
@@ -100,8 +100,17 @@ public class Player {
 	}
 
 	public Ammo prepareAmmo(){
-		Ammo ammo = Factory.getAmmo("bullet", new Vector(body.head.x+20,body.head.y - body.head.r-20), new Vector(), 50);
+		Ammo ammo = Factory.getAmmo("bullet", new Vector(body.head.x+20,body.head.y - body.head.r-20), new Vector(), 20);
 		ammo.setShooterId(this.id);
 		return ammo;
+	}
+
+	public void applyDamage(int amount){
+		if(health - amount > 0){
+			health -= amount;
+		}
+		else{
+			health = 0;
+		}
 	}
 }

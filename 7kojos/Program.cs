@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Timers;
+using _7kojos.Hubs;
 using _7kojos.Models;
 using _7kojos.Services;
 using Microsoft.AspNetCore;
@@ -39,11 +42,13 @@ namespace _7kojos
 
             Game createdGame = new Game(id);
             Obstacle cube = ObstacleFactory.getPrototype("Cube");
-            cube.setPosition(Random.Next(0, 600), Random.Next(200, 300));
+            cube.SetPosition(new Point(Random.Next(0, 600), Random.Next(200, 300)));
             Obstacle circle = ObstacleFactory.getPrototype("Circle");
-            cube.setPosition(Random.Next(0, 600), Random.Next(0, 300));
+            circle.SetPosition(new Point(Random.Next(0, 600), Random.Next(200, 300)));
             createdGame.Obstacles.Add(cube);
+            cube.SetId(createdGame.Obstacles.Count);
             createdGame.Obstacles.Add(circle);
+            circle.SetId(createdGame.Obstacles.Count);
             Games.Add(createdGame);
 
             return createdGame;
@@ -81,7 +86,9 @@ namespace _7kojos
                 if (index >= 0)
                     Games[i].Players.RemoveAt(index);
                 if (Games[i].Players.Count() == 0)
+                {
                     Games.Remove(Games[i]);
+                }
             }
         }
     }

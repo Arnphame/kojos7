@@ -1,7 +1,5 @@
 package main;
 
-import com.microsoft.signalr.HubConnection;
-
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
@@ -32,6 +30,8 @@ public class Game implements Runnable{
 
 	private ArrayList<Player> players;
 	private ArrayList<Ammo> ammos;
+
+	Rectangle gameBounds;
 	
 	public static Vector gravity = new Vector(0,0.14f);
 	
@@ -39,19 +39,13 @@ public class Game implements Runnable{
 		this.width = width;
 		this.height = height;
 		this.title = title;
+		this.gameBounds = new Rectangle(0, -height, width, height*2);
 		this.gameSubject = gameSubject;
-		//ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
-		//obstacles.add();
-		Obstacle obstacle = new Obstacle(100,100,50,50, Color.cyan, new VerticalMovement(50,200));
-		Obstacle obstacle2 = new Obstacle(100,100,50,50, Color.cyan, new HorizontalMovement(50,200));
 		this.map = new CloudDecorator(new Map.Builder(0)
 				.addTitle(":)")
-				.setWidth(720)
-				.setHeight(420)
-				.addObstacles(obstacle)
-				.addObstacles(obstacle2)
+				.setWidth(width)
+				.setHeight(height)
 				.build());
-		//m = new Map("x", 720, 420, mapType).addObstacle(new Obstacle(100,100,50,50, Color.cyan));
 		players = new ArrayList<>();
 		ammos = new ArrayList<>();
 
@@ -103,24 +97,22 @@ public class Game implements Runnable{
 		ArrayList<Ammo> ammosToRemove = new ArrayList<>();
 		for (Ammo ammo : ammos) {
 			ammo.tick();
-			g2.setColor(Color.orange);
-			g2.drawRect((int)ammo.getBounds().x, (int)ammo.getBounds().y, 1,1);
-
 
 			for (Player player : players) {
-				if(player.id != ammo.getShooterId() && player.intersects(ammo.getBounds()))
-					System.out.println("Enemy shot");
+				if(player.id != ammo.getShooterId() && player.intersects(ammo.getBounds())){
+					ammosToRemove.add(ammo);
+					player.applyDamage(ammo.getDamage());
+				}
 			}
 
 			for (Obstacle obstacle : map.getObstacles()){
-				if(ammo.getBounds().intersects(obstacle.bounds)){
+				if(obstacle.getBounds().intersects(ammo.getBounds())){
 					sounds.play(sounds.pop);
 					ammosToRemove.add(ammo);
 				}
 			}
 
-			Rectangle rect = new Rectangle(0, -height, width, height*2);
-			if(!rect.contains(ammo.getPosition().x, ammo.getPosition().y)){
+			if(!gameBounds.contains(ammo.getPosition().x, ammo.getPosition().y)){
 				ammosToRemove.add(ammo);
 			}
 		}
@@ -154,6 +146,10 @@ public class Game implements Runnable{
 
 		bs.show();
 		g.dispose();
+	}
+
+	public void updateObstacle(String type, int id, int x, int y, int width, int height, String color){
+		map.updateObstacles(type, id, x, y, width, height, color);
 	}
 
 	public void addPlayer(Player player){
