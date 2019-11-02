@@ -9,7 +9,7 @@ using _7kojos.Models;
 using _7kojos.ServiceInterfaces;
 using Microsoft.AspNetCore.SignalR;
 
-namespace sfd_ant_ratu_api.Services
+namespace _7Kojos.Services
 {
     public class GamesService : IGamesService
     {
@@ -24,7 +24,7 @@ namespace sfd_ant_ratu_api.Services
 
         public void UpdateGames()
         {
-            foreach (Game game in Program.Games)
+           foreach (Game game in Program.Games)
             {
                 foreach (Obstacle obstacle in game.Obstacles)
                 {
@@ -44,7 +44,7 @@ namespace sfd_ant_ratu_api.Services
                     }
                 }
             }
-            
+           
         }
     }
 }

@@ -42,6 +42,8 @@ namespace _7kojos.Hubs
             Player player = AddPlayer(name);
 
             _connections.Add(player.id.ToString(), Context.ConnectionId);
+            Clients.Client(Context.ConnectionId).SendAsync("registered");
+
         }
 
         public static List<string> GetConnectionId(string userId)
@@ -78,8 +80,9 @@ namespace _7kojos.Hubs
 
         public int CreateGame()
         {
+            Clients.Client(Context.ConnectionId).SendAsync("gamepls");
             Player player = dbContext.Players.FirstOrDefault(p => p.id.ToString() == GetUserId());
-            if (player == null) throw new Exception("null player");
+            if (player == null) Clients.Client(Context.ConnectionId).SendAsync("nullPlayer");
 
             player.x = 100;
             player.y = 350;
@@ -87,10 +90,12 @@ namespace _7kojos.Hubs
             dbContext.SaveChanges();
 
             Game game = Program.CreateGame();
-
-            Program.JoinGame(game.GameId, player);
-
+            if(game == null ) Clients.Client(Context.ConnectionId).SendAsync("nullGame");
+            bool isJoined;
+            isJoined = Program.JoinGame(game.GameId, player);
+            Clients.Client(Context.ConnectionId).SendAsync("joinGame", isJoined);
             Clients.Client(Context.ConnectionId).SendAsync("ReceiveGameId", game.GameId, player.x, player.y);
+
 
             return game.GameId;
         }
@@ -142,7 +147,7 @@ namespace _7kojos.Hubs
                 Clients.Clients(GetConnectionId(opponent.id.ToString())).SendAsync("Shoot", xPos, yPos, xVel, yVel, type);
         }
 
-        /*public void updateObstacles()
+        public void updateObstacles()
         {
             Player player = dbContext.Players.FirstOrDefault(p => p.id.ToString() == GetUserId());
             Game game = Program.FindGame(player);
@@ -156,6 +161,6 @@ namespace _7kojos.Hubs
                     Clients.Clients(GetConnectionId(p.id.ToString())).SendAsync("Obstacle", obstacle.GetType().Name.ToString(), obstacle.GetX(), obstacle.GetY());
                 }
             }
-        }*/
+        }
     }
 }

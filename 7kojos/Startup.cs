@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using _7kojos.Context;
@@ -14,7 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using sfd_ant_ratu_api.Services;
+using _7Kojos.Services;
 
 namespace _7kojos
 {
@@ -33,6 +34,7 @@ namespace _7kojos
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddSignalR().AddAzureSignalR();
             services.AddDbContext<DatabaseContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:database"]));
 
             services.AddScoped<IGamesService, GamesService>();
@@ -44,16 +46,15 @@ namespace _7kojos
                 options.AddPolicy("AllowOrigins",
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:52179")
+                        builder.WithOrigins("http://localhost:52179/")
                         .AllowCredentials()
                         .AllowAnyMethod()
                         .AllowAnyHeader();
                     });
             });
-
             services.AddSignalR();
         }
-
+        
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
@@ -66,9 +67,10 @@ namespace _7kojos
 
             app.UseMvc();
 
-            app.UseSignalR(routes =>
+            app.UseAzureSignalR(routes =>
             {
                 routes.MapHub<GameHub>("/api/signalr");
+                
             });
         }
     }

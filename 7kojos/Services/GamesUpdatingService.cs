@@ -1,7 +1,7 @@
 ﻿using _7kojos.ServiceInterfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using sfd_ant_ratu_api.Services;
+using _7Kojos.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

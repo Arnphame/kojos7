@@ -59,6 +59,21 @@ public class GameSubject implements Subject{
                 observer.updateObstacle(type, id, x, y, width, height, color);
             }
         }, String.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, String.class);
+        connection.on("gamepls", () -> {
+            System.out.println("GAME PLS");
+        });
+        connection.on("nullPlayer", () -> {
+            System.out.println("nullPlayer PLS");
+        });
+        connection.on("nullGame", () -> {
+            System.out.println("nullGame PLS");
+        });
+        connection.on("joinGame", (isJoined) -> {
+            System.out.println("joinGame PLS:  " + isJoined);
+        }, Boolean.class );
+        connection.on("registered", () -> {
+            System.out.println("redžistered");
+        });
     }
 
     @Override

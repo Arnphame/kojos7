@@ -38,7 +38,7 @@ public class Launcher implements GameObserver{
             if(gameSubject.isAlive()){
                 gameSubject.send("RegisterClient", nameTextField.getText());
                 registerButton.setEnabled(false);
-                createdGameID.setText("Successfully registered.");
+                //createdGameID.setText("Successfully registered.");
             }else{
                 //registerButton.doClick();
                 createdGameID.setText("Server not alive");
@@ -111,6 +111,7 @@ public class Launcher implements GameObserver{
     public void updateObstacle(String type, int id, int x, int y, int width, int height, String color) {
         game.updateObstacle(type, id, x, y, width, height, color);
     }
+
 
     public static void main(String[] args) {
         Subject gameSubject = new GameSubject(Config.signalR_URL);
