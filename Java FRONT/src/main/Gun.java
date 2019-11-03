@@ -22,11 +22,15 @@ public class Gun {
     {
         if(gunType.equals("arrow")) {
             gunType = "bullet";
+            ammoCount = 3;
+        }
+        else if(gunType.equals("bullet")){
+            gunType = "grenade";
             ammoCount = 1;
         }
-        else {
+        else{
             gunType = "arrow";
-            ammoCount = 3;
+            ammoCount = 5;
         }
     }
 }

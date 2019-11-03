@@ -51,7 +51,7 @@ namespace _7kojos
                         .AllowAnyHeader();
                     });
             });
-            services.AddSignalR();
+            services.AddSignalR().AddAzureSignalR();
         }
         
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,16 +66,16 @@ namespace _7kojos
 
             app.UseMvc();
 
-            app.UseSignalR(routes =>
+            /*app.UseSignalR(routes =>
             {
                 routes.MapHub<GameHub>("/api/signalr");
-            });
+            });*/
 
-            /*app.UseAzureSignalR(routes =>
+            app.UseAzureSignalR(routes =>
             {
                 routes.MapHub<GameHub>("/api/signalr");
                 
-            });*/
+            });
         }
     }
 }

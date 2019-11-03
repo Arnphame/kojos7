@@ -56,9 +56,9 @@ public class GameSubject implements Subject{
 
         connection.on("Obstacle", (type, id, x, y, width, height, color) -> {
             for (GameObserver observer : observers) {
-                observer.updateObstacle(type, id, x, y, width, height, color);
+                observer.updateObstacle(type, id, x, y, width, height, color.toString());
             }
-        }, String.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, String.class);
+        }, String.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Object.class);
         connection.on("gamepls", () -> {
             System.out.println("GAME PLS");
         });

@@ -27,7 +27,7 @@ public class Player {
 		this.body.rightH.rot = -(float)Math.PI/3;
 		this.isLocalPlayer = isLocalPlayer;
 		this.id = new Random().nextInt();
-		gun = new Gun(3, "arrow");
+		gun = new Gun(5, "arrow");
 	}
 	
 	public void tick(Game game){

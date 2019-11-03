@@ -23,7 +23,7 @@ public class Map implements IMap{
 
     @Override
     public void render(Graphics g) {
-        System.out.println(obstacles.size());
+        //System.out.println(obstacles.size());
         if (type == 0) {
             g.clearRect(0, 0, width, height);
             g.setColor(Color.BLUE);
@@ -66,9 +66,11 @@ public class Map implements IMap{
         else{
             switch (type.toLowerCase()){
                 case "rectangle":
+                case "rectangletoobstacleadapter":
                     obstacles.add(new RectangleObstacle(id,new Point(x,y),width,height, c));
                     break;
                 case "circle":
+                case "circletoobstacleadapter":
                     obstacles.add(new CircleObstacle(id,new Point(x,y),width, c));
                     break;
             }

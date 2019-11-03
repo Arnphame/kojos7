@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="07ce6bff-add5-46f6-9ab9-b65da786876e" name="Default Changelist" comment="" />
+    <list default="true" id="07ce6bff-add5-46f6-9ab9-b65da786876e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../7kojos/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GameSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Gun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Player.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,20 +25,6 @@
         <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>length</find>
-      <find>tick</find>
-      <find>public</find>
-      <find>ec</find>
-      <find>Graphics</find>
-      <find>localhost</find>
-      <find>url</find>
-    </findStrings>
-    <dirStrings>
-      <dir>C:\Users\Arn\Documents\KTU 4 kursas\7kojos_new\kojos7\Java FRONT\src\main</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
