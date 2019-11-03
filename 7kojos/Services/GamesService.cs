@@ -40,7 +40,7 @@ namespace _7Kojos.Services
                             obstacle.GetY(),
                             width,
                             height,
-                            obstacle.GetColor());
+                            obstacle.GetColor().applyColor());
                     }
                 }
             }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _7kojos.Models
 {
-    interface ColorInterface
+    public interface ColorInterface
     {
         Color applyColor();
     }

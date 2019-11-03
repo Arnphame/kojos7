@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="07ce6bff-add5-46f6-9ab9-b65da786876e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/Grenade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../7kojos/Models/Circle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/Circle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../7kojos/Models/HorizontalMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/HorizontalMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../7kojos/Models/Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/Movement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../7kojos/Models/Obstacle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/Obstacle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../7kojos/Models/ObstacleFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/ObstacleFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../7kojos/Models/Rectangle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/Rectangle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../7kojos/Models/VerticalMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/VerticalMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../7kojos/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../7kojos/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../7kojos/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/shot.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/shot.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Assets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Assets.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/CloudDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CloudDecorator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Factory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Sounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Sounds.java" afterDir="false" />
-    </list>
+    <list default="true" id="07ce6bff-add5-46f6-9ab9-b65da786876e" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

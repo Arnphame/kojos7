@@ -10,7 +10,7 @@ namespace _7kojos.Models
     {
         Obstacle Clone();
         void SetPosition(Point position);
-        Color GetColor();
+        ColorInterface GetColor();
         int GetX();
         int GetY();
         int GetId();

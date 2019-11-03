@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace _7kojos.Models
 {
-    public class Rectangle : Obstacle
+    public class Rectangle : Shape
     {
         public int Id { get; set; }
         public Point Position { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
-        public Color Color { get; set; }
         public Movement MovementStrategy;
 
-        public Rectangle(Point position, int width, int height, Color color, Movement movement)
+        public Rectangle(Point position, int width, int height, ColorInterface color, Movement movement) : base(color)
         {
             Position = position;
             Width = width;
@@ -24,7 +23,7 @@ namespace _7kojos.Models
             MovementStrategy = movement;
         }
 
-        public Obstacle Clone()
+        public Rectangle Clone()
         {
             //return this;
             return new Rectangle(Position, Width, Height, Color, MovementStrategy.Clone());
@@ -60,22 +59,14 @@ namespace _7kojos.Models
             Id = id;
         }
 
-        public Color GetColor()
+        public ColorInterface GetColor()
         {
             return Color;
         }
 
-
-
-        public void GetSize(out int width, out int height)
+        public override void applyColor()
         {
-            width = Width;
-            height = Height;
-        }
-
-        public void SetMovement(Movement movement)
-        {
-            MovementStrategy = movement;
+            Color.applyColor();
         }
     }
 }
