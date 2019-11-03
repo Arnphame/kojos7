@@ -17,5 +17,6 @@ namespace _7kojos.Models
         void GetSize(out int width, out int height);
         void SetId(int id);
         void Move();
+        void SetMovement(Movement movement);
     }
 }

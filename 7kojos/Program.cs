@@ -47,7 +47,7 @@ namespace _7kojos
             circle.SetPosition(new Point(Random.Next(0, 600), Random.Next(200, 300)));
 
 
-            Obstacle cube2 = ObstacleFactory.getPrototype("Cube").Clone();
+            Obstacle cube2 = ObstacleFactory.getPrototype("Rectangle").Clone();
             cube2.SetPosition(new Point(Random.Next(99, 100), Random.Next(10, 30)));
 
             createdGame.Obstacles.Add(cube);

@@ -34,7 +34,6 @@ namespace _7kojos
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddSignalR().AddAzureSignalR();
             services.AddDbContext<DatabaseContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:database"]));
 
             services.AddScoped<IGamesService, GamesService>();
@@ -67,11 +66,16 @@ namespace _7kojos
 
             app.UseMvc();
 
-            app.UseAzureSignalR(routes =>
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<GameHub>("/api/signalr");
+            });
+
+            /*app.UseAzureSignalR(routes =>
             {
                 routes.MapHub<GameHub>("/api/signalr");
                 
-            });
+            });*/
         }
     }
 }

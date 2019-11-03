@@ -16,6 +16,12 @@ namespace _7kojos.Models
             this.minBound = minBound;
             this.maxBound = maxBound;
         }
+
+        public Movement Clone()
+        {
+            return new HorizontalMovement(minBound, maxBound);
+        }
+
         public Point Move(Point currentPos)
         {
             if (currentPos.X == this.minBound || currentPos.X == this.maxBound)

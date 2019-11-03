@@ -41,11 +41,11 @@ public class Game implements Runnable{
 		this.title = title;
 		this.gameBounds = new Rectangle(0, -height, width, height*2);
 		this.gameSubject = gameSubject;
-		this.map = new CloudDecorator(new Map.Builder(0)
+		this.map = new BirdDecorator(new SunDecorator(new CloudDecorator(new Map.Builder(0)
 				.addTitle(":)")
 				.setWidth(width)
 				.setHeight(height)
-				.build());
+				.build())));
 		players = new ArrayList<>();
 		ammos = new ArrayList<>();
 
@@ -169,6 +169,9 @@ public class Game implements Runnable{
 				break;
 			case "bullet":
 				sounds.play(sounds.shot);
+				break;
+			case "grenade":
+				sounds.play(sounds.grenade);
 				break;
 			default:
 				System.out.println(":)");

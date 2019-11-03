@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace _7kojos.Models
 {
-    public class VerticalMovement : Movement
+    public class DiagonalMovement : Movement
     {
         private int minBound;
         private int maxBound;
         private int dir = 1;
-        public VerticalMovement(int minBound, int maxBound)
+        public DiagonalMovement(int minBound, int maxBound)
         {
             this.minBound = minBound;
             this.maxBound = maxBound;
@@ -19,14 +19,14 @@ namespace _7kojos.Models
 
         public Movement Clone()
         {
-            return new VerticalMovement(minBound, maxBound);
+            return new DiagonalMovement(minBound, maxBound);
         }
 
         public Point Move(Point currentPos)
         {
-            if (currentPos.Y == this.minBound || currentPos.Y == this.maxBound)
+            if (currentPos.X == this.minBound || currentPos.X == this.maxBound)
                 dir *= -1;
-            return new Point(currentPos.X, currentPos.Y + dir);
+            return new Point(currentPos.X + dir, currentPos.Y + dir);
         }
     }
 }

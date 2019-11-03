@@ -24,7 +24,7 @@ namespace _7kojos.Models
 
         public Obstacle Clone()
         {
-            return new Circle(new Point(Position.X, Position.Y), Radius, Color, MovementStrategy);
+            return new Circle(new Point(Position.X, Position.Y), Radius, Color, MovementStrategy.Clone());
         }
 
         public void SetPosition(Point position)
@@ -67,6 +67,11 @@ namespace _7kojos.Models
         {
             width = Radius * 2;
             height = Radius * 2;
+        }
+
+        public void SetMovement(Movement movement)
+        {
+            MovementStrategy = movement;
         }
     }
 }

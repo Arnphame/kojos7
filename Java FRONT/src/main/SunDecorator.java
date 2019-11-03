@@ -3,10 +3,10 @@ package main;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class CloudDecorator extends MapDecorator {
+public class SunDecorator extends MapDecorator {
 
     Assets assets = new Assets();
-    public CloudDecorator(IMap map) {
+    public SunDecorator(IMap map) {
         super(map);
         assets.init();
     }
@@ -14,15 +14,14 @@ public class CloudDecorator extends MapDecorator {
     @Override
     public void render(Graphics g) {
         super.render(g);
-        renderClouds(g);
+        renderSun(g);
     }
 
 
-    private void renderClouds(Graphics g) {
-        g.drawImage(assets.cloud, 120, 20, null);
+    private void renderSun(Graphics g) {
+        g.drawImage(assets.sun, Config.gameWidth-assets.sun.getWidth()+5, 0, null);
     }
 
     @Override
     public ArrayList<Obstacle> getObstacles() {return super.getObstacles();}
-
 }

@@ -10,8 +10,8 @@ namespace _7kojos.Models
     {
         private static Dictionary<string, Obstacle> prototypes = new Dictionary<string, Obstacle>
         {
-            { "Cube", new Rectangle(new Point(0,0) ,50,50, new RedColor().applyColor(), new VerticalMovement(0,400)) },
-            { "Rectangle", new Rectangle(new Point(0,0),100,50, new RedColor().applyColor(), new HorizontalMovement(0,700)) },
+            { "Cube", new Rectangle(new Point(0,0) ,50,50, new RedColor().applyColor(), new DiagonalMovement(0,400)) },
+            { "Rectangle", new Rectangle(new Point(0,0),100,50, new RedColor().applyColor(), new CircleMovement(100)) },
             { "Circle", new Circle(new Point(0,0),10, new RedColor().applyColor(), new VerticalMovement(150,300)) }
         };
 

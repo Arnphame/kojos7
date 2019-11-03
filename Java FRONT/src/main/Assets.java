@@ -22,11 +22,17 @@ public class Assets {
 	public BufferedImage arrow;
 	public BufferedImage bullet;
 	public BufferedImage cloud;
+	public BufferedImage bird;
+	public BufferedImage sun;
+	public BufferedImage grenade;
 	
 	public void init(){
 		arrow = loadImage("/arrow.png");
 		bullet = loadImage("/bullet.png");
 		cloud = loadImage("/cloud.png");
+		bird = loadImage("/bird.png");
+		sun = loadImage("/sun.png");
+		grenade = loadImage("/grenade.png");
 	}
 	
 	

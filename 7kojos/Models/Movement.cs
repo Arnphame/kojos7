@@ -9,5 +9,6 @@ namespace _7kojos.Models
     public interface Movement
     {
         Point Move(Point currentPos);
+        Movement Clone();
     }
 }
