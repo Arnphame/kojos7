@@ -68,7 +68,7 @@ public class Launcher implements GameObserver{
         joinGameButton.setEnabled(false);
         createGameButton.setEnabled(false);
         game = new Game(title, Config.gameWidth, Config.gameHeight, gameSubject, 0);
-        addPlayer(playerId, playerX, playerY, true);
+        addPlayer(playerId, playerX, playerY, Config.playerColor, true);
 
         game.start();
     }
@@ -81,8 +81,8 @@ public class Launcher implements GameObserver{
             createGameButton.setEnabled(false);
             game = new Game("Archery", Config.gameWidth,Config.gameHeight, gameSubject, 0);
             game.start();
-            addPlayer(opponentId, opponentX, opponentY, false);
-            addPlayer(meId, meX, meY, true);
+            addPlayer(opponentId, opponentX, opponentY, Config.opponentColor, false);
+            addPlayer(meId, meX, meY, Config.playerColor, true);
         }
         else{
             createdGameID.setText("Game is full !");
@@ -90,8 +90,8 @@ public class Launcher implements GameObserver{
     }
 
     @Override
-    public void addPlayer(int id, int x, int y, boolean isLocal) {
-        game.addPlayer(new Player(id, x, y, Config.playerColor, isLocal));
+    public void addPlayer(int id, int x, int y, Color color, boolean isLocal) {
+        game.addPlayer(new Player(id, x, y, color, isLocal));
     }
 
     @Override

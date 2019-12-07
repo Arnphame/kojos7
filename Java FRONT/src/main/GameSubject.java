@@ -44,7 +44,7 @@ public class GameSubject implements Subject{
 
         connection.on("PlayerJoined", (opponentId, opponentX, opponentY) ->{
             for (GameObserver observer : observers) {
-                observer.addPlayer(opponentId, opponentX, opponentY, false);
+                observer.addPlayer(opponentId, opponentX, opponentY, Config.opponentColor, false);
             }
         }, Integer.class, Integer.class, Integer.class);
 

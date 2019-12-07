@@ -1,13 +1,12 @@
 package main;
 
 import java.awt.*;
-import java.util.Random;
 
 public class Player {
 
 	public ModifyAmmo modifyAmmo = new ModifyAmmo();
 	
-	private Body body;
+	private IBodyPart body;
 	public Ammo ammo;
 	public Gun gun;
 	public static final float maxThrowVel = 10f;//at 50 pixels length
@@ -27,12 +26,10 @@ public class Player {
 
 	public Player(int id, int x, int y, Color color, Boolean isLocalPlayer){		//For players controlled via signalR
 		this.body = new Body(x, y, color);
-		this.body.leftH.rot = (float)(Math.PI/3 + Math.PI);
-		this.body.rightH.rot = -(float)Math.PI/3;
 		this.isLocalPlayer = isLocalPlayer;
 		this.id = id;
 		gun = new Gun(5, "arrow");
-		this.speedMultiplier = 3;
+		this.speedMultiplier = Config.speedMultiplier;
 		movementState = new Stationary(this);
 	}
 	
@@ -60,16 +57,16 @@ public class Player {
 		g.setColor(new Color(255-(int)((lastThrowVel/maxThrowVel)*255),(int)((lastThrowVel/maxThrowVel)*255),0));
 		g.fillRect(5, 5, (int)((lastThrowVel/maxThrowVel)*80), 15);
 		g.setColor(Color.ORANGE);
-		g.drawRect(5, 5, 80, 15);
+		g.drawRect(Config.powerGaugeX, Config.getPowerGaugeY, Config.powerGaugeWidth, Config.getPowerGaugeHeight);
 	}
 
 	public void renderHealth(Graphics g){
-		int width = 35;
-		int height = 7;
+		int width = Config.healthGaugeWidth;
+		int height = Config.healthGaugeHeight;
 		g.setColor(new Color(255-(int)((health/100)*255),(int)((health/100)*255),0));
-		g.fillRect(body.head.x - width/2, body.head.y - body.head.r - height*2, (int)((health/100)*width), height);
+		g.fillRect(body.getX() - width/2, body.getY() - Config.headRadius - height*2, (int)((health/100)*width), height);
 		g.setColor(Color.ORANGE);
-		g.drawRect(body.head.x - width/2, body.head.y - body.head.r- height*2, width, height);
+		g.drawRect(body.getX() - width/2, body.getY() - Config.headRadius - height*2, width, height);
 	}
 	
 	public void getInput(Game game){
@@ -103,31 +100,32 @@ public class Player {
 			}
 			ammoIsReady = false;
 		}
-		int[] position = this.body.getPosition();
+		int x = this.body.getX();
+		int y = this.body.getY();
 		if(game.keyManager.left && !movementState.getClass().getSimpleName().equals("LeftMovement")){
 			setMovementState(new LeftMovement(this));
 			if(isLocalPlayer)
-				game.gameSubject.send("ChangeMovement", "LeftMovement", position[0], position[1]);
+				game.gameSubject.send("ChangeMovement", "LeftMovement", x, y);
 		}
 		else if(game.keyManager.right && !movementState.getClass().getSimpleName().equals("RightMovement")) {
 			setMovementState(new RightMovement(this));
 			if(isLocalPlayer)
-				game.gameSubject.send("ChangeMovement", "RightMovement", position[0], position[1]);
+				game.gameSubject.send("ChangeMovement", "RightMovement", x, y);
 		}
 		else if(game.keyManager.up && !movementState.getClass().getSimpleName().equals("UpwardsMovement")) {
 			setMovementState(new UpwardsMovement(this));
 			if(isLocalPlayer)
-				game.gameSubject.send("ChangeMovement", "UpwardsMovement", position[0], position[1]);
+				game.gameSubject.send("ChangeMovement", "UpwardsMovement", x, y);
 		}
 		else if(game.keyManager.down && !movementState.getClass().getSimpleName().equals("DownwardsMovement")) {
 			setMovementState(new DownwardsMovement(this));
 			if(isLocalPlayer)
-				game.gameSubject.send("ChangeMovement", "DownwardsMovement", position[0], position[1]);
+				game.gameSubject.send("ChangeMovement", "DownwardsMovement", x, y);
 		}
 		else if(!game.keyManager.isDirectionKeyPressed() && !movementState.getClass().getSimpleName().equals("Stationary")) {
 			setMovementState(new Stationary(this));
 			if(isLocalPlayer)
-				game.gameSubject.send("ChangeMovement", "Stationary", position[0], position[1]);
+				game.gameSubject.send("ChangeMovement", "Stationary", x, y);
 		}
 	}
 
@@ -140,7 +138,7 @@ public class Player {
 	}
 
 	public void setPosition(int x, int y){
-		this.body.setPosition(x,y);
+		((Body)this.body).setPosition(x,y);
 	}
 
 	public void moveX(int steps){
@@ -160,7 +158,7 @@ public class Player {
 		if(gun.ammoCount == 0) {
 			gun.switchType();
 		}
-			Ammo ammo = Factory.getAmmo(gun.gunType, new Vector(body.head.x + 20, body.head.y - body.head.r - 20), new Vector());
+			Ammo ammo = Factory.getAmmo(gun.gunType, new Vector(body.getX() + 20, body.getY() - 6 - 20), new Vector());
 			ammo.setShooterId(this.id);
 			modifyAmmo.addCommand(new GunCommand(gun, GunAction.decrease, 1));
 			//modifyAmmo.undo();
