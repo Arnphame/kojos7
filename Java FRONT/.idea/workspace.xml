@@ -2,15 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07ce6bff-add5-46f6-9ab9-b65da786876e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/DownwardsMovement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/IMovementState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/LeftMovement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/RightMovement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/Stationary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/UpwardsMovement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../7kojos/Hubs/GameHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Hubs/GameHub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../7kojos/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../7kojos/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../7kojos/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Ammo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Ammo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Arrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Arrow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Body.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Bullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GameObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameObserver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GameSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Grenade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Grenade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/KeyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Launcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Player.java" afterDir="false" />
@@ -24,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>

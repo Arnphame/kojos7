@@ -28,25 +28,25 @@ public class GameSubject implements Subject{
     }
 
     void initHandlers(){
-        connection.on("ReceiveGameId", (gameId, meX, meY) ->
+        connection.on("ReceiveGameId", (gameId, meId, meX, meY) ->
         {
             for (GameObserver observer : observers) {
-                observer.createGame("Your Game ID: " + gameId, meX, meY);
+                observer.createGame("Your Game ID: " + gameId, meId, meX, meY);
             }
-        }, String.class, Integer.class, Integer.class);
+        }, String.class, Integer.class, Integer.class, Integer.class);
 
-        connection.on("ReceiveJoinSuccess", (success, opponentX, opponentY, meX, meY) ->
+        connection.on("ReceiveJoinSuccess", (success, opponentId, opponentX, opponentY, meId, meX, meY) ->
         {
             for (GameObserver observer : observers) {
-                observer.joinGame(success, opponentX, opponentY, meX, meY);
+                observer.joinGame(success, opponentId, opponentX, opponentY, meId, meX, meY);
             }
-        }, Boolean.class, Integer.class, Integer.class, Integer.class, Integer.class);
+        }, Boolean.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class);
 
-        connection.on("PlayerJoined", (opponentX, opponentY) ->{
+        connection.on("PlayerJoined", (opponentId, opponentX, opponentY) ->{
             for (GameObserver observer : observers) {
-                observer.addPlayer(opponentX, opponentY, false);
+                observer.addPlayer(opponentId, opponentX, opponentY, false);
             }
-        }, Integer.class, Integer.class);
+        }, Integer.class, Integer.class, Integer.class);
 
         connection.on("Shoot", (xPos, yPos, xVel, yVel, type) -> {
             for (GameObserver observer : observers) {
@@ -74,11 +74,11 @@ public class GameSubject implements Subject{
         connection.on("registered", () -> {
             System.out.println("redžistered");
         });
-        connection.on("MoveOpponent", (steps) ->{
+        connection.on("OpponentChangedMovement", (movementType, currentX, currentY) ->{
             for (GameObserver observer : observers) {
-                observer.moveOpponent(steps);
+                observer.setOpponentMovement(movementType, currentX, currentY);
             }
-        }, Integer.class);
+        }, String.class, Integer.class, Integer.class);
     }
 
     @Override

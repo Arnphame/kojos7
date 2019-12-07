@@ -104,6 +104,11 @@ public class Bullet implements Ammo {
     }
 
     @Override
+    public boolean isActive() {
+        return !stopped;
+    }
+
+    @Override
     public void setShooterId(int shooterId) {
         this.shooterId = shooterId;
     }

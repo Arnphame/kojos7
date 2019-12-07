@@ -25,16 +25,51 @@ public class Body {
 		rightH = new Limb(x+bodyW/2+2, y-bodyH/2, limbW, limbH, 0,0,limbH/2);
 		
 		this.color = color;
-		
 	}
 
-	public void move(int speed){
-		head.x += speed;
-		leftH.x += speed;
-		rightH.x += speed;
-		leftL.x += speed;
-		rightL.x += speed;
-		torso.x += speed;
+	public void setPosition(int x, int y){
+		head.x = x;
+		head.y = y-bodyH/2-headR-1;
+
+		torso.x = x-bodyW/2;
+		torso.y = y-bodyH/2;
+
+		leftL.x = x-bodyW/2+1;
+		leftL.y = y+bodyH/2+1;
+
+		rightL.x = x+bodyW/2-limbH;
+		rightL.y = y+bodyH/2+1;
+
+		leftH.x = x-bodyW/2-1;
+		leftH.y = y-bodyH/2+1;
+
+		rightH.x = x+bodyW/2+2;
+		rightH.y = y-bodyH/2;
+	}
+
+	public int[] getPosition(){
+		int[] position = new int[2];
+		position[0] = head.x;
+		position[1] = head.y + bodyH/2 + headR + 1;
+		return position;
+	}
+
+	public void moveX(int steps){
+		head.x += steps;
+		leftH.x += steps;
+		rightH.x += steps;
+		leftL.x += steps;
+		rightL.x += steps;
+		torso.x += steps;
+	}
+
+	public void moveY(int steps){
+		head.y += steps;
+		leftH.y += steps;
+		rightH.y += steps;
+		leftL.y += steps;
+		rightL.y += steps;
+		torso.y += steps;
 	}
 	
 	public void render(Graphics g){

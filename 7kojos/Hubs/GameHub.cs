@@ -61,7 +61,7 @@ namespace _7kojos.Hubs
             return _connections.GetUserId(Context.ConnectionId);
         }
 
-        public void MovePlayer(int steps)
+        public void ChangeMovement(string movementType, int currentX, int currentY)
         {
             Player player = dbContext.Players.FirstOrDefault(p => p.id.ToString() == GetUserId());
             Player opponent = Program.FindOpponent(player);
@@ -69,10 +69,7 @@ namespace _7kojos.Hubs
             if (opponent == null)
                 return;
 
-            Clients.Clients(GetConnectionId(opponent.id.ToString())).SendAsync("MoveOpponent", steps);
-
-            //player.x += steps;
-            //dbContext.SaveChangesAsync();
+            Clients.Clients(GetConnectionId(opponent.id.ToString())).SendAsync("OpponentChangedMovement", movementType, currentX, currentY);
         }
 
         public Player AddPlayer(string playerName)
@@ -110,7 +107,7 @@ namespace _7kojos.Hubs
             bool isJoined;
             isJoined = Program.JoinGame(game.GameId, player);
             Clients.Client(Context.ConnectionId).SendAsync("joinGame", isJoined);
-            Clients.Client(Context.ConnectionId).SendAsync("ReceiveGameId", game.GameId, player.x, player.y);
+            Clients.Client(Context.ConnectionId).SendAsync("ReceiveGameId", game.GameId, player.id, player.x, player.y);
 
 
             return game.GameId;
@@ -136,10 +133,10 @@ namespace _7kojos.Hubs
                 Player opponent = game.Players.FirstOrDefault(p => p.id != player.id);
 
                 if (opponent != null)
-                    Clients.Clients(GetConnectionId(opponent.id.ToString())).SendAsync("PlayerJoined", player.x, player.y);
+                    Clients.Clients(GetConnectionId(opponent.id.ToString())).SendAsync("PlayerJoined", player.id, player.x, player.y);
             }
 
-            Clients.Client(Context.ConnectionId).SendAsync("ReceiveJoinSuccess", success, game.Players[0].x, game.Players[0].y, player.x, player.y);
+            Clients.Client(Context.ConnectionId).SendAsync("ReceiveJoinSuccess", success, game.Players[0].id, game.Players[0].x, game.Players[0].y, player.id, player.x, player.y);
             
             return success;
         }

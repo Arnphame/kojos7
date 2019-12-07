@@ -97,6 +97,9 @@ public class Game implements Runnable{
 		for (Ammo ammo : ammos) {
 			ammo.tick();
 
+			if(!ammo.isActive())
+				break;
+
 			for (Player player : players) {
 				if(player.id != ammo.getShooterId() && player.intersects(ammo.getBounds())){
 					ammosToRemove.add(ammo);
@@ -185,11 +188,51 @@ public class Game implements Runnable{
 		}
 	}
 
-	public void moveOpponent(int steps){
+	public Player getOpponent(){
 		for (Player player: players) {
 			if(!player.isLocalPlayer)
-				player.move(steps);
+				return player;
 		}
+		return null;
+	}
+
+	public void setOpponentPosition(int x, int y){
+		Player opponent = players.get(0);
+
+		for (Player player: players) {
+			if(!player.isLocalPlayer)
+				opponent = player;
+		}
+
+		opponent.setPosition(x, y);
+	}
+
+	public void setOpponentMovement(String movementType){
+		Player opponent = players.get(0);
+
+		for (Player player: players) {
+			if(!player.isLocalPlayer)
+				opponent = player;
+		}
+
+		IMovementState movementState;
+		switch (movementType) {
+			case "RightMovement":
+				movementState = new RightMovement(opponent);
+				break;
+			case "LeftMovement":
+				movementState = new LeftMovement(opponent);
+				break;
+			case "UpwardsMovement":
+				movementState = new UpwardsMovement(opponent);
+				break;
+			case "DownwardsMovement":
+				movementState = new DownwardsMovement(opponent);
+				break;
+			default:
+				movementState = new Stationary(opponent);
+		}
+		opponent.setMovementState(movementState);
 	}
 	
 	public void run(){

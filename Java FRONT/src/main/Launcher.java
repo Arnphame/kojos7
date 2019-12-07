@@ -63,26 +63,26 @@ public class Launcher implements GameObserver{
     }
 
     @Override
-    public void createGame(String title, int playerX, int playerY) {
+    public void createGame(String title, int playerId, int playerX, int playerY) {
         createdGameID.setText(title);
         joinGameButton.setEnabled(false);
         createGameButton.setEnabled(false);
         game = new Game(title, Config.gameWidth, Config.gameHeight, gameSubject, 0);
-        addPlayer(playerX, playerY, true);
+        addPlayer(playerId, playerX, playerY, true);
 
         game.start();
     }
 
     @Override
-    public void joinGame(boolean success, int opponentX, int opponentY, int meX, int meY) {
+    public void joinGame(boolean success, int opponentId, int opponentX, int opponentY, int meId, int meX, int meY) {
         if(success){
             createdGameID.setText("Game joined");
             joinGameButton.setEnabled(false);
             createGameButton.setEnabled(false);
             game = new Game("Archery", Config.gameWidth,Config.gameHeight, gameSubject, 0);
             game.start();
-            addPlayer(opponentX, opponentY, false);
-            addPlayer(meX, meY, true);
+            addPlayer(opponentId, opponentX, opponentY, false);
+            addPlayer(meId, meX, meY, true);
         }
         else{
             createdGameID.setText("Game is full !");
@@ -90,13 +90,17 @@ public class Launcher implements GameObserver{
     }
 
     @Override
-    public void addPlayer(int x, int y, boolean isLocal) {
-        game.addPlayer(new Player(x, y, Config.playerColor, isLocal));
+    public void addPlayer(int id, int x, int y, boolean isLocal) {
+        game.addPlayer(new Player(id, x, y, Config.playerColor, isLocal));
     }
 
     @Override
     public void addAmmo(float xPos, float yPos, float xVel, float yVel, String type) {
         Ammo ammo = Factory.getAmmo(type, new Vector(xPos,yPos), new Vector(xVel, yVel));
+        Player opponent = game.getOpponent();
+        if(opponent != null){
+            ammo.setShooterId(opponent.id);
+        }
         game.addAmmo(ammo);
         game.launchAmmo(ammo, false);
     }
@@ -113,8 +117,9 @@ public class Launcher implements GameObserver{
     }
 
     @Override
-    public void moveOpponent(int steps){
-        game.moveOpponent(steps);
+    public void setOpponentMovement(String movementType, int currentX, int currentY) {
+        game.setOpponentPosition(currentX, currentY);
+        game.setOpponentMovement(movementType);
     }
 
 

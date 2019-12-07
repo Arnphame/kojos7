@@ -23,19 +23,23 @@ public class Player {
 
 	public int speedMultiplier;
 
-	public Player(int x, int y, Color color, Boolean isLocalPlayer){		//For players controlled via signalR
+	IMovementState movementState;
+
+	public Player(int id, int x, int y, Color color, Boolean isLocalPlayer){		//For players controlled via signalR
 		this.body = new Body(x, y, color);
 		this.body.leftH.rot = (float)(Math.PI/3 + Math.PI);
 		this.body.rightH.rot = -(float)Math.PI/3;
 		this.isLocalPlayer = isLocalPlayer;
-		this.id = new Random().nextInt();
+		this.id = id;
 		gun = new Gun(5, "arrow");
 		this.speedMultiplier = 3;
+		movementState = new Stationary(this);
 	}
 	
 	public void tick(Game game){
 		if(isLocalPlayer)								//Get input only if player is controlled locally
 			getInput(game);
+		move();
 	}
 	
 	public void render(Graphics g){
@@ -99,13 +103,31 @@ public class Player {
 			}
 			ammoIsReady = false;
 		}
-		if(game.keyManager.left){
-			this.body.move(-1*speedMultiplier);
-			game.movePlayer(-1*speedMultiplier);
+		int[] position = this.body.getPosition();
+		if(game.keyManager.left && !movementState.getClass().getSimpleName().equals("LeftMovement")){
+			setMovementState(new LeftMovement(this));
+			if(isLocalPlayer)
+				game.gameSubject.send("ChangeMovement", "LeftMovement", position[0], position[1]);
 		}
-		if(game.keyManager.right) {
-			this.body.move(1 * speedMultiplier);
-			game.movePlayer(1 * speedMultiplier);
+		else if(game.keyManager.right && !movementState.getClass().getSimpleName().equals("RightMovement")) {
+			setMovementState(new RightMovement(this));
+			if(isLocalPlayer)
+				game.gameSubject.send("ChangeMovement", "RightMovement", position[0], position[1]);
+		}
+		else if(game.keyManager.up && !movementState.getClass().getSimpleName().equals("UpwardsMovement")) {
+			setMovementState(new UpwardsMovement(this));
+			if(isLocalPlayer)
+				game.gameSubject.send("ChangeMovement", "UpwardsMovement", position[0], position[1]);
+		}
+		else if(game.keyManager.down && !movementState.getClass().getSimpleName().equals("DownwardsMovement")) {
+			setMovementState(new DownwardsMovement(this));
+			if(isLocalPlayer)
+				game.gameSubject.send("ChangeMovement", "DownwardsMovement", position[0], position[1]);
+		}
+		else if(!game.keyManager.isDirectionKeyPressed() && !movementState.getClass().getSimpleName().equals("Stationary")) {
+			setMovementState(new Stationary(this));
+			if(isLocalPlayer)
+				game.gameSubject.send("ChangeMovement", "Stationary", position[0], position[1]);
 		}
 	}
 
@@ -113,8 +135,24 @@ public class Player {
 		return body.intersects(rect);
 	}
 
-	public void move(int steps){
-		this.body.move(steps);
+	void move(){
+		movementState.move();
+	}
+
+	public void setPosition(int x, int y){
+		this.body.setPosition(x,y);
+	}
+
+	public void moveX(int steps){
+		this.body.moveX(steps*speedMultiplier);
+	}
+
+	public void moveY(int steps){
+		this.body.moveY(steps*speedMultiplier);
+	}
+
+	public void setMovementState(IMovementState movementState) {
+		this.movementState = movementState;
 	}
 
 	public Ammo prepareAmmo(){

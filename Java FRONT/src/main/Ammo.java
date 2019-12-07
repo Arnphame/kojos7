@@ -21,4 +21,6 @@ public interface Ammo {
     void tick();
     void render(Graphics g, Assets assets);
     void launch();
+
+    boolean isActive();
 }

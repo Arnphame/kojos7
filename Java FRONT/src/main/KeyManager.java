@@ -13,6 +13,10 @@ public class KeyManager implements KeyListener{
 		left = false;
 		right = false;
 	}
+
+	public boolean isDirectionKeyPressed(){
+		return up || down || left || right;
+	}
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -20,18 +24,30 @@ public class KeyManager implements KeyListener{
 			case KeyEvent.VK_UP:
 			case KeyEvent.VK_W:
 				up = true;
+				down = false;
+				left = false;
+				right = false;
 				break;
 			case KeyEvent.VK_DOWN:
 			case KeyEvent.VK_S:
 				down = true;
+				up = false;
+				left = false;
+				right = false;
 				break;
 			case KeyEvent.VK_RIGHT:
 			case KeyEvent.VK_D:
 				right = true;
+				left = false;
+				down = false;
+				up = false;
 				break;
 			case KeyEvent.VK_LEFT:
 			case KeyEvent.VK_A:
 				left = true;
+				right = false;
+				down = false;
+				up = false;
 				break;
 		}
 	}
