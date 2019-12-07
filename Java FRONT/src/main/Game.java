@@ -78,7 +78,6 @@ public class Game implements Runnable{
 		frame.addMouseMotionListener(mouseManager);
 		canvas.addMouseListener(mouseManager);
 		canvas.addMouseMotionListener(mouseManager);
-		
 	}
 	
 	public void init(){
@@ -178,6 +177,19 @@ public class Game implements Runnable{
 		}
 		if(toServer)
             gameSubject.send("Shoot", ammo.getPosition().x, ammo.getPosition().y, ammo.getVelocity().x, ammo.getVelocity().y, c);
+	}
+
+	public void movePlayer(int steps){
+		if(gameSubject.isAlive()){
+			gameSubject.send("MovePlayer", steps);
+		}
+	}
+
+	public void moveOpponent(int steps){
+		for (Player player: players) {
+			if(!player.isLocalPlayer)
+				player.move(steps);
+		}
 	}
 	
 	public void run(){

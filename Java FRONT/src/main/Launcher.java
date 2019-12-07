@@ -112,6 +112,11 @@ public class Launcher implements GameObserver{
         game.updateObstacle(type, id, x, y, width, height, color);
     }
 
+    @Override
+    public void moveOpponent(int steps){
+        game.moveOpponent(steps);
+    }
+
 
     public static void main(String[] args) {
         Subject gameSubject = new GameSubject(Config.signalR_URL);

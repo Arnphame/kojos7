@@ -5,6 +5,7 @@ using _7kojos.Services;
 using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
@@ -26,6 +27,7 @@ namespace _7kojos.Hubs
 
         public override Task OnConnectedAsync()
         {
+            Debug.WriteLine("--------------------------------------------------------------------------");
             return base.OnConnectedAsync();
         }
 
@@ -57,6 +59,20 @@ namespace _7kojos.Hubs
         public string GetUserId()
         {
             return _connections.GetUserId(Context.ConnectionId);
+        }
+
+        public void MovePlayer(int steps)
+        {
+            Player player = dbContext.Players.FirstOrDefault(p => p.id.ToString() == GetUserId());
+            Player opponent = Program.FindOpponent(player);
+
+            if (opponent == null)
+                return;
+
+            Clients.Clients(GetConnectionId(opponent.id.ToString())).SendAsync("MoveOpponent", steps);
+
+            //player.x += steps;
+            //dbContext.SaveChangesAsync();
         }
 
         public Player AddPlayer(string playerName)

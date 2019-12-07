@@ -100,5 +100,15 @@ namespace _7kojos
                 }
             }
         }
+
+        public static Player FindOpponent(Player player)
+        {
+            Game game = FindGame(player);
+            if (game != null && game.Players.Count == 2)
+            {
+                return game.Players.FirstOrDefault(p => p.id != player.id);
+            }
+            return null;
+        }
     }
 }

@@ -74,6 +74,11 @@ public class GameSubject implements Subject{
         connection.on("registered", () -> {
             System.out.println("redžistered");
         });
+        connection.on("MoveOpponent", (steps) ->{
+            for (GameObserver observer : observers) {
+                observer.moveOpponent(steps);
+            }
+        }, Integer.class);
     }
 
     @Override

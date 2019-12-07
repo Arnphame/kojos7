@@ -21,6 +21,8 @@ public class Player {
 	float health = 100;
 	public int id;
 
+	public int speedMultiplier;
+
 	public Player(int x, int y, Color color, Boolean isLocalPlayer){		//For players controlled via signalR
 		this.body = new Body(x, y, color);
 		this.body.leftH.rot = (float)(Math.PI/3 + Math.PI);
@@ -28,6 +30,7 @@ public class Player {
 		this.isLocalPlayer = isLocalPlayer;
 		this.id = new Random().nextInt();
 		gun = new Gun(5, "arrow");
+		this.speedMultiplier = 3;
 	}
 	
 	public void tick(Game game){
@@ -96,15 +99,23 @@ public class Player {
 			}
 			ammoIsReady = false;
 		}
+		if(game.keyManager.left){
+			this.body.move(-1*speedMultiplier);
+			game.movePlayer(-1*speedMultiplier);
+		}
+		if(game.keyManager.right) {
+			this.body.move(1 * speedMultiplier);
+			game.movePlayer(1 * speedMultiplier);
+		}
 	}
 
 	public boolean intersects(Rectangle rect){
 		return body.intersects(rect);
 	}
 
-
-
-
+	public void move(int steps){
+		this.body.move(steps);
+	}
 
 	public Ammo prepareAmmo(){
 
