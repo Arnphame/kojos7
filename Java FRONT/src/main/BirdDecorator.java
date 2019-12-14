@@ -27,4 +27,6 @@ public class BirdDecorator extends MapDecorator {
     public ArrayList<Obstacle> getObstacles() {
         return super.getObstacles();
     }
+
+
 }

@@ -9,5 +9,6 @@ namespace _7kojos.ServiceInterfaces
     public interface IGamesService
     {
         void UpdateGames();
+        void SpawnBoosts();
     }
 }

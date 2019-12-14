@@ -13,16 +13,20 @@ namespace _7kojos.Services
 {
     public class GamesUpdatingService : BackgroundService
     {
+        private Random rnd;
         private Timer _timer;
+        private Timer boostsTimer;
         private IServiceProvider Services;
 
         public GamesUpdatingService(IServiceProvider Services)
         {
+            this.rnd = new Random();
             this.Services = Services;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            boostsTimer = new Timer(SpawnBoost, null, 2000, 5000);
             _timer = new Timer(UpdateGames, null, 0, 15);
             await Task.CompletedTask;
         }
@@ -36,6 +40,17 @@ namespace _7kojos.Services
                         .GetRequiredService<IGamesService>();
 
                 gamesService.UpdateGames();
+            }
+        }
+        private void SpawnBoost(object state)
+        {
+            using (var scope = Services.CreateScope())
+            {
+                var gamesService =
+                    scope.ServiceProvider
+                        .GetRequiredService<IGamesService>();
+
+                gamesService.SpawnBoosts();
             }
         }
 

@@ -11,20 +11,24 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace _7Kojos.Services
 {
+
     public class GamesService : IGamesService
     {
+        Random rnd;
+
         private DatabaseContext context;
         private readonly IHubContext<GameHub> hubContext;
 
         public GamesService(DatabaseContext context, IHubContext<GameHub> hubContext)
         {
+            this.rnd = new Random();
             this.context = context;
             this.hubContext = hubContext;
         }
 
         public void UpdateGames()
         {
-           foreach (Game game in Program.Games)
+            foreach (Game game in Program.Games)
             {
                 foreach (Obstacle obstacle in game.Obstacles)
                 {
@@ -44,7 +48,29 @@ namespace _7Kojos.Services
                     }
                 }
             }
-           
+
+        }
+        public void SpawnBoosts()
+        {
+            Obstacle obs = new Powerup(0, 0, 0,0,0);
+            if(rnd.Next(2) == 0) { return; }
+
+            int powerUpType = rnd.Next(3);
+            ObstacleFactory.boostPrototypes.TryGetValue((Powerup.PowerUpType)powerUpType, out obs);
+            Obstacle pwrUp = obs.Clone();
+            pwrUp.SetPosition(new System.Drawing.Point(rnd.Next(720), rnd.Next(280)));
+            foreach (Game game in Program.Games) {
+                foreach (Player player in game.Players) {
+                    hubContext.Clients.Clients(GameHub.GetConnectionId(player.id.ToString())).SendAsync("Boost",
+                          ((Powerup)pwrUp).id,
+                          ((Powerup)pwrUp).type,
+                          ((Powerup)pwrUp).value,
+                          ((Powerup)pwrUp).x,
+                          ((Powerup)pwrUp).y,
+                          ((Powerup)pwrUp).time 
+                    );
+                }
+            }
         }
     }
 }

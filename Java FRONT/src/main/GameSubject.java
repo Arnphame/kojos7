@@ -59,9 +59,29 @@ public class GameSubject implements Subject{
                 observer.updateObstacle(type, id, x, y, width, height, color.toString());
             }
         }, String.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Object.class);
+
+        connection.on("Boost", (id, type, value, x,y, time) -> {
+            for(GameObserver observer : observers) {
+                observer.addBoost(id,type,value,x,y,time);
+            }
+            System.out.println("BOOSTAS " + id);
+        }, Integer.class, Integer.class, Double.class, Integer.class, Integer.class, Integer.class);
+
+        connection.on("PlayerLeft", (id) -> {
+            for(GameObserver observer : observers) {
+                observer.removePlayer(id);
+            }
+        }, Integer.class);
+
         connection.on("gamepls", () -> {
             System.out.println("GAME PLS");
         });
+
+
+      /*  connection.on("Boost", () -> {
+            System.out.println("Boost PLS");
+        }); */
+
         connection.on("nullPlayer", () -> {
             System.out.println("nullPlayer PLS");
         });

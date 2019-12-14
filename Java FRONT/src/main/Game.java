@@ -30,10 +30,26 @@ public class Game implements Runnable{
 
 	private ArrayList<Player> players;
 	private ArrayList<Ammo> ammos;
+	private ArrayList<Powerup> powerups;
 
 	Rectangle gameBounds;
+
+	ExportVisitor expV;
+
+	public void addBoost(Powerup boost) {
+		powerups.add(boost);
+		boost.BoostExistenceTime();
+	}
+
+	public void collectBoost(Powerup boost) {
+		powerups.remove(boost);
+	}
 	
 	public static Vector gravity = new Vector(0,0.14f);
+
+	public void setMapColor(Color color) {
+		map.setColor(color);
+	}
 	
 	public Game(String title, int width, int height, Subject gameSubject, int mapType){
 		this.width = width;
@@ -48,6 +64,8 @@ public class Game implements Runnable{
 				.build())));
 		players = new ArrayList<>();
 		ammos = new ArrayList<>();
+		powerups = new ArrayList<>();
+		expV = new ExportVisitor();
 
 		initDisplay();
 	}
@@ -94,6 +112,13 @@ public class Game implements Runnable{
 			player.tick(this);
 		}
 		ArrayList<Ammo> ammosToRemove = new ArrayList<>();
+		ArrayList<Powerup> powerupsToRemove = new ArrayList<>();
+
+		for(Powerup powerup : powerups) {
+			if(System.currentTimeMillis() >= powerup.destroyTime) {
+				powerupsToRemove.add(powerup);
+			}
+		}
 		for (Ammo ammo : ammos) {
 			ammo.tick();
 
@@ -114,12 +139,32 @@ public class Game implements Runnable{
 				}
 			}
 
+			for(Powerup powerup : powerups) {
+				if(powerup.getBounds().intersects(ammo.getBounds())) {
+					for (Player player: players) {
+						if(player.id == ammo.getShooterId()) {
+							player.addHealth(powerup.value);
+						}
+					}
+					ammosToRemove.add(ammo);
+					if(!powerupsToRemove.contains(powerup)) {
+						powerupsToRemove.add(powerup);
+					}
+					System.out.println(ammo.getShooterId() + " gavo HPBoost");
+					System.out.println(expV.visitHPBoost((HPBoost)powerup));
+				}
+
+			}
+
 			if(!gameBounds.contains(ammo.getPosition().x, ammo.getPosition().y)){
 				ammosToRemove.add(ammo);
 			}
 		}
 		for (Ammo ammo : ammosToRemove) {
 			ammos.remove(ammo);
+		}
+		for(Powerup powerup : powerupsToRemove) {
+			powerups.remove(powerup);
 		}
 	}
 	
@@ -146,6 +191,10 @@ public class Game implements Runnable{
 			ammo.render(g,assets);
 		}
 
+		for(Powerup powerup : powerups) {
+			powerup.render(g,assets);
+		}
+
 		bs.show();
 		g.dispose();
 	}
@@ -156,6 +205,16 @@ public class Game implements Runnable{
 
 	public void addPlayer(Player player){
 		players.add(player);
+	}
+
+	public void removePlayer(int id){
+		Player playerToRemove = new Player(-1,0,0,null, false);
+		for (Player player:players) {
+			if(player.id == id)
+				playerToRemove = player;
+		}
+
+		players.remove(playerToRemove);
 	}
 
 	public void addAmmo(Ammo ammo){

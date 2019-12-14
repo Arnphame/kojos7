@@ -2,17 +2,186 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07ce6bff-add5-46f6-9ab9-b65da786876e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/Head.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/IBodyPart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Limb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Torso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/7kojos.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/7kojos.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Context/DatabaseContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Context/DatabaseContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Controllers/GamesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Controllers/GamesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Hubs/GameHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Hubs/GameHub.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Migrations/20190929115017_initial.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Migrations/20190929115017_initial.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Migrations/20190929115017_initial.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Migrations/20190929115017_initial.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Migrations/DatabaseContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Migrations/DatabaseContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/Circle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/Circle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/CircleMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/CircleMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/CircleToObstacleAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/CircleToObstacleAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/ColorInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/ColorInterface.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/DiagonalMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/DiagonalMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/Gun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/Gun.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/HorizontalMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/HorizontalMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/Map.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/Movement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/Obstacle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/Obstacle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/ObstacleFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/ObstacleFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/OrangeColor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/OrangeColor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/Rectangle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/Rectangle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/RectangleToObstacleAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/RectangleToObstacleAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/RedColor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/RedColor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/Shape.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/Shape.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Models/VerticalMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Models/VerticalMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Properties/PublishProfiles/7kojos - FTP.pubxml" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Properties/PublishProfiles/7kojos - FTP.pubxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Properties/PublishProfiles/7kojos - ReadOnly - FTP.pubxml" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Properties/PublishProfiles/7kojos - ReadOnly - FTP.pubxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Properties/PublishProfiles/7kojos - Web Deploy.pubxml" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Properties/PublishProfiles/7kojos - Web Deploy.pubxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/ServiceInterfaces/IGamesService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/ServiceInterfaces/IGamesService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Services/ConnectionMapping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Services/ConnectionMapping.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Services/GamesService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Services/GamesService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Services/GamesUpdatingService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Services/GamesUpdatingService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../7kojos/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/../7kojos/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/com_microsoft_signalr_signalr_1_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/com_microsoft_signalr_signalr_1_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sbt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sbt.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" afterPath="$PROJECT_DIR$/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Archery.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Archery.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Ammo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Ammo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Arrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Arrow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Assets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Assets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/BirdDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/BirdDecorator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Body.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Bullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/CircleObstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CircleObstacle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/CloudDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CloudDecorator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/DownwardsMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DownwardsMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GameObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameObserver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GameSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Grenade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Grenade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Gun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GunAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GunAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GunCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GunCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Head.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Head.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/IBodyPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/IBodyPart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/ICommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ICommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/IMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/IMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/IMovementState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/IMovementState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/KeyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Launcher.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Launcher.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/LeftMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/LeftMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Limb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Limb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/MapDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MapDecorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/ModifyAmmo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ModifyAmmo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/MouseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MouseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Obstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Obstacle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/RectangleObstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/RectangleObstacle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/RightMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/RightMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Sounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Sounds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Stationary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Stationary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Subject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/SunDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/SunDecorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Torso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Torso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/UpwardsMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UpwardsMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.Connections.Abstractions.2.1.2/lib/netstandard2.0/Microsoft.AspNetCore.Connections.Abstractions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.Connections.Abstractions.2.1.2/lib/netstandard2.0/Microsoft.AspNetCore.Connections.Abstractions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.Http.Connections.Client.1.0.4/lib/netcoreapp2.1/Microsoft.AspNetCore.Http.Connections.Client.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.Http.Connections.Client.1.0.4/lib/netcoreapp2.1/Microsoft.AspNetCore.Http.Connections.Client.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.Http.Connections.Client.1.0.4/lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.Client.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.Http.Connections.Client.1.0.4/lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.Client.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.Http.Connections.Common.1.0.4/lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.Common.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.Http.Connections.Common.1.0.4/lib/netstandard2.0/Microsoft.AspNetCore.Http.Connections.Common.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.Http.Features.2.1.1/lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.Http.Features.2.1.1/lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.SignalR.Client.1.0.4/lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.SignalR.Client.1.0.4/lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.SignalR.Client.Core.1.0.4/lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.Core.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.SignalR.Client.Core.1.0.4/lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.Core.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.SignalR.Common.1.0.4/lib/netcoreapp2.1/Microsoft.AspNetCore.SignalR.Common.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.SignalR.Common.1.0.4/lib/netcoreapp2.1/Microsoft.AspNetCore.SignalR.Common.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.SignalR.Common.1.0.4/lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Common.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.SignalR.Common.1.0.4/lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Common.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.SignalR.Protocols.Json.1.0.4/lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Protocols.Json.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.AspNetCore.SignalR.Protocols.Json.1.0.4/lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Protocols.Json.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.Extensions.Configuration.2.1.1/lib/netstandard2.0/Microsoft.Extensions.Configuration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.Extensions.Configuration.2.1.1/lib/netstandard2.0/Microsoft.Extensions.Configuration.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.Extensions.Configuration.Abstractions.2.1.1/lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.Extensions.Configuration.Abstractions.2.1.1/lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.Extensions.Configuration.Binder.2.1.1/lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.Extensions.Configuration.Binder.2.1.1/lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.Extensions.DependencyInjection.2.1.1/lib/net461/Microsoft.Extensions.DependencyInjection.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.Extensions.DependencyInjection.2.1.1/lib/net461/Microsoft.Extensions.DependencyInjection.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.Extensions.DependencyInjection.2.1.1/lib/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.Extensions.DependencyInjection.2.1.1/lib/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.Extensions.DependencyInjection.2.1.1/lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.Extensions.DependencyInjection.2.1.1/lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.Extensions.DependencyInjection.Abstractions.2.1.1/lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.Extensions.DependencyInjection.Abstractions.2.1.1/lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.Extensions.Logging.2.1.1/lib/netstandard2.0/Microsoft.Extensions.Logging.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.Extensions.Logging.2.1.1/lib/netstandard2.0/Microsoft.Extensions.Logging.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.Extensions.Logging.Abstractions.2.1.1/lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.Extensions.Logging.Abstractions.2.1.1/lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.Extensions.Options.2.1.1/lib/netstandard2.0/Microsoft.Extensions.Options.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.Extensions.Options.2.1.1/lib/netstandard2.0/Microsoft.Extensions.Options.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Microsoft.Extensions.Primitives.2.1.1/lib/netstandard2.0/Microsoft.Extensions.Primitives.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Microsoft.Extensions.Primitives.2.1.1/lib/netstandard2.0/Microsoft.Extensions.Primitives.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/LICENSE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/net20/Newtonsoft.Json.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/net20/Newtonsoft.Json.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/net35/Newtonsoft.Json.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/net35/Newtonsoft.Json.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/net40/Newtonsoft.Json.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/net40/Newtonsoft.Json.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/net45/Newtonsoft.Json.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/net45/Newtonsoft.Json.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/netstandard1.0/Newtonsoft.Json.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/netstandard1.0/Newtonsoft.Json.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/netstandard1.3/Newtonsoft.Json.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/netstandard1.3/Newtonsoft.Json.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/netstandard2.0/Newtonsoft.Json.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/netstandard2.0/Newtonsoft.Json.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/Newtonsoft.Json.11.0.2/lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Buffers.4.5.0/LICENSE.TXT" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Buffers.4.5.0/LICENSE.TXT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Buffers.4.5.0/THIRD-PARTY-NOTICES.TXT" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Buffers.4.5.0/THIRD-PARTY-NOTICES.TXT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Buffers.4.5.0/lib/netstandard1.1/System.Buffers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Buffers.4.5.0/lib/netstandard1.1/System.Buffers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Buffers.4.5.0/lib/netstandard2.0/System.Buffers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Buffers.4.5.0/lib/netstandard2.0/System.Buffers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Buffers.4.5.0/ref/net45/System.Buffers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Buffers.4.5.0/ref/net45/System.Buffers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Buffers.4.5.0/ref/netstandard1.1/System.Buffers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Buffers.4.5.0/ref/netstandard1.1/System.Buffers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Buffers.4.5.0/ref/netstandard2.0/System.Buffers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Buffers.4.5.0/ref/netstandard2.0/System.Buffers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Buffers.4.5.0/version.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Buffers.4.5.0/version.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.IO.Pipelines.4.5.0/LICENSE.TXT" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.IO.Pipelines.4.5.0/LICENSE.TXT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.IO.Pipelines.4.5.0/THIRD-PARTY-NOTICES.TXT" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.IO.Pipelines.4.5.0/THIRD-PARTY-NOTICES.TXT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.IO.Pipelines.4.5.0/lib/netcoreapp2.1/System.IO.Pipelines.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.IO.Pipelines.4.5.0/lib/netcoreapp2.1/System.IO.Pipelines.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.IO.Pipelines.4.5.0/lib/netstandard1.3/System.IO.Pipelines.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.IO.Pipelines.4.5.0/lib/netstandard1.3/System.IO.Pipelines.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.IO.Pipelines.4.5.0/lib/netstandard2.0/System.IO.Pipelines.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.IO.Pipelines.4.5.0/lib/netstandard2.0/System.IO.Pipelines.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.IO.Pipelines.4.5.0/version.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.IO.Pipelines.4.5.0/version.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Memory.4.5.1/LICENSE.TXT" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Memory.4.5.1/LICENSE.TXT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Memory.4.5.1/THIRD-PARTY-NOTICES.TXT" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Memory.4.5.1/THIRD-PARTY-NOTICES.TXT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Memory.4.5.1/lib/netstandard1.1/System.Memory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Memory.4.5.1/lib/netstandard1.1/System.Memory.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Memory.4.5.1/lib/netstandard2.0/System.Memory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Memory.4.5.1/lib/netstandard2.0/System.Memory.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Memory.4.5.1/ref/netstandard1.1/System.Memory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Memory.4.5.1/ref/netstandard1.1/System.Memory.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Memory.4.5.1/ref/netstandard2.0/System.Memory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Memory.4.5.1/ref/netstandard2.0/System.Memory.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Memory.4.5.1/version.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Memory.4.5.1/version.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/LICENSE.TXT" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/LICENSE.TXT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/THIRD-PARTY-NOTICES.TXT" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/THIRD-PARTY-NOTICES.TXT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/lib/net46/System.Numerics.Vectors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/lib/net46/System.Numerics.Vectors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/lib/netstandard1.0/System.Numerics.Vectors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/lib/netstandard1.0/System.Numerics.Vectors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/lib/netstandard2.0/System.Numerics.Vectors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/lib/netstandard2.0/System.Numerics.Vectors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/ref/net46/System.Numerics.Vectors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/ref/net46/System.Numerics.Vectors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/ref/netstandard1.0/System.Numerics.Vectors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/ref/netstandard1.0/System.Numerics.Vectors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/ref/netstandard2.0/System.Numerics.Vectors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/ref/netstandard2.0/System.Numerics.Vectors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/version.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Numerics.Vectors.4.4.0/version.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Runtime.CompilerServices.Unsafe.4.5.1/LICENSE.TXT" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Runtime.CompilerServices.Unsafe.4.5.1/LICENSE.TXT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Runtime.CompilerServices.Unsafe.4.5.1/THIRD-PARTY-NOTICES.TXT" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Runtime.CompilerServices.Unsafe.4.5.1/THIRD-PARTY-NOTICES.TXT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Runtime.CompilerServices.Unsafe.4.5.1/lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Runtime.CompilerServices.Unsafe.4.5.1/lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Runtime.CompilerServices.Unsafe.4.5.1/lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Runtime.CompilerServices.Unsafe.4.5.1/lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Runtime.CompilerServices.Unsafe.4.5.1/lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Runtime.CompilerServices.Unsafe.4.5.1/lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Runtime.CompilerServices.Unsafe.4.5.1/ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Runtime.CompilerServices.Unsafe.4.5.1/ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Runtime.CompilerServices.Unsafe.4.5.1/ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Runtime.CompilerServices.Unsafe.4.5.1/ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Runtime.CompilerServices.Unsafe.4.5.1/version.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Runtime.CompilerServices.Unsafe.4.5.1/version.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Threading.Channels.4.5.0/LICENSE.TXT" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Threading.Channels.4.5.0/LICENSE.TXT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Threading.Channels.4.5.0/THIRD-PARTY-NOTICES.TXT" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Threading.Channels.4.5.0/THIRD-PARTY-NOTICES.TXT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Threading.Channels.4.5.0/lib/netcoreapp2.1/System.Threading.Channels.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Threading.Channels.4.5.0/lib/netcoreapp2.1/System.Threading.Channels.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Threading.Channels.4.5.0/lib/netstandard1.3/System.Threading.Channels.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Threading.Channels.4.5.0/lib/netstandard1.3/System.Threading.Channels.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Threading.Channels.4.5.0/lib/netstandard2.0/System.Threading.Channels.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Threading.Channels.4.5.0/lib/netstandard2.0/System.Threading.Channels.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Threading.Channels.4.5.0/version.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Threading.Channels.4.5.0/version.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Threading.Tasks.Extensions.4.5.0/LICENSE.TXT" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Threading.Tasks.Extensions.4.5.0/LICENSE.TXT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Threading.Tasks.Extensions.4.5.0/THIRD-PARTY-NOTICES.TXT" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Threading.Tasks.Extensions.4.5.0/THIRD-PARTY-NOTICES.TXT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Threading.Tasks.Extensions.4.5.0/lib/netstandard1.0/System.Threading.Tasks.Extensions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Threading.Tasks.Extensions.4.5.0/lib/netstandard1.0/System.Threading.Tasks.Extensions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Threading.Tasks.Extensions.4.5.0/lib/netstandard2.0/System.Threading.Tasks.Extensions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Threading.Tasks.Extensions.4.5.0/lib/netstandard2.0/System.Threading.Tasks.Extensions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Threading.Tasks.Extensions.4.5.0/lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Threading.Tasks.Extensions.4.5.0/lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Threading.Tasks.Extensions.4.5.0/ref/netstandard1.0/System.Threading.Tasks.Extensions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Threading.Tasks.Extensions.4.5.0/ref/netstandard1.0/System.Threading.Tasks.Extensions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Threading.Tasks.Extensions.4.5.0/ref/netstandard2.0/System.Threading.Tasks.Extensions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Threading.Tasks.Extensions.4.5.0/ref/netstandard2.0/System.Threading.Tasks.Extensions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packages/System.Threading.Tasks.Extensions.4.5.0/version.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../packages/System.Threading.Tasks.Extensions.4.5.0/version.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,13 +193,20 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\Stud\Desktop\kojos7-master\Java FRONT\.idea" />
+      </set>
+    </option>
   </component>
   <component name="ProjectId" id="1Svi4dtbnW4huPkHGc2cJAmBof9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -40,7 +216,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572712128299" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Game – kopija/RandomGame" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

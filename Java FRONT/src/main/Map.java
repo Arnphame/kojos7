@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 public class Map implements IMap{
     private static Map instance = null;
+
+    Color color = Color.BLUE;
     private Map() {
         System.out.println("Singleton initialized");
     }
@@ -22,18 +24,18 @@ public class Map implements IMap{
     public ArrayList<Obstacle> obstacles;
 
     @Override
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    @Override
     public void render(Graphics g) {
         //System.out.println(obstacles.size());
-        if (type == 0) {
             g.clearRect(0, 0, width, height);
-            g.setColor(Color.BLUE);
+            g.setColor(color);
             g.fillRect(0, 0, width, height);
-        }
-        if (type == 1) {
-            g.clearRect(0, 0, width, height);
-            g.setColor(Color.GREEN);
-            g.fillRect(0, 0, width, height);
-        }
+
+
         for(Obstacle o: obstacles) {
             o.render(g);
         }

@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 
 public class Launcher implements GameObserver{
 
@@ -122,10 +123,29 @@ public class Launcher implements GameObserver{
         game.setOpponentMovement(movementType);
     }
 
+    @Override
+    public void addBoost(int id, int type, double value, int x, int y, int time) {
+        game.addBoost(new HPBoost(id,type,value,x,y,time));
+    }
+
+    @Override
+    public void removePlayer(int id) {
+        game.removePlayer(id);
+    }
+
+    void readConsole(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("TYPE");
+        String n = scanner.nextLine();
+        Expression exp = new MapColorExpression();
+        exp.interpret(n);
+        game.setMapColor(((MapColorExpression)exp).color);
+    }
 
     public static void main(String[] args) {
         Subject gameSubject = new GameSubject(Config.signalR_URL);
         Launcher launcher = new Launcher();
         launcher.subscribe(gameSubject);
+        launcher.readConsole();
     }
 }

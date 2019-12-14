@@ -6,5 +6,6 @@ import java.util.ArrayList;
 public interface IMap {
     void render(Graphics g);
     ArrayList<Obstacle> getObstacles();
+    void setColor(Color color);
     void updateObstacles(String type, int id, int x, int y, int width, int height, String color);
 }

@@ -24,4 +24,6 @@ public class SunDecorator extends MapDecorator {
 
     @Override
     public ArrayList<Obstacle> getObstacles() {return super.getObstacles();}
+
+
 }

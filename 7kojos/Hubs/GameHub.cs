@@ -33,8 +33,19 @@ namespace _7kojos.Hubs
 
         public override Task OnDisconnectedAsync(Exception exception)
         {
-            LeaveGame();
             string userId = _connections.GetUserId(Context.ConnectionId);
+            Player player = dbContext.Players.FirstOrDefault(p => p.id.ToString() == userId);
+
+            Game game = new Game(-1);
+            game = Program.FindGame(player);
+
+            Player opponent = game.Players.FirstOrDefault(p => p.id != player.id);
+
+            if (opponent != null)
+                Clients.Clients(GetConnectionId(opponent.id.ToString())).SendAsync("PlayerLeft", player.id);
+
+            LeaveGame();
+
             _connections.Remove(userId, Context.ConnectionId);
             return base.OnDisconnectedAsync(exception);
         }

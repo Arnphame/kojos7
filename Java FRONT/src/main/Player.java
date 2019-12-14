@@ -24,6 +24,8 @@ public class Player {
 
 	IMovementState movementState;
 
+
+
 	public Player(int id, int x, int y, Color color, Boolean isLocalPlayer){		//For players controlled via signalR
 		this.body = new Body(x, y, color);
 		this.isLocalPlayer = isLocalPlayer;
@@ -31,6 +33,13 @@ public class Player {
 		gun = new Gun(5, "arrow");
 		this.speedMultiplier = Config.speedMultiplier;
 		movementState = new Stationary(this);
+	}
+
+	public void addHealth(double hp) {
+		if(this.health + hp >= 100) {
+			this.health = 100;
+		}
+		else this.health += hp;
 	}
 	
 	public void tick(Game game){
