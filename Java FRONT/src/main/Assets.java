@@ -25,7 +25,7 @@ public class Assets {
 	public BufferedImage bird;
 	public BufferedImage sun;
 	public BufferedImage grenade;
-	public static BufferedImage hpboost;
+	public BufferedImage hpboost;
 	
 	public void init(){
 		arrow = loadImage("/arrow.png");

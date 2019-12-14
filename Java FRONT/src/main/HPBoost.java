@@ -16,11 +16,6 @@ public class HPBoost extends Powerup {
         this.x = x;
         this.y = y;
         this.time = time;
-        setImage(Assets.hpboost);
-    }
-
-    void setImage(BufferedImage img) {
-        this.img = img;
     }
 
     @Override
@@ -29,17 +24,16 @@ public class HPBoost extends Powerup {
     }
 
     @Override
-    void render(Graphics g, Assets assets) {
+    void render(Graphics g, DrawableBoost boost) {
         Graphics2D g2 = (Graphics2D) g;
 
-        g.drawImage(img, x, y, null);
+        boost.draw(g2, x, y);
     }
 
     @Override
-    Rectangle getBounds()
+    Rectangle getBounds(DrawableBoost boost)
     {
-        return new Rectangle(x,y, img.getWidth(), img.getHeight());
-
+        return new Rectangle(x,y, boost.img.getWidth(), boost.img.getHeight());
     }
 
     public int getId(){

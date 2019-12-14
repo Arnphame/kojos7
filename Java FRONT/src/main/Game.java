@@ -32,26 +32,16 @@ public class Game implements Runnable{
 	private ArrayList<Ammo> ammos;
 	private ArrayList<Powerup> powerups;
 
+	private DrawableBoost DrawableHPBoost;
+
 	Rectangle gameBounds;
 
 	ExportVisitor expV;
 
-	public void addBoost(Powerup boost) {
-		powerups.add(boost);
-		boost.BoostExistenceTime();
-	}
 
-	public void collectBoost(Powerup boost) {
-		powerups.remove(boost);
-	}
-	
-	public static Vector gravity = new Vector(0,0.14f);
-
-	public void setMapColor(Color color) {
-		map.setColor(color);
-	}
 	
 	public Game(String title, int width, int height, Subject gameSubject, int mapType){
+		init();
 		this.width = width;
 		this.height = height;
 		this.title = title;
@@ -66,6 +56,8 @@ public class Game implements Runnable{
 		ammos = new ArrayList<>();
 		powerups = new ArrayList<>();
 		expV = new ExportVisitor();
+
+		this.DrawableHPBoost = new DrawableBoost(assets.hpboost);
 
 		initDisplay();
 	}
@@ -140,7 +132,13 @@ public class Game implements Runnable{
 			}
 
 			for(Powerup powerup : powerups) {
-				if(powerup.getBounds().intersects(ammo.getBounds())) {
+
+				DrawableBoost drawable = DrawableHPBoost;
+				if(powerup instanceof HPBoost){
+					drawable = DrawableHPBoost;
+				}
+
+				if(powerup.getBounds(drawable).intersects(ammo.getBounds())) {
 					for (Player player: players) {
 						if(player.id == ammo.getShooterId()) {
 							player.addHealth(powerup.value);
@@ -192,7 +190,12 @@ public class Game implements Runnable{
 		}
 
 		for(Powerup powerup : powerups) {
-			powerup.render(g,assets);
+			DrawableBoost drawable = DrawableHPBoost;
+			if(powerup instanceof HPBoost){
+				drawable = DrawableHPBoost;
+			}
+
+			powerup.render(g,drawable);
 		}
 
 		bs.show();
@@ -293,9 +296,22 @@ public class Game implements Runnable{
 		}
 		opponent.setMovementState(movementState);
 	}
+
+	public void addBoost(Powerup boost) {
+		powerups.add(boost);
+		boost.BoostExistenceTime();
+	}
+
+	public void collectBoost(Powerup boost) {
+		powerups.remove(boost);
+	}
+
+	public void setMapColor(Color color) {
+		map.setColor(color);
+	}
 	
 	public void run(){
-		init();
+		//init();
 		long lastTime = System.nanoTime(),now,timer=0;
 		double delta =0,  nsPerTick = 1000000000/60;
 		int frames = 0;
