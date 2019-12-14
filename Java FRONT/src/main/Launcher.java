@@ -129,6 +129,14 @@ public class Launcher implements GameObserver{
     }
 
     @Override
+    public void collectBoost(int powerUpId, int playerId){
+        Powerup collectedBoost = game.collectBoost(powerUpId, playerId);
+        if(collectedBoost != null){
+            game.removeBoost(collectedBoost);
+        }
+    }
+
+    @Override
     public void removePlayer(int id) {
         game.removePlayer(id);
     }
@@ -146,6 +154,8 @@ public class Launcher implements GameObserver{
         Subject gameSubject = new GameSubject(Config.signalR_URL);
         Launcher launcher = new Launcher();
         launcher.subscribe(gameSubject);
-        launcher.readConsole();
+        while(true){
+            launcher.readConsole();
+        }
     }
 }

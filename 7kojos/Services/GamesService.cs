@@ -59,6 +59,7 @@ namespace _7Kojos.Services
             ObstacleFactory.boostPrototypes.TryGetValue((Powerup.PowerUpType)powerUpType, out obs);
             Obstacle pwrUp = obs.Clone();
             pwrUp.SetPosition(new System.Drawing.Point(rnd.Next(720), rnd.Next(280)));
+            ((Powerup)pwrUp).SetTime(rnd.Next(3, 8));
             foreach (Game game in Program.Games) {
                 foreach (Player player in game.Players) {
                     hubContext.Clients.Clients(GameHub.GetConnectionId(player.id.ToString())).SendAsync("Boost",

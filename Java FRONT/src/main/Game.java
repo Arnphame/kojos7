@@ -141,7 +141,8 @@ public class Game implements Runnable{
 				if(powerup.getBounds(drawable).intersects(ammo.getBounds())) {
 					for (Player player: players) {
 						if(player.id == ammo.getShooterId()) {
-							player.addHealth(powerup.value);
+							collectBoost(powerup.id, player.id);
+							gameSubject.send("CollectBoost", powerup.id);
 						}
 					}
 					ammosToRemove.add(ammo);
@@ -302,7 +303,29 @@ public class Game implements Runnable{
 		boost.BoostExistenceTime();
 	}
 
-	public void collectBoost(Powerup boost) {
+	public Powerup collectBoost(int powerUpId, int playerId) {
+		Powerup powerup = null;
+		for (Powerup p : powerups) {
+			if(p.id == powerUpId){
+				powerup = p;
+			}
+		}
+
+		Player player = null;
+		for (Player p : players) {
+			if(p.id == playerId){
+				player = p;
+			}
+		}
+
+		if(powerup == null || player == null)
+			return null;
+
+		player.addHealth(powerup.value);
+		return powerup;
+	}
+
+	public void removeBoost(Powerup boost){
 		powerups.remove(boost);
 	}
 

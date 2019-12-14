@@ -11,5 +11,7 @@ public interface GameObserver {
     void updateObstacle(String type, int id, int x, int y, int width, int height, String color);
     void setOpponentMovement(String movementType, int currentX, int currentY);
     void addBoost(int id, int type, double value, int x, int y, int time);
+    void collectBoost(int powerUpId, int playerId);
     void removePlayer(int id);
+
 }

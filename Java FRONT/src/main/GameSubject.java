@@ -64,8 +64,13 @@ public class GameSubject implements Subject{
             for(GameObserver observer : observers) {
                 observer.addBoost(id,type,value,x,y,time);
             }
-            System.out.println("BOOSTAS " + id);
         }, Integer.class, Integer.class, Double.class, Integer.class, Integer.class, Integer.class);
+
+        connection.on("CollectedBoost", (powerUpId, playerId) -> {
+            for(GameObserver observer : observers) {
+                observer.collectBoost(powerUpId, playerId);
+            }
+        }, Integer.class, Integer.class);
 
         connection.on("PlayerLeft", (id) -> {
             for(GameObserver observer : observers) {

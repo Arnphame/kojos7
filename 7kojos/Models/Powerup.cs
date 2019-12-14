@@ -29,6 +29,11 @@ namespace _7kojos.Models
             this.time = time;
         }
 
+        public void SetTime(int seconds)
+        {
+            this.time = seconds;
+        }
+
         public Obstacle Clone()
         {
             return new Powerup(type, value, x,y,time);

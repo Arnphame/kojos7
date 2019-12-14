@@ -186,5 +186,17 @@ namespace _7kojos.Hubs
                 }
             }
         }
+
+        public void CollectBoost(int powerUpId)
+        {
+            Player player = dbContext.Players.FirstOrDefault(p => p.id.ToString() == GetUserId());
+
+            Game game = Program.FindGame(player);
+
+            Player opponent = game.Players.FirstOrDefault(p => p.id != player.id);
+
+            if (opponent != null)
+                Clients.Clients(GetConnectionId(opponent.id.ToString())).SendAsync("CollectedBoost", powerUpId, player.id);
+        }
     }
 }

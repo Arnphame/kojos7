@@ -4,10 +4,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class HPBoost extends Powerup {
-    @Override
-    void BoostExistenceTime() {
-        destroyTime = System.currentTimeMillis() + 3000 + rand.nextInt(8000);
-    }
 
     public HPBoost(int id, int type, double value, int x, int y, int time) {
         this.id = id;

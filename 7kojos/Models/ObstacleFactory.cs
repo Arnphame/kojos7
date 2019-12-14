@@ -19,7 +19,7 @@ namespace _7kojos.Models
 
         public static Dictionary<Powerup.PowerUpType, Obstacle> boostPrototypes = new Dictionary<Powerup.PowerUpType, Obstacle>
         {
-            { Powerup.PowerUpType.HP, new Powerup(Powerup.PowerUpType.HP, 30, 0,0, 0) },
+            { Powerup.PowerUpType.HP, new Powerup(Powerup.PowerUpType.HP, 30, 0,0, 5) },
             { Powerup.PowerUpType.DMG, new Powerup(Powerup.PowerUpType.DMG, 10,0,0, 5) },
             { Powerup.PowerUpType.SPEED, new Powerup(Powerup.PowerUpType.SPEED, 1.3,0,0, 5) },
         };
