@@ -24,6 +24,8 @@ public class Launcher implements GameObserver{
     private Subject gameSubject;
     private Game game;
 
+    private CommandHandler commandHandler;
+
     public Launcher(){
         JFrame frame = new JFrame("Start Screen");
         frame.setContentPane(panel);
@@ -32,6 +34,8 @@ public class Launcher implements GameObserver{
         frame.setVisible(true);
 
         initButtonHandlers();
+
+        commandHandler = new MapColorHandler(new MyColorHandler(new OpponentColorHandler(new StopHandler(null))));
     }
 
     public void initButtonHandlers(){
@@ -143,11 +147,8 @@ public class Launcher implements GameObserver{
 
     void readConsole(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("TYPE");
         String n = scanner.nextLine();
-        Expression exp = new MapColorExpression();
-        exp.interpret(n);
-        game.setMapColor(((MapColorExpression)exp).color);
+        commandHandler.handle(game, n);
     }
 
     public static void main(String[] args) {

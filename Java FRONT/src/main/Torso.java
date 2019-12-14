@@ -56,6 +56,11 @@ public class Torso implements IBodyPart{
         return getBounds().intersects(rect);
     }
 
+    @Override
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     public Rectangle getBounds(){
         AffineTransform tx = new AffineTransform();
         tx.translate(x, y);

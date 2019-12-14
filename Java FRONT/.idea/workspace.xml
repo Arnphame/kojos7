@@ -2,12 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07ce6bff-add5-46f6-9ab9-b65da786876e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/CommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/MapColorHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/MyColorExpression.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/MyColorHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/OpponentColorExpression.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/OpponentColorHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/StopExpression.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/StopHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Body.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GameObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameObserver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GameSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameSubject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/HPBoost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HPBoost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Head.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Head.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/IBodyPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/IBodyPart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Limb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Limb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/MapColorExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MapColorExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Torso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Torso.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

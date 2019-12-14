@@ -2,12 +2,11 @@ package main;
 
 import java.awt.*;
 
-public class MapColorExpression implements Expression {
-
+public class MyColorExpression implements  Expression {
     public Color color;
 
-    public MapColorExpression() {
-        this.color = Color.BLUE;
+    public MyColorExpression() {
+        this.color = Color.GREEN;
     }
 
     @Override

@@ -44,6 +44,11 @@ public class Head implements IBodyPart{
         return getBounds().intersects(rect);
     }
 
+    @Override
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     public Rectangle getBounds(){
         return new Rectangle(x-r, y-r, 2*r, 2*r);
     }

@@ -9,4 +9,5 @@ public interface IBodyPart {
     int getY();
     void render(Graphics g);
     boolean intersects(Rectangle rect);
+    void setColor(Color color);
 }

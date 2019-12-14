@@ -182,4 +182,8 @@ public class Player {
 			health = 0;
 		}
 	}
+
+	public void setColor(Color color){
+		this.body.setColor(color);
+	}
 }

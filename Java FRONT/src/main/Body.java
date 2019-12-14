@@ -77,6 +77,13 @@ public class Body implements IBodyPart {
 		}
 		return false;
 	}
+
+	@Override
+	public void setColor(Color color) {
+		for (IBodyPart part : parts) {
+			part.setColor(color);
+		}
+	}
 }	
 
 

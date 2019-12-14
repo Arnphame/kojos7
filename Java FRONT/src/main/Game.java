@@ -166,6 +166,16 @@ public class Game implements Runnable{
 			powerups.remove(powerup);
 		}
 	}
+
+	public void setPlayerColor(boolean forLocal, Color color){
+		for (Player p : players) {
+			if(p.isLocalPlayer && forLocal){
+				p.setColor(color);
+			}else if(!p.isLocalPlayer && !forLocal){
+				p.setColor(color);
+			}
+		}
+	}
 	
 	public void render(){
 		bs = canvas.getBufferStrategy();
