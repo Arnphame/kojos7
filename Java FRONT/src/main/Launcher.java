@@ -35,7 +35,7 @@ public class Launcher implements GameObserver{
 
         initButtonHandlers();
 
-        commandHandler = new MapColorHandler(new MyColorHandler(new OpponentColorHandler(new StopHandler(null))));
+        commandHandler = new MapColorHandler(new MapColorUndoHandler(new MyColorHandler(new OpponentColorHandler(new StopHandler(null)))));
     }
 
     public void initButtonHandlers(){

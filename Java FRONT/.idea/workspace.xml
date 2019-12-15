@@ -2,24 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07ce6bff-add5-46f6-9ab9-b65da786876e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/CommandHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/MapColorHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/MyColorExpression.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/MyColorHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/OpponentColorExpression.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/OpponentColorHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/StopExpression.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/StopHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/BooleanExpression.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/MapColorHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/MapColorSnapshot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/MapColorUndoExpression.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/MapColorUndoHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Body.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Ammo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Ammo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Arrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Arrow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Bullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CommandHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Expression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Expression.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Head.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Head.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/IBodyPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/IBodyPart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Grenade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Grenade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/IMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/IMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Launcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Limb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Limb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/MapColorExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MapColorExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/MapColorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MapColorHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/MapDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MapDecorator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Torso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Torso.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -119,5 +120,21 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/MapColorHistory.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/MapColorHistory.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

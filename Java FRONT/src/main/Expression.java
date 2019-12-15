@@ -1,5 +1,5 @@
 package main;
 
 public interface Expression {
-    public void interpret(String context);
+    void interpret(String context);
 }

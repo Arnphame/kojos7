@@ -10,6 +10,9 @@ public class MapColorHandler extends CommandHandler {
     void doAction(Game game, String command) {
         MapColorExpression exp = new MapColorExpression();
         exp.interpret(command);
+
+        game.createMapSnapshot();
+
         game.setMapColor(exp.color);
     }
 

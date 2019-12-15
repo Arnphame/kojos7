@@ -24,6 +24,8 @@ public class Player {
 
 	IMovementState movementState;
 
+	Powerup activePowerUp;
+
 
 
 	public Player(int id, int x, int y, Color color, Boolean isLocalPlayer){		//For players controlled via signalR
@@ -33,6 +35,12 @@ public class Player {
 		gun = new Gun(5, "arrow");
 		this.speedMultiplier = Config.speedMultiplier;
 		movementState = new Stationary(this);
+		this.activePowerUp = null;
+	}
+
+	void setActivePowerUp(Powerup powerUp){
+		this.activePowerUp = powerUp;
+		this.activePowerUp.BoostActiveTime();
 	}
 
 	public void addHealth(double hp) {
@@ -46,6 +54,13 @@ public class Player {
 		if(isLocalPlayer)								//Get input only if player is controlled locally
 			getInput(game);
 		move();
+
+		if(activePowerUp != null){
+			if(System.currentTimeMillis() > activePowerUp.activeTime){
+				activePowerUp = null;
+				speedMultiplier = Config.speedMultiplier;
+			}
+		}
 	}
 	
 	public void render(Graphics g){

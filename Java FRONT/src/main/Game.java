@@ -339,9 +339,11 @@ public class Game implements Runnable{
 		powerups.remove(boost);
 	}
 
+	public void createMapSnapshot(){ map.createSnapshot(); }
 	public void setMapColor(Color color) {
 		map.setColor(color);
 	}
+	public void undoMapColor(){ map.undoColor(); }
 	
 	public void run(){
 		//init();

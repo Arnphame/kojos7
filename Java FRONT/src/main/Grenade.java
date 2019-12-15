@@ -17,6 +17,11 @@ public class Grenade  implements Ammo {
     }
 
     @Override
+    public void setDamage(int dmg) {
+        this.damage = dmg;
+    }
+
+    @Override
     public Vector getPosition() {
         return position;
     }

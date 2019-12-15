@@ -5,10 +5,12 @@ import java.util.ArrayList;
 
 public class Map implements IMap{
     private static Map instance = null;
+    private MapColorHistory colorsHistory;
 
     Color color = Color.BLUE;
     private Map() {
         System.out.println("Singleton initialized");
+        colorsHistory = new MapColorHistory();
     }
     public static synchronized Map getInstance() {
         if(instance == null){
@@ -24,8 +26,19 @@ public class Map implements IMap{
     public ArrayList<Obstacle> obstacles;
 
     @Override
-    public void setColor(Color color) {
+    public void createSnapshot(){
+        this.colorsHistory.addSnapshot(new MapColorSnapshot(this, this.color));
+    }
+
+    @Override
+    public void setColor(Color color)
+    {
         this.color = color;
+    }
+
+    @Override
+    public void undoColor(){
+        colorsHistory.undo();
     }
 
     @Override

@@ -10,6 +10,8 @@ public interface Ammo {
 
     int getDamage();
 
+    void setDamage(int dmg);
+
     void setVelocity(Vector v);
 
     void setShooterId(int shooterId);

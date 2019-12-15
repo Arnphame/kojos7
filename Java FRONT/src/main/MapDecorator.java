@@ -29,4 +29,12 @@ public abstract class MapDecorator implements IMap {
     public void setColor(Color color) {
         map.setColor(color);
     }
+
+    @Override
+    public void undoColor(){ map.undoColor(); }
+
+    @Override
+    public void createSnapshot(){
+        map.createSnapshot();
+    }
 }

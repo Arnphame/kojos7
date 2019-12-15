@@ -19,6 +19,11 @@ public class Bullet implements Ammo {
     }
 
     @Override
+    public void setDamage(int dmg) {
+        this.damage = dmg;
+    }
+
+    @Override
     public void setVelocity(Vector velocity) {
         this.velocity = velocity;
     }
