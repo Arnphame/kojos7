@@ -76,6 +76,8 @@ public class GameSubject implements Subject{
             for(GameObserver observer : observers) {
                 observer.removePlayer(id);
             }
+            System.out.println("Your opponent left. Congratulations, you won this game !");
+            System.exit(0);
         }, Integer.class);
 
         connection.on("gamepls", () -> {

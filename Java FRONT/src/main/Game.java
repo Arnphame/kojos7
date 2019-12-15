@@ -98,9 +98,27 @@ public class Game implements Runnable{
 		sounds.init();
 	}
 	
-	public void tick(){
+	public void tick() {
 		Graphics2D g2 = (Graphics2D)g;
 		for (Player player : players) {
+			if(player.health <= 0 && player.isLocalPlayer){
+				System.out.println("You lost all you lives. Better luck next time !");
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				System.exit(0);
+			}
+			if(player.health <= 0 && !player.isLocalPlayer){
+				System.out.println("You killed your opponent. Congratulations for the victory !");
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				System.exit(0);
+			}
 			player.tick(this);
 		}
 		ArrayList<Ammo> ammosToRemove = new ArrayList<>();
@@ -149,7 +167,7 @@ public class Game implements Runnable{
 					if(!powerupsToRemove.contains(powerup)) {
 						powerupsToRemove.add(powerup);
 					}
-					System.out.println(ammo.getShooterId() + " gavo HPBoost");
+
 					System.out.println(expV.visitHPBoost((HPBoost)powerup));
 				}
 
