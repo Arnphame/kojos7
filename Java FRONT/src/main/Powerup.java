@@ -12,13 +12,16 @@ public abstract class Powerup {
     long activeTime;
     Random rand = new Random();
 
-    public final void templateMethod()
+    public final void initialize() //Template method
     {
         BoostExistenceTime();
+        Announce();
     }
     void BoostExistenceTime() {
         destroyTime = System.currentTimeMillis() + time * 1000;
     }
+    void Announce(){ System.out.println("Boost initialized !"); }
+
     void BoostActiveTime() {
         activeTime = System.currentTimeMillis() + time * 1000;
     };

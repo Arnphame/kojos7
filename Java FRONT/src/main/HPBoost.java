@@ -15,6 +15,11 @@ public class HPBoost extends Powerup {
     }
 
     @Override
+    void Announce(){
+        System.out.println("Health boost initialized. Value = " + this.value);
+    }
+
+    @Override
     void BoostActiveTime() {
         activeTime = 0;
     }

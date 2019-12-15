@@ -328,7 +328,7 @@ public class Game implements Runnable{
 
 	public void addBoost(Powerup boost) {
 		powerups.add(boost);
-		boost.BoostExistenceTime();
+		boost.initialize();
 	}
 
 	public Powerup collectBoost(int powerUpId, int playerId) {

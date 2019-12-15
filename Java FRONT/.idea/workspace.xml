@@ -4,7 +4,8 @@
     <list default="true" id="07ce6bff-add5-46f6-9ab9-b65da786876e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GameSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/HPBoost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HPBoost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Powerup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Powerup.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
